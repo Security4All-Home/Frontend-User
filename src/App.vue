@@ -3,9 +3,9 @@
 
     <NavBar></NavBar>
 
-    <div  class="">
-        <router-view />
-    </div>
+    
+    <router-view />
+    
 
     <Footer></Footer>
     
@@ -14,13 +14,13 @@
 
 <script>
 // Components
-import Navbar from './views/Navbar'
+import NavBar from './views/NavBar'
 import Footer from './views/Footer'
 
 
 export default {
   components: {
-            Navbar,
+            NavBar,
             Footer
   },
 }
