@@ -6,8 +6,15 @@
 @import "~buefy/src/scss/buefy";
 
 // Colors
-$primary: #2859a1;
+$primary: #FFBF2F;
 $primary-invert: findColorInvert($primary);
+$secondary: #0A1F3C;
+$secondary-invert: findColorInvert($primary);
+$ourWhite: #F2F2F2;
+$ourWhite-invert: findColorInvert($primary);
+$ourGrey: #6D6D73;
+$ourGrey-invert: findColorInvert($primary);
+
 $dark: #373737;
 $dark-invert: findColorInvert($dark);
 $danger: #FF1053;
@@ -44,6 +51,11 @@ $colors: (
 $family-serif: 'Montserrat', sans-serif;
 
 
+// Style
 
+
+.secondaryColorBG{
+        background-color: $secondary;
+}
 
 
