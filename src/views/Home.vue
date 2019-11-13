@@ -1,5 +1,5 @@
 <template>
-  <section class="hero is-info is-fullheight">
+  <section class="hero is-info is-fullheight-with-navbar">
     <div class="hero-body">
                 <div class="container has-text-centered">
                     <div class="column is-6 is-offset-3">
@@ -35,3 +35,6 @@ export default {
   name: "home",
 };
 </script>
+
+<style> 
+</style>
