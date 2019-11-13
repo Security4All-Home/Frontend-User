@@ -1,5 +1,5 @@
 <template>
-  <section class="hero is-info is-fullheight-with-navbar">
+  <section class="hero hasBackgroundImage is-fullheight-with-navbar">
     <div class="hero-body">
                 <div class="container has-text-centered">
                     <div class="column is-6 is-offset-3">
@@ -36,5 +36,9 @@ export default {
 };
 </script>
 
-<style> 
+<style>
+
+.hasBackgroundImage {
+    background-image: url("../assets/Images/HomeWallpaper.jpg") !important
+}
 </style>
