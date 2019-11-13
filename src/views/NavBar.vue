@@ -51,8 +51,8 @@
           <a class="button is-primary">
             <strong>Sign up</strong>
           </a>
-          <a class="button is-light">
-            Log in
+          <a class="button is-light"><router-link to="/login">Log in</router-link>
+            
           </a>
         </div>
       </div>
