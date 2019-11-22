@@ -53,13 +53,13 @@ $family-serif: 'Montserrat', sans-serif;
 //Login style
 #left {
     background-color: $secondary;
-    padding-bottom: 350px !important;
+    padding-bottom: 26.1rem !important;
     text-align: center !important;
 }
 //full box of login
 .fullLogin {
     position: relative;
-    top: 75px;
+    //top: 4.6875rem;
 
 }
 p {
@@ -72,59 +72,70 @@ p {
     margin-left: auto;
     margin-right: auto;
     position: relative;
-    top:50px;
+    top:4rem;
 }
 // the title "Login"
 #TitleLogin {
     color: $primary;
-    font-size: 30px;
+    font-size: 1.875rem;
     position: relative;
-    left: 35px;
+    left: 2.1875rem;
+    top: 1rem;
     font-weight: bold;
     
 }
 // Inputs - email and password
 .inputLogin {
-    border: 2px solid $secondary;
-    border-radius: 6px;
+    border: 0.1875rem solid $secondary !important;
+    border-radius: 0.375rem;
     position: relative;
-    left: 35px;
-    top: 40px;
-    width: 600px;
+    left: 2.1875rem;
+    top: 2.5rem;
+    width: 18rem !important;
 }
 // the forgot password link
 #forgotPass {
     color: $primary;
     text-decoration: underline;
     position: relative;
-    left: 35px;
-    top: 50px;
+    left: 2.1875rem;
+    top: 3.125rem;
 }
 // the login Button
 #logButton {
     background-color:$primary ;
     color: $ourWhite;
-    border-radius: 8px;
+    border-radius: 0.5rem;
     position: relative;
-    left: 35px;
-    top: 200px;
-    width: 128px;
-    height: 48px;
-    font-size: 20px;
+    left: 2.1875rem;
+    top: 10rem;
+    width: 8rem;
+    height: 3rem;
+    font-size: 1.25rem;
+    font-weight: bold;
 }
 // the message below the logo
 #loginMessage {
     font-weight: bold;
-    top: 120px;
+    top: 7rem;
     position: relative;
-    font-size:20px;
+    font-size:1.25rem;
 }
 // the labels in the inputs
 .loginLabel {
     position: relative;
-    left: 39px;
-    top: 40px;
+    left: 2.4375rem;
+    top: 2.5rem;
     color: $secondary;
-    font-size:20px;
+    font-size:1.25rem;
 }
-
+#right{
+    padding-bottom: 12rem !important;
+}
+#introduction {
+    color: $primary;
+    font-size: 24px;
+    font-weight: bold;
+    position: relative;
+    top: 6rem;
+}

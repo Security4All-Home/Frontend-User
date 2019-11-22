@@ -1,15 +1,16 @@
 <template>
   <div class="login">
     <div class="container">
-    <div class="columns fullLogin">
+    <div class="columns fullLogin is-gapless">
         <div class="column is-two-fifths" id="left">
             <!-- Logo -->
             <figure class="image is-128x128" id="LogoLogin">
     	        <img src="../assets/Images/logo.png" >
             </figure>
+            <h1 id="introduction">Welcome to Security4All<br>Platform</h1>
             <p id="loginMessage">Time to make yourself secure</p>
         </div>
-        <div class="column right">
+        <div class="column" id="right">
             <!--Title-->
             <h1 id="TitleLogin">LOGIN</h1>
             <!--Input of email -->
