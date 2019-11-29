@@ -28,6 +28,13 @@
         Catalog
       </a>
 
+      
+      <router-link :to="{ name: 'rankings' }">
+        <a class="navbar-item">
+          Rankings
+        </a>
+      </router-link>
+
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link has-text-white">
           <i class="fas fa-user-circle"></i>
