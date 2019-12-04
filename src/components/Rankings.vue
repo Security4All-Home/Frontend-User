@@ -37,19 +37,19 @@
               hoverable>
 
               <template slot-scope="props">
-                  <b-table-column field="id" label="ID" width="5" centered numeric sortable>
+                  <b-table-column  field="id" label="ID" width="0.5" centered numeric sortable>
                       {{ props.row.id }}
                   </b-table-column>
 
-                  <b-table-column field="username" width="80" label="User" centered sortable>
+                  <b-table-column field="username" width="10" label="User" centered sortable>
                       {{ props.row.username }}
                   </b-table-column>
 
-                  <b-table-column field="photo" width="100" label="" centered sortable>
+                  <b-table-column field="photo" width="15" label="" centered sortable>
                      <img id="imageTable" :src='props.row.photo'> 
                   </b-table-column>
 
-                  <b-table-column field="points" width="200" label="Points" numeric centered sortable>
+                  <b-table-column field="points" width="5" label="Points" numeric centered sortable>
                       <span>
                           {{ props.row.points }}
                       </span>
@@ -82,8 +82,10 @@
 import Vue from 'vue'
 import Buefy from 'buefy'
 import 'buefy/dist/buefy.css'
+//import
+import store from '../store/index.js'
 
-Vue.use(Buefy)
+Vue.use(Buefy, store)
 
 
 export default {
@@ -106,15 +108,11 @@ export default {
     };
   },*/
   created() {
-    this.tempRanking = JSON.parse(localStorage.getItem('ranking'));
+    this.tempRanking = this.$store.getters.ranking;
+    //console.log(this.tempRanking)
   },
   mounted() {
-   /* for (let i = 0; i < this.tempRanking.length; i++) {
-      //console.log(this.tempRanking[i].points)
-    //points.sort(function(a, b){return a-b});
-    //document.getElementById("demo").innerHTML = points;
-      
-    }*/
+
   }
 };
 </script>
