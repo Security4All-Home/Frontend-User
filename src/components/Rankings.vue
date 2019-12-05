@@ -31,27 +31,27 @@
       </div>
         <section>
           <b-table
-              :data="data"
+              v-for="user in tempRanking" :key="user.id"
               ref="table"
               :mobile-cards	="false"
               hoverable>
 
-              <template slot-scope="props">
-                  <b-table-column  field="id" label="ID" width="0.5" centered numeric sortable>
-                      {{ props.row.id }}
+              <template  id="table">
+                  <b-table-column field="id" label="ID" width="0.5" centered numeric sortable>
+                      {{ user.id}}
                   </b-table-column>
 
                   <b-table-column field="username" width="10" label="User" centered sortable>
-                      {{ props.row.username }}
+                      {{ user.name }}
                   </b-table-column>
 
                   <b-table-column field="photo" width="15" label="" centered sortable>
-                     <img id="imageTable" :src='props.row.photo'> 
+                     <img id="imageTable" :src='user.photo'> 
                   </b-table-column>
 
                   <b-table-column field="points" width="5" label="Points" numeric centered sortable>
                       <span>
-                          {{ props.row.points }}
+                          {{ user.points }}
                       </span>
                   </b-table-column>
               </template>
@@ -90,18 +90,26 @@ Vue.use(Buefy, store)
 
 export default {
   name: "Rankings",
-   data() {
+  data: function() {
+    return {
+      tempRanking: []
+    };
+  },
+   /*data() {
             const data = [
                 { 'id': 1, 'username': 'Jessie', 'photo': 'https://contigo.uol.com.br/orinoco/media/images/large/2019/10/15/paolla-oliveira-aparece-chorando-em-foto-como-vivi-guedes-na-web-1186472.jpg', 'points': 1005 },
                 { 'id': 2, 'username': 'John', 'photo': 'https://static1.purepeople.com.br/articles/5/27/69/65/@/3147374-pedro-scooby-tem-suposta-foto-intima-e-c-950x0-2.jpg', 'points': 903 },
                 { 'id': 3, 'username': 'Tina', 'photo': 'https://conteudo.imguol.com.br/c/entretenimento/38/2019/07/30/duda-reis-e-acusada-de-mexer-no-corpo-em-foto-1564498888379_v2_450x600.png', 'points': 554 },
                 { 'id': 4, 'username': 'Aaron', 'photo': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbSBvQQubxvFZ3hnf2NPLGmTZGnGRC9b4AiV3xJuNZ6YdyJc_L&s', 'points': 186 },
                 { 'id': 5, 'username': 'Anne', 'photo': 'https://static1.purepeople.com.br/articles/7/27/94/37/@/3174773-thais-fersoza-chamou-atencao-por-foto-de-950x0-3.jpg', 'points': 55 }
-            ]
+            ],
+            
+              tempRanking: []
             return {
-                data
+                data,
+                tempRanking
             }
-   },
+   },*/
   /*data: function() {
     return {
       tempRanking: []
@@ -109,7 +117,11 @@ export default {
   },*/
   created() {
     this.tempRanking = this.$store.getters.ranking;
-    //console.log(this.tempRanking)
+    //console.log(this.tempRanking.id)
+    for (let i = 0; i < this.tempRanking.length; i++) {
+    //console.log(this.tempRanking[i].id)
+      
+    }
   },
   mounted() {
 
@@ -119,6 +131,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+#table {
+  width: 200px;
+}
 /*#changeView{
   margin-left: 650px;
   margin-bottom: 100px;
