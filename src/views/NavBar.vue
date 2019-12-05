@@ -2,7 +2,8 @@
 <nav class="navbar secondaryColorBG"  role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="/">
-      <img src="../assets/Images/logo.png" width="27" height="28">
+      <img src="../assets/Images/1.png" width="161" height="28">
+      
     </a>
 
     <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -15,7 +16,7 @@
   <div id="navbarBasicExample" class="navbar-menu ">
     <!-- <div class="navbar-start">
       
-      </div> -->
+      </div> --> 
     </div>
 
     <div class="navbar-end">
