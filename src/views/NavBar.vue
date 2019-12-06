@@ -55,7 +55,7 @@
       <div class="navbar-item">
         <div class="buttons">
           <a class="button is-primary">
-            <strong><router-link to="/signup">Sign Up</router-link></strong>
+            <strong><router-link to="/signin">Sign Up</router-link></strong>
           </a>
           <a class="button is-light"><router-link to="/login">Log in</router-link>
             

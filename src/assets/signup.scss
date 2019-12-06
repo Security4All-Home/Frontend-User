@@ -75,3 +75,9 @@ $family-serif: 'Montserrat', sans-serif;
     position: relative;
     top:95px;
 }
+.step-marker {
+    background-color: $primary !important;
+}
+.is-active {
+    color: $secondary !important;
+}
