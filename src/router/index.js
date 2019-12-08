@@ -27,7 +27,7 @@ const routes = [
     path: "/rankings",
     name: "rankings",
     component: Rankings
-  },
+  }
 ];
 
 const router = new VueRouter({
