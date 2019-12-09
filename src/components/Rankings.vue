@@ -16,12 +16,6 @@
               class="input" 
               type="text" 
               placeholder="Search">
-          <!--<b-autocomplete
-              v-model="searchBar"
-              placeholder="Pesquise aqui por um utilizador"
-              icon="magnify"
-              @select="option => this.selected = option"
-            ></b-autocomplete>-->
         </div>
         <div class="column is-1-desktop">
           <a id="changeTable" class="button" v-bind:style="isActive(1)" @click="view=1">
@@ -84,30 +78,35 @@
           </b-table>
       </section>
       </div>
-
+       <div  class="level-item has-text-centered">
       
       <div id="cardView" v-if="view==2" class="columns is-multiline">
-        <div class="column is-12-mobile is-6-tablet is-3-desktop"
+        <div class="column is-4-mobile is-6-tablet is-4-desktop"
           v-for="(person,i) in persons"
           :key="i">
-        <div class="card" id="cardView">
-          <div class="card-image">
-            <figure class="image">
-              <img id="imageCard" :src='person.photo' alt="Placeholder image">
-            </figure>
-          </div>
+        <div class="card" >
           <div class="card-content">
             <div class="media">
+              <div class="media-left">
+                <figure class="image">
+                  <img id="imageCard" :src='person.photo' alt="Placeholder image">
+                  <div class="top-left" v-if="person.id == 1 || person.id == 2 || person.id == 3">
+                    <i class="fas fa-medal"></i>
+                    <!--{{person.id}}-->
+                    </div>
+                </figure>
+              </div>
               <div class="media-content">
-                <p  class="title is-10">{{person.id}}</p>
-                <p class="subtitle is-12">{{person.username}}</p>
-                <p class="subtitle is-20"> {{person.points}}</p>
+                <!--<p  class="title is-15">{{person.id}}</p>-->
+                <p id="cardName" class="subtitle is-12">{{person.username}}</p>
+                <p class="subtitle is-20"> {{person.points}} points</p>
               </div>
             </div>
           </div>
         </div>
         </div>
       </div>
+       </div>
     </div>
     </div>
 </template>
@@ -124,41 +123,41 @@ export default {
   name: "Rankings",
    data() {
             const data = [
-                { 'id': 1, 'username': 'Jessie', 'photo': 'https://contigo.uol.com.br/orinoco/media/images/large/2019/10/15/paolla-oliveira-aparece-chorando-em-foto-como-vivi-guedes-na-web-1186472.jpg', 'points': 1005 },
-                { 'id': 2, 'username': 'John', 'photo': 'https://static1.purepeople.com.br/articles/5/27/69/65/@/3147374-pedro-scooby-tem-suposta-foto-intima-e-c-950x0-2.jpg', 'points': 903 },
-                { 'id': 3, 'username': 'Tina', 'photo': 'https://conteudo.imguol.com.br/c/entretenimento/38/2019/07/30/duda-reis-e-acusada-de-mexer-no-corpo-em-foto-1564498888379_v2_450x600.png', 'points': 554 },
-                { 'id': 4, 'username': 'Aaron', 'photo': 'https://cdn-ofuxico.akamaized.net/img/upload/noticias/2019/12/07/henry_365654_36.jpg', 'points': 186 },
-                { 'id': 5, 'username': 'Anne', 'photo': 'https://static1.purepeople.com.br/articles/7/27/94/37/@/3174773-thais-fersoza-chamou-atencao-por-foto-de-950x0-3.jpg', 'points': 55 }
+                { 'id': 1, 'username': 'Jessie Moores', 'photo': 'https://contigo.uol.com.br/orinoco/media/images/large/2019/10/15/paolla-oliveira-aparece-chorando-em-foto-como-vivi-guedes-na-web-1186472.jpg', 'points': 1005 },
+                { 'id': 2, 'username': 'John Apted', 'photo': 'https://static1.purepeople.com.br/articles/5/27/69/65/@/3147374-pedro-scooby-tem-suposta-foto-intima-e-c-950x0-2.jpg', 'points': 903 },
+                { 'id': 3, 'username': 'Tina Garcia', 'photo': 'https://conteudo.imguol.com.br/c/entretenimento/38/2019/07/30/duda-reis-e-acusada-de-mexer-no-corpo-em-foto-1564498888379_v2_450x600.png', 'points': 554 },
+                { 'id': 4, 'username': 'Aaron Anthonyson', 'photo': 'https://cdn-ofuxico.akamaized.net/img/upload/noticias/2019/12/07/henry_365654_36.jpg', 'points': 186 },
+                { 'id': 5, 'username': 'Anne Horton', 'photo': 'https://static1.purepeople.com.br/articles/7/27/94/37/@/3174773-thais-fersoza-chamou-atencao-por-foto-de-950x0-3.jpg', 'points': 55 }
             ]
 
             let persons = [
               {
                 id:1,
-                username: "Jessie",
+                username: "Jessie Moores",
                 photo: "https://contigo.uol.com.br/orinoco/media/images/large/2019/10/15/paolla-oliveira-aparece-chorando-em-foto-como-vivi-guedes-na-web-1186472.jpg",
                 points: 1005
               },
               {
                 id:2,
-                username: "John",
+                username: "John Apted",
                 photo: "https://static1.purepeople.com.br/articles/5/27/69/65/@/3147374-pedro-scooby-tem-suposta-foto-intima-e-c-950x0-2.jpg",
                 points: 903
               },
               {
                 id:3,
-                username: "Tina",
+                username: "Tina Garcia",
                 photo: "https://conteudo.imguol.com.br/c/entretenimento/38/2019/07/30/duda-reis-e-acusada-de-mexer-no-corpo-em-foto-1564498888379_v2_450x600.png",
                 points: 554
               },
               {
                 id:4,
-                username: "Aaron",
+                username: "Aaron Anthonyson",
                 photo: "https://cdn-ofuxico.akamaized.net/img/upload/noticias/2019/12/07/henry_365654_36.jpg",
                 points: 186
               },
               {
                 id:5,
-                username: "Anne",
+                username: "Anne Horton",
                 photo: "https://static1.purepeople.com.br/articles/7/27/94/37/@/3174773-thais-fersoza-chamou-atencao-por-foto-de-950x0-3.jpg",
                 points: 55
               }
@@ -219,28 +218,38 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+#cardName {
+  font-weight: bold;
+}
 #cardPoints {
   color: black !important;
 }
 .card {
-  width: 300px;
-  height: 400px;
+  width: 800px;
+  height: 100px;
   size: 1px;
 }
 .is-active {
   color: #FFBF2F !important;
 }
+.top-left {
+  position: absolute;
+  top: -3px;
+  left: 2px;
+  color: #FFBF2F;
+  
+}
 #cardView {
   align-self: center !important;
   align-items: center !important;
-  margin-left: 100px;
-  margin-right: 300px;
+  margin-left: 150px;
+  margin-right: 150px;
 }
 #imageCard {  
-  width:300px;
-  height:200px;
+  width:60px;
+  height:60px;
   object-fit:cover;
-  border-radius: 5px;
+  border-radius: 15%;
 }
 /*#changeView{
   margin-left: 650px;
