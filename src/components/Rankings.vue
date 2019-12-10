@@ -17,12 +17,12 @@
               type="text" 
               placeholder="Search">
         </div>
-        <div class="column is-1-desktop">
+        <div class="column is-1 is-offset-1 is-desktop">
           <a id="changeTable" class="button" v-bind:style="isActive(1)" @click="view=1">
             <i class="fas fa-table"></i>
           </a>
         </div>
-        <div class="column is-1-desktop">
+        <div class="column is-0 is is-offset-0 is-desktop">
          <!-- <router-link :to="{ name: 'rankingsCards' }">-->
             <a id="changeCard" class="button" @click="view=2" v-bind:style="isActive(2)" >
               <i class="fas fa-address-card"></i>
@@ -90,9 +90,17 @@
               <div class="media-left">
                 <figure class="image">
                   <img id="imageCard" :src='person.photo' alt="Placeholder image">
-                  <div class="top-left" v-if="person.id == 1 || person.id == 2 || person.id == 3">
-                    <i class="fas fa-medal"></i>
-                    <!--{{person.id}}-->
+                    <div style="font-size: 26px;" id="numberOne" class="top-left" v-if="person.id == 1"> 
+                      <i class="fas fa-medal"></i>
+                      <!--{{person.id}}-->
+                    </div>
+                    <div style="font-size: 26px;" id="numberTwo" class="top-left" v-if="person.id == 2">
+                      <i class="fas fa-medal"></i>
+                      <!--{{person.id}}-->
+                    </div>
+                    <div style="font-size: 26px;" id="numberThree" class="top-left" v-if="person.id == 3">
+                      <i class="fas fa-medal"></i>
+                      <!--{{person.id}}-->
                     </div>
                 </figure>
               </div>
@@ -225,7 +233,7 @@ export default {
   color: black !important;
 }
 .card {
-  width: 800px;
+  width: 350px;
   height: 100px;
   size: 1px;
 }
@@ -234,10 +242,19 @@ export default {
 }
 .top-left {
   position: absolute;
-  top: -3px;
-  left: 2px;
-  color: #FFBF2F;
+  top: -12px;
+  left: -7px;
+    width: 24px !important;
   
+}
+#numberOne {
+  color: #FFBF2F;
+}
+#numberTwo {
+  color: #6D6D73;
+}
+#numberThree {
+  color: #872f00;
 }
 #cardView {
   align-self: center !important;

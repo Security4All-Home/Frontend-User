@@ -29,8 +29,8 @@
       </a>
 
       
-      <router-link :to="{ name: 'rankings' }">
-        <a class="navbar-item">
+      <router-link id="GoToRankings" :to="{ name: 'rankings' }">
+        <a class="navbar-item has-text-white">
           Rankings
         </a>
       </router-link>
@@ -87,6 +87,10 @@ export default {
 
     .navbar-item:hover, .navbar-link:hover{
       background-color: rgba(13, 52, 107, 0.349) !important;
+    }
+
+    #GoToRankings {
+      align-items: center !important;
     }
     
 </style>
