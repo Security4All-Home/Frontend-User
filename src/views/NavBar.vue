@@ -35,6 +35,12 @@
         </a>
       </router-link>
 
+      <router-link id="GoToRankings" :to="{ name: 'ranking2' }">
+        <a class="navbar-item has-text-white">
+          Ranking2
+        </a>
+      </router-link>
+
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link has-text-white">
           <i class="fas fa-user-circle"></i>

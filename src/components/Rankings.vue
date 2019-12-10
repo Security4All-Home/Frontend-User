@@ -3,6 +3,7 @@
       <br>
       <br>
       <br>
+      <h1 id="titleRanking" class="title is-1">Ranking</h1>
       <br>
       <br>
       <br>
@@ -10,24 +11,21 @@
     <div class="container" id="tableRanking">
 
       <div class="columns">
-        <div class="column is-6 is-offset-2 is-desktop">
+        <div class="column is-offset-3 is-6">
           <input id="searchBar"
               icon="magnify" 
               class="input" 
               type="text" 
               placeholder="Search">
         </div>
-        <div class="column is-1 is-offset-1 is-desktop">
-          <a id="changeTable" class="button" v-bind:style="isActive(1)" @click="view=1">
+        <div class="column is-2">
+          <a id="changeTable" class="button" v-bind:style="isActive(1)" @click="view=1" style="margin-right:5px">
             <i class="fas fa-table"></i>
           </a>
-        </div>
-        <div class="column is-0 is is-offset-0 is-desktop">
-         <!-- <router-link :to="{ name: 'rankingsCards' }">-->
+          
             <a id="changeCard" class="button" @click="view=2" v-bind:style="isActive(2)" >
               <i class="fas fa-address-card"></i>
             </a>
-         <!-- </router-link>-->
         </div>
       </div>
       <div v-if="view==1">
@@ -42,20 +40,20 @@
             :sort-icon-size="is-small">
 
 
-              <template slot-scope="props">
-                  <b-table-column is-current-sort field="id" label="ID" width="1" centered numeric sortable>
+              <template id="itemsTable" slot-scope="props">
+                  <b-table-column style="text-align:center" is-current-sort field="id" label="ID" width="1" centered numeric sortable>
                       {{ props.row.id }}
                   </b-table-column>
 
-                  <b-table-column field="username" width="10" label="User" centered sortable>
+                  <b-table-column style="text-align:center" field="username" width="10" label="User" centered sortable>
                       {{ props.row.username }}
                   </b-table-column>
 
-                  <b-table-column field="photo" width="20" label="" centered>
+                  <b-table-column style="text-align:center" field="photo" width="20" label="" centered>
                      <img id="imageTable" :src='props.row.photo'> 
                   </b-table-column>
 
-                  <b-table-column field="points" width="10" label="Points" numeric centered sortable>
+                  <b-table-column style="text-align:center" field="points" width="10" label="Points" numeric centered sortable>
                       <span>
                           {{ props.row.points }}
                       </span>
@@ -77,6 +75,11 @@
               </template>
           </b-table>
       </section>
+
+
+
+
+
       </div>
        <div  class="level-item has-text-centered">
       
@@ -226,6 +229,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
 #cardName {
   font-weight: bold;
 }
@@ -236,6 +240,13 @@ export default {
   width: 350px;
   height: 100px;
   size: 1px;
+  border: #0A1F3C;
+  border-radius: 10px; 
+border-style:solid;
+ border-width: 1px;
+}
+.card p{
+  color: #0A1F3C;
 }
 .is-active {
   color: #FFBF2F !important;
@@ -244,7 +255,7 @@ export default {
   position: absolute;
   top: -12px;
   left: -7px;
-    width: 24px !important;
+  width: 24px !important;
   
 }
 #numberOne {
@@ -268,6 +279,11 @@ export default {
   object-fit:cover;
   border-radius: 15%;
 }
+#cardName {
+    vertical-align: middle !important;
+    text-align: center;
+
+}
 /*#changeView{
   margin-left: 650px;
   margin-bottom: 100px;
@@ -284,16 +300,31 @@ export default {
   height:50px;
   object-fit:cover;
   border-radius:50%;
+    vertical-align: middle !important;
 }
 #dataTable{
-  width: 800px;
+  width: 650px;
   margin-left: auto;
   margin-right: auto;  
   align-self: center !important;
   align-items: center !important;
+  margin-top: 30px !important;
+    vertical-align: middle !important;
+    text-align: center;
 }
+#itemsTable {
+    vertical-align: middle !important;
+    text-align: center;
+}
+
 #tableRanking{
   align-self: center !important;
   align-items: center !important;
+    vertical-align: middle !important;
+}
+
+#titleRanking {
+  color: #0A1F3C;
+  text-align: center;
 }
 </style>
