@@ -1,6 +1,7 @@
 <template>
   <nav class="navbar">
-    <div class="navbar-brand">
+    <div class="container">
+      <div class="navbar-brand">
       <a class="navbar-item logo" href="#">
         <img src="../assets/Images/1.png" width="161" height="28" />
       </a>
@@ -72,6 +73,12 @@
       </div>
 
       
+    </div>
+
+
+
+
+
     </div>
     
 
