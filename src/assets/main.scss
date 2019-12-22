@@ -1,9 +1,21 @@
+
+// Pre change colors
+$navbar-background-color: rgb(10, 31, 60) !important;
+$navbar-item-hover-color: rgb(10, 31, 60) !important;
+$navbar-item-hover-background-color: rgba(13, 52, 107, 0) !important;
+// $navbar-dropdown-background-color:#0A1F3C !important;
+$navbar-dropdown-item-hover-background-color:rgba(13, 52, 107, 0.349) !important;
+// $navbar-divider-background-color:#FFBF2F !important;
+$navbar-dropdown-arrow: #ffffff !important;
+
 // Import Bulma's core
 @import "~bulma/sass/utilities/_all";
 
 // Import Bulma and Buefy styles
 @import "~bulma/bulma";
 @import "~buefy/src/scss/buefy";
+
+
 
 // Colors
 $primary: #FFBF2F;
@@ -46,7 +58,6 @@ $colors: (
 );
 
 // Fonts
-
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 $family-serif: 'Montserrat', sans-serif;
 
@@ -54,14 +65,9 @@ $family-serif: 'Montserrat', sans-serif;
 // Style
 
 
-.secondaryColorBG{
-        background-color: $secondary;
-}
 
-//Login style
-.left {
-        background-color: $secondary;
-}
+
+
 
 /////////////////////////////////////////////////
 //GLITCH

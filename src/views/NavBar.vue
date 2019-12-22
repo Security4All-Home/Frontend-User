@@ -1,86 +1,105 @@
 <template>
-<nav class="navbar secondaryColorBG"  role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a class="navbar-item" href="/">
-      <img src="../assets/Images/1.png" width="161" height="28">
-      
-    </a>
-
-    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-
-  <div id="navbarBasicExample" class="navbar-menu ">
-    <!-- <div class="navbar-start">
-      
-      </div> --> 
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item logo" href="#">
+        <img src="../assets/Images/1.png" width="161" height="28" />
+      </a>
+      <!-- BURGER -->
+      <a
+        role="button"
+        class="navbar-burger burger"
+        aria-label="menu"
+        aria-expanded="false"
+        data-target="navbarContent"
+        @click="isOpen = !isOpen"
+        v-bind:class="{'is-active': isOpen}"
+      >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
     </div>
-
-    <div class="navbar-end">
-
-<a class="navbar-item has-text-white">
-        Security
-      </a>
-
-      <a class="navbar-item has-text-white">
-        Catalog
-      </a>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link has-text-white">
-          <i class="fas fa-user-circle"></i>
-        </a>
-
-        <div class="navbar-dropdown">
-          <a class="navbar-item">
-            Perfil
+    <div id="navbarContent" class="navbar-menu" v-bind:class="{'is-active': isOpen}">
+      <div id="navbarCenter" class="navbar-end">
+        <a class="navbar-item sectionLink has-text-white">Security</a>
+        <a class="navbar-item sectionLink has-text-white">Catalog</a>
+        <!-- Dropdown desktop/tablet-->
+        <div class="navbar-item has-dropdown is-hoverable is-hidden-mobile" v-if="user == true">
+          <!-- v-if="user" -->
+          <a class="navbar-link has-text-white">
+            <i class="fas fa-user-circle is-white"></i>
           </a>
-          <a class="navbar-item">
-            Settings
-          </a>
-          <a class="navbar-item">
-            Home Manager
-          </a>
-          <hr class="navbar-divider">
-          <a class="navbar-item">
-            Sign out
-          </a>
+
+          <div class="navbar-dropdown ">
+            <a class="navbar-item">Perfil</a>
+            <a class="navbar-item">Achievements</a>
+            <a class="navbar-item">Settings</a>
+            <a class="navbar-item">Home Manager</a>
+            <hr class="navbar-divider" />
+            <a class="navbar-item">Sign out</a>
+          </div>
         </div>
+        <!-- Mobile dropdown -->
+        <a class="navbar-item sectionLink has-text-white is-hidden-tablet" v-if="user == true">Perfil</a>
+        <a class="navbar-item sectionLink has-text-white is-hidden-tablet" v-if="user == true">Achievements</a>
+        <a class="navbar-item sectionLink has-text-white is-hidden-tablet" v-if="user == true">Settings</a>
+       
 
-
-
-
-      <div class="navbar-item">
+        <div class="navbar-item">
         <div class="buttons">
-          <a class="button is-primary">
-            <strong><router-link to="/signup">Sign Up</router-link></strong>
+          <a class="button is-primary is-hidden-tablet" v-if="user == true">
+            <span class="icon">
+          <i class="fas fa-home"></i>
+        </span>
+            <span>Home Manager</span>
           </a>
-          <a class="button is-light"><router-link to="/login">Log in</router-link>
-            
+
+          <a class="button is-danger is-hidden-tablet" v-if="user == true">
+            <span class="icon">
+          <i class="fas fa-sign-out-alt"></i>
+        </span>
+            <span>Sign Out</span>
+          </a>
+
+          <a class="button is-light" v-if="user == false">
+            <span class="icon">
+          <i class="fas fa-sign-in-alt"></i>
+        </span>
+            <span>Log In</span>
           </a>
         </div>
       </div>
+      </div>
+
+      
     </div>
-  </div>
-</nav>
+    
+
+
+
+  </nav>
 </template>
 
 <script>
 export default {
-    name: 'Navbar',
-
-}
-
+  name: "Navbar1",
+  data() {
+    return {
+      isOpen: false,
+      user: true
+    };
+  }
+};
 </script>
 
-<style lang="scss" scoped>
-    @import '../assets/main.scss';
+<style lang="scss">
 
-    .navbar-item:hover, .navbar-link:hover{
-      background-color: rgba(13, 52, 107, 0.349) !important;
-    }
-    
+.sectionLink {
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+}
+
+
+
 </style>
+
