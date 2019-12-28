@@ -1,6 +1,6 @@
 
 // Pre change colors
-$navbar-background-color: rgb(10, 31, 60) !important;
+//$navbar-background-color: rgb(10, 31, 60) !important;
 $navbar-item-hover-color: rgb(10, 31, 60) !important;
 $navbar-item-hover-background-color: rgba(13, 52, 107, 0) !important;
 // $navbar-dropdown-background-color:#0A1F3C !important;
@@ -64,10 +64,27 @@ $family-serif: 'Montserrat', sans-serif;
 
 // Style
 
+.isPrimaryColor {
+  color: $primary !important;
+}
 
+.isPrimaryBGColor {
+  background-color: $primary !important;
+}
+.isSecondaryBGColor {
+  background-color: $secondary !important;
+}
 
+.buttonBorderPrimary {
+  background-color: transparent !important; //or rgba with a = 0
+  border: 1px solid $primary !important;
 
-
+  color: $primary !important;
+}
+.buttonBorderPrimary:hover {
+  background-color: $primary !important;
+  color: $secondary !important;
+}
 
 /////////////////////////////////////////////////
 //GLITCH
