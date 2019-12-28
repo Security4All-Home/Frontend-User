@@ -14,8 +14,8 @@
 
 <script>
 // Components
-//import NavBar from './views/NavBar'
-import Footer from './views/Footer'
+//import NavBar from './components/NavBar'
+import Footer from './components/Footer'
 
 
 

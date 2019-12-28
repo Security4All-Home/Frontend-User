@@ -3,10 +3,11 @@
 //$navbar-background-color: rgb(10, 31, 60) !important;
 $navbar-item-hover-color: rgb(10, 31, 60) !important;
 $navbar-item-hover-background-color: rgba(13, 52, 107, 0) !important;
-// $navbar-dropdown-background-color:#0A1F3C !important;
+//$navbar-dropdown-background-color:#0A1F3C !important;
 $navbar-dropdown-item-hover-background-color:rgba(13, 52, 107, 0.349) !important;
 // $navbar-divider-background-color:#FFBF2F !important;
 $navbar-dropdown-arrow: #ffffff !important;
+$navbar-item-color: #FFBF2F !important;
 
 // Import Bulma's core
 @import "~bulma/sass/utilities/_all";
@@ -85,6 +86,20 @@ $family-serif: 'Montserrat', sans-serif;
   background-color: $primary !important;
   color: $secondary !important;
 }
+
+.navbar-menu{
+  background-color: transparent !important;
+
+}
+
+
+
+
+
+
+
+
+
 
 /////////////////////////////////////////////////
 //GLITCH
