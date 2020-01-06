@@ -8,7 +8,7 @@
     <br />
     <div class="container" id="tableRanking">
       
-      <progress id="progressBarLarge" class="progress is-large " value="60" max="100">60%</progress>
+      <progress id="progressBarLarge" class="progress is-large " value="60" max="100">60</progress>
       
     <br />
       <div class="level-item has-text-centered">
