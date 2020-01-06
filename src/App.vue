@@ -3,7 +3,6 @@
 
     <NavBar></NavBar>
 
-    
     <router-view />
     
 

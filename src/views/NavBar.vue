@@ -40,6 +40,12 @@
           Ranking2
         </a>
       </router-link>
+      
+      <router-link id="GoToRankings" :to="{ name: 'achievements' }">
+        <a class="navbar-item has-text-white">
+          Achievements
+        </a>
+      </router-link>
 
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link has-text-white">

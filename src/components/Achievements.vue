@@ -1,80 +1,43 @@
-<template id="ranking2">
-  <div class="rankings">
+<template id="achievement">
+  <div class="achievements">
     <br />
     <br />
     <br />
-    <h1 id="titleRanking" class="title is-1">Ranking</h1>
+    <h1 id="titleRanking" class="title is-1">Achievements</h1>
+    <br />
+    <br />
     <div class="container" id="tableRanking">
-      <div>
-        <section>
-          <b-table
-            id="dataTable"
-            :data="data"
-            :columns="columns"
-            :selected.sync="selected"
-            ref="table"
-            :mobile-cards="false"
-            :hoverable="true"
+      
+      <progress id="progressBarLarge" class="progress is-large " value="60" max="100">60%</progress>
+      
+    <br />
+      <div class="level-item has-text-centered">
+        <div id="cardView" class="columns is-multiline">
+          <div
+          
+            class="column is-4-mobile is-6-tablet is-4-desktop"
+            v-for="(person,i) in persons"
+            :key="i"
           >
-            <b-tab-item label="Selected" v-if="id==54" id="selected">
-              <pre>{{ selected }}</pre>
-            </b-tab-item>
-            <template id="itemsTable" slot-scope="props">
-              <b-table-column
-                style="text-align:center"
-                is-current-sort
-                field="id"
-                width="1"
-                centered
-                numeric
-              >{{ props.row.id }}</b-table-column>
-
-              <b-table-column
-                id="usernameItem"
-                style="text-align:left"
-                field="username"
-                width="15"
-                centered
-              >{{ props.row.username }}</b-table-column>
-
-              <b-table-column
-                style="text-align:left"
-                field="points"
-                width="10"
-                numeric
-                centered
-              >
-                <span>{{ props.row.points }}</span>
-                <span id="numberOne" v-if="props.row.id == 1">
-                  &nbsp;&nbsp;&nbsp;&nbsp; 
-                  <i class="fas fa-medal"></i>
-                </span>
-                <span id="numberTwo" v-if="props.row.id == 2">
-                  &nbsp;&nbsp;&nbsp;&nbsp; 
-                  <i class="fas fa-medal"></i>
-                </span>
-                <span id="numberThree" v-if="props.row.id == 3">
-                  &nbsp;&nbsp;&nbsp;&nbsp;
-                  <i class="fas fa-medal"></i>
-                </span>
-              </b-table-column>
-              
-            </template>
-
-            <template slot="empty">
-              <section class="section">
-                <div class="content has-text-grey has-text-centered">
-                  <p>
-                    <b-icon icon="emoticon-sad" size="is-large"></b-icon>
-                  </p>
-                  <p>Nothing here.</p>
+            <div class="card" id="cardPerson">
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-left">
+                    <figure class="image">
+                      <img id="imageCard" :src="person.photo" alt="Placeholder image" />
+                    </figure>
+                  </div>
+                  <div class="media-content">
+                    <!--<p  class="title is-15">{{person.id}}</p>-->
+                    <p id="cardName" class="subtitle is-12">{{person.username}}</p>
+                    <p class="subtitle is-20">{{person.points}} points</p>
+                  </div>
                 </div>
-              </section>
-            </template>
-          </b-table>
-        </section>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <h1 id="etc">...</h1>
     </div>
   </div>
 </template>
@@ -94,27 +57,37 @@ export default {
       {
         id: 1,
         username: "Jessie Moores",
+        photo:
+          "https://contigo.uol.com.br/orinoco/media/images/large/2019/10/15/paolla-oliveira-aparece-chorando-em-foto-como-vivi-guedes-na-web-1186472.jpg",
         points: 1005
       },
       {
         id: 2,
         username: "John Apted",
+        photo:
+          "https://static1.purepeople.com.br/articles/5/27/69/65/@/3147374-pedro-scooby-tem-suposta-foto-intima-e-c-950x0-2.jpg",
         points: 903
       },
       {
         id: 3,
         username: "Tina Garcia",
+        photo:
+          "https://conteudo.imguol.com.br/c/entretenimento/38/2019/07/30/duda-reis-e-acusada-de-mexer-no-corpo-em-foto-1564498888379_v2_450x600.png",
         points: 554
       },
       {
         id: 4,
         username: "Aaron Anthonyson",
+        photo:
+          "https://cdn-ofuxico.akamaized.net/img/upload/noticias/2019/12/07/henry_365654_36.jpg",
         points: 186
       },
       {
         id: 5,
         username: "Anne Horton",
-        points: 155
+        photo:
+          "https://static1.purepeople.com.br/articles/7/27/94/37/@/3174773-thais-fersoza-chamou-atencao-por-foto-de-950x0-3.jpg",
+        points: 55
       }
     ];
 
@@ -152,12 +125,11 @@ export default {
         username: "Anne Horton",
         photo:
           "https://static1.purepeople.com.br/articles/7/27/94/37/@/3174773-thais-fersoza-chamou-atencao-por-foto-de-950x0-3.jpg",
-        points: 155
+        points: 55
       }
     ];
     return {
       data,
-      selected: data[0],
       searchBar: "",
       filteredUsers: [],
       view: 1,
@@ -170,25 +142,10 @@ export default {
     };
   },*/
   created() {
-    let loggedUser = {
-      id: 54,
-      username: "James Sully",
-      points: 12
-    };
+
+
     this.tempRanking = JSON.parse(localStorage.getItem("ranking"));
     // console.log(this.persons)
-    this.data.push({
-      id: "...",
-      username: "...",
-      points: "..."
-    });
-
-    this.data.push({
-      id: loggedUser.id,
-      username: loggedUser.username,
-      photo: loggedUser.photo,
-      points: loggedUser.points
-    });
   },
   mounted() {
     /* for (let i = 0; i < this.tempRanking.length; i++) {
@@ -217,7 +174,14 @@ export default {
       }
     }*/
   },
-  methods: {}
+  methods: {
+    isActive(n) {
+      //console.log("entrei")
+      return n == this.view
+        ? { "background-color": "#F2F2F2" }
+        : { "background-color": "#FFBF2F" };
+    }
+  }
 };
 </script>
 
@@ -239,7 +203,7 @@ export default {
   border-width: 1px;
 }
 .card p {
-  color: #0a1f3c;
+  color: #f2f2f2;
 }
 .is-active {
   color: #ffbf2f !important;
@@ -249,23 +213,6 @@ export default {
   top: -12px;
   left: -7px;
   width: 24px !important;
-}
-
-#etc {
-  margin-left: auto;
-  margin-right: auto;
-  align-self: center !important;
-  align-items: center !important;
-}
-
-#numberOne {
-  color: #ffbf2f;
-}
-#numberTwo {
-  color: #6d6d73;
-}
-#numberThree {
-  color: #872f00;
 }
 #cardView {
   align-self: center !important;
@@ -292,29 +239,34 @@ export default {
   width: 300px;
   margin-left: 250px;
 }*/
+#imageTable {
+  /*width: 10%;
+  height: auto;*/
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  vertical-align: middle !important;
+}
 #dataTable {
-  width: 550px;
+  width: 650px;
   margin-left: auto;
   margin-right: auto;
   align-self: center !important;
+  align-items: center !important;
   margin-top: 30px !important;
   vertical-align: middle !important;
+  text-align: center;
 }
 #itemsTable {
   vertical-align: middle !important;
-}
-#itemsTable:hover {
-  background-color: yellow;
+  text-align: center;
 }
 
 #tableRanking {
-  align-self: left !important;
+  align-self: center !important;
+  align-items: center !important;
   vertical-align: middle !important;
-}
-
-.is-selected {
-  background-color: #ffbf2f !important;
-  color: #ffbf2f;
 }
 
 #titleRanking {
@@ -322,14 +274,14 @@ export default {
   text-align: center;
 }
 
-#selected {
+#cardPerson {  
+  background-color: #0a1f3c;
+}
+
+#progressBarLarge {
   background-color: #ffbf2f !important;
   color: #ffbf2f !important;
-}
-#usernameItem {
-  align-items: left !important;
-  align-self: left !important;
-  align-content: left !important;
-  text-align: left !important;
+  margin-left: 160px !important;
+  width: 1020px;
 }
 </style>
