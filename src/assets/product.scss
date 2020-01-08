@@ -1,0 +1,100 @@
+// Import Bulma's core
+@import "~bulma/sass/utilities/_all";
+
+// Import Bulma and Buefy styles
+@import "~bulma/bulma";
+@import "~buefy/src/scss/buefy";
+
+$section-padding: 10rem 1.5rem !default;
+$section-padding-medium: 9rem 1.5rem !default;
+$section-padding-large: 18rem 1.5rem !default;
+
+body {
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    background-attachment: fixed;
+    background-color: lightgray;
+}
+
+html {
+    height: 100%;
+}
+
+#secInfoSensor {
+    position: relative;
+    top: 10px;
+}
+
+#secSensores {
+    position: relative;
+    top: 40px;
+}
+
+#secAvalia {
+    position: relative;
+    top: 100px;
+    bottom: 20px;
+}
+
+#secComentarios {
+    position: relative;
+    top: 150px;
+    width: 50%;
+    float: left;
+}
+
+.hero-shadow {
+    box-shadow: 0 2px 4px 0 rgba(75, 75, 75, 0.1), 0 2px 5px 0 rgba(75, 75, 75, 0.1);
+    // border: 0.5px solid #dbdbdb;
+    padding: 10px;
+    background: white;
+    border-radius: 10px;
+}
+
+.title {
+    font-size: 20px;
+}
+
+.text {
+    font-size: 16px;
+}
+
+.fa-star {
+    margin-left: 2px;
+    padding-left: 1px;
+}
+
+.checked {
+    color: yellow;
+}
+
+.own-comment {
+    box-shadow: 0 2px 4px 0 rgba(75, 75, 75, 0.1), 0 2px 5px 0 rgba(75, 75, 75, 0.1);
+    border: 0.5px solid #f3ffad;
+    padding: 10px;
+    background: white;
+    border-radius: 10px;
+}
+
+.other-comment {
+    box-shadow: 0 2px 4px 0 rgba(75, 75, 75, 0.1), 0 2px 5px 0 rgba(75, 75, 75, 0.1);
+    border: 0.5px solid #bdbdbd;
+    padding: 10px;
+    background: white;
+    border-radius: 10px;
+}
+
+#specs {
+    margin: 5px 50px 10px;
+}
+
+#specsTitle {
+    margin-left: 20px;
+}
+
+ul {
+    list-style: disc;
+}
+
+// Shopping cart

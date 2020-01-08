@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar">
+  <nav class="navbar is-fixed-top">
     <div class="container">
       <div class="navbar-brand">
       <a class="navbar-item logo" href="#">
@@ -28,7 +28,7 @@
         <div class="navbar-item has-dropdown is-hoverable is-hidden-mobile" v-if="user == true">
           <!-- v-if="user" -->
           <a class="navbar-link has-text-white">
-            <i class="fas fa-user-circle is-white"></i>
+            <i class="fas fa-user-circle is-white" style="margin-right:5px"></i>Rodrigo
           </a>
 
           <div class="navbar-dropdown ">
@@ -48,14 +48,14 @@
 
         <div class="navbar-item">
         <div class="buttons">
-          <a class="button is-primary is-hidden-tablet" v-if="user == true">
+          <a class="button is-info is-hidden-tablet " v-if="user == true">
             <span class="icon">
           <i class="fas fa-home"></i>
         </span>
             <span>Home Manager</span>
           </a>
 
-          <a class="button is-danger is-hidden-tablet" v-if="user == true">
+          <a class="button buttonBorderDanger is-hidden-tablet" v-if="user == true">
             <span class="icon">
           <i class="fas fa-sign-out-alt"></i>
         </span>
@@ -93,7 +93,7 @@ export default {
   data() {
     return {
       isOpen: false,
-      user: false
+      user: true
     };
   }
 };
