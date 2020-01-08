@@ -7,7 +7,7 @@
           <div class="columns">
             <div class="column is-12-mobile is-6-tablet is-2-desktop is-centered is-vcentered">
               <figure class="image is-square">
-                <img src="../assets/images/motion_sensor.png" />
+                <img src="../assets/Images/motion_sensor.png" />
               </figure>
               <span class="is-centered">
                 <br />
@@ -96,7 +96,7 @@
         <article class="media own-comment is-12-mobile is-6-tablet is-2-desktop">
           <figure class="media-left">
             <p class="image is-64x64">
-              <img class="is-rounded" src="../assets/images/user.jpg" />
+              <img class="is-rounded" src="../assets/Images/user.jpg" />
             </p>
           </figure>
           <div class="media-content">
@@ -128,7 +128,7 @@
         <article class="media other-comment is-12-mobile">
           <figure class="media-left">
             <p class="image is-64x64">
-              <img class="is-rounded" src="../assets/images/user2.jpg" />
+              <img class="is-rounded" src="../assets/Images/user2.jpg" />
             </p>
           </figure>
           <div class="media-content">
