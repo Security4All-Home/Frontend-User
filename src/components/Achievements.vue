@@ -13,7 +13,7 @@
         <p id="totalProgress">3/5</p>-->
 
           <b-progress id="progressBar" :value="loggedUser.percentWon" size="is-large" show-value>
-              {{achievements.pointsWon}} / {{achievements.length}}
+              {{this.tempAchievements.pointsWon}} / {{achievements.length}}
           </b-progress>
         </div>
       </div>
@@ -24,7 +24,7 @@
           <div
           id="cardHover"          
             class="column is-11-mobile is-6-tablet is-4-desktop is-centered"
-            v-for="(achievement,i) in achievements"
+            v-for="(achievement,i) in tempAchievements"
             :key="i"
           >
             <div class="card" id="cardPerson">
@@ -32,13 +32,13 @@
                 <div class="media">
                   <div class="media-left">
                     <figure class="image">
-                      <img id="imageCard" :src="achievement.photo" alt="Placeholder image" />
+                      <img id="imageCard" :src="photo" alt="Placeholder image" />
                     </figure>
                   </div>
                   <div class="media-content">
                     <!--<p  class="title is-15">{{person.id}}</p>-->
-                    <p id="cardName" class="subtitle is-12">{{achievement.achievement}}</p>
-                    <p id="cardProgress" class="subtitle is-20">{{achievement.pointsWon}}/{{achievement.totalPoints}}</p>
+                    <p id="cardName" class="subtitle is-12">{{achievement.description}}</p>
+                    <p id="cardProgress" class="subtitle is-20">{{achievement.pointsWon}}/{{achievement.goal}}</p>
                   </div>
                 </div>
               </div>
@@ -61,6 +61,7 @@ Vue.use(Buefy);
 export default {
   name: "Rankings",
   data() {
+    let photo = "https://pbs.twimg.com/media/ENwUVtvWkAA3k5x?format=png&name=360x360"
 
     let loggedUser = {
       id: 54,
@@ -69,7 +70,7 @@ export default {
       achievements: [
         {
           id: 1,
-          progress: 10
+          progress: 20
         },
         {
           id: 2,
@@ -77,7 +78,7 @@ export default {
         },
         {
           id: 3,
-          progress: 10
+          progress: 30
         },
         {
           id: 4,
@@ -87,64 +88,50 @@ export default {
       percentWon: 60
     }
 
+    
+
     let achievements = [
       {
         id: 1,
-        achievement: "I'm getting secured!",
-        photo:
-          "https://pbs.twimg.com/media/ENwUVtvWkAA3k5x?format=png&name=360x360",
-        totalPoints: 10,
-        pointsWon: 0,
-        percent: 0,
+        description: "I'm getting secured!",
+        goal: 0,
         type: "silver"
       },
       {
         id: 2,
-        achievement: "Logged In 10 Times!",
-        photo:
-          "https://pbs.twimg.com/media/ENwUVtvWkAA3k5x?format=png&name=360x360",
-        totalPoints: 10,
-        pointsWon: 0,
-        percent: 0,
+        description: "Logged In 10 Times!",
+        goal: 0,
         type: "silver"
       },
       {
         id: 3,
-        achievement: "I'm Registered!",
-        photo:
-          "https://pbs.twimg.com/media/ENwUVtvWkAA3k5x?format=png&name=360x360",
-        totalPoints: 10,
-        pointsWon: 0,
-        percent: 0,
+        description: "I'm Registered!",
+        goal: 0,
         type: "gold"
       },
       {
         id: 4,
-        achievement: "I have extra security!",
-        photo:
-          "https://pbs.twimg.com/media/ENwUVtvWkAA3k5x?format=png&name=360x360",
-        totalPoints: 10,
-        pointsWon: 0,
-        percent: 0,
+        description: "I have extra security!",
+        goal: 0,
         type: "bronze"
       },
       {
         id: 5,
-        achievement: "I'm In! ",
-        photo:
-          "https://pbs.twimg.com/media/ENwUVtvWkAA3k5x?format=png&name=360x360",
-        totalPoints: 10,
-        pointsWon: 0,
-        percent: 0,
+        description: "I'm In! ",
+        goal: 0,
         type: "gold"
       }
     ];
+    let tempAchievements = []
+
     return {
       searchBar: "",
       filteredUsers: [],
       view: 1,
       achievements,
-      loggedUser
+      loggedUser, 
+      photo,
+      tempAchievements
     };
   },
   /*data: function() {
@@ -153,34 +140,75 @@ export default {
     };
   },*/
   created() {
+
+    
+   
     let temp = 0
     for (let j = 0; j < this.achievements.length; j++) {
       for (let i = 0; i < this.loggedUser.achievements.length; i++) {
-        if(this.loggedUser.achievements[i].id == this.achievements[j].id){
-           // this.achievements[j].pointsWon = this.loggedUser.achievements[i].progress
-            this.achievements[j].percent = this.loggedUser.achievements[i].progress * 10
-            if(this.loggedUser.achievements[i].progress == 10){
-              temp = temp + 1
-            if(this.achievements[j].type == "gold"){
-              this.achievements[j].photo = "https://image.flaticon.com/icons/svg/1152/1152810.svg"
-            }
-            if(this.achievements[j].type == "bronze"){
-            this.achievements[j].photo = "https://pbs.twimg.com/media/ENmx441UcAAGY6J?format=png&name=small"
-            }
-            if(this.achievements[j].type == "silver"){
-              this.achievements[j].photo = "https://pbs.twimg.com/media/ENmx441U0AAv-KU?format=png&name=120x120"
-            }
-            this.achievements.pointsWon = temp
-          }
+        if(this.achievements[j].type == "gold"){
+          this.achievements[j].goal = 30
+        }
+        if(this.achievements[j].type == "bronze"){
+          this.achievements[j].goal = 10
+        }
+        if(this.achievements[j].type == "silver"){
+          this.achievements[j].goal = 20
         }
       }
     }
 
+    
+
+    for (let i = 0; i < this.achievements.length; i++) {
+
+       this.tempAchievements.push(
+          {
+            id: this.achievements[i].id,
+            description: this.achievements[i].description,
+            goal: this.achievements[i].goal,
+            type: this.achievements[i].type,
+            pointsWon: 0,
+            percent: 0
+          })
+    }
+
+    for (let j = 0; j < this.tempAchievements.length; j++) {
+      for (let i = 0; i < this.loggedUser.achievements.length; i++) {
+        if(this.loggedUser.achievements[i].id == this.tempAchievements[j].id){
+          this.tempAchievements[j].percent = this.loggedUser.achievements[i].progress * 10
+          if(this.loggedUser.achievements[i].progress == 10 && this.tempAchievements[j].type == "bronze"){
+            temp = temp + 1
+
+              
+              if(this.tempAchievements[j].type == "bronze"){
+                this.photo = "https://pbs.twimg.com/media/ENmx441UcAAGY6J?format=png&name=small"
+              }
+              
+              
+            }
+            if(this.loggedUser.achievements[i].progress == 20 && this.tempAchievements.type[j] == "silver"){
+              if(this.tempAchievements[j].type == "silver"){
+                this.photo = "https://pbs.twimg.com/media/ENmx441U0AAv-KU?format=png&name=120x120"
+              }
+            }
+            if(this.loggedUser.achievements[i].progress == 30 && this.tempAchievements.type[j] == "gold"){
+              if(this.tempAchievements[j].type == "gold"){
+                this.photo = "https://image.flaticon.com/icons/svg/1152/1152810.svg"
+              }
+            }
+
+            
+          this.tempAchievements[j].pointsWon = temp
+        }
+      }
+    }
 
     this.tempRanking = JSON.parse(localStorage.getItem("ranking"));
     // console.log(this.persons)
   },
   mounted() {
+    
     /* for (let i = 0; i < this.tempRanking.length; i++) {
       //console.log(this.tempRanking[i].points)
     //points.sort(function(a, b){return a-b});
