@@ -93,7 +93,7 @@ export default {
   data() {
     return {
       isOpen: false,
-      user: true
+      user: false
     };
   }
 };
