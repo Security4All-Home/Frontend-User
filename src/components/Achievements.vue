@@ -3,20 +3,28 @@
     <br />
     <br />
     <br />
-    <h1 id="titleRanking" class="title is-1">Achievements</h1>
+    <h1 id="titleRanking" class="title is-1-desktop is-8-tablet is-12-mobile" >Achievements</h1>
     <br />
     <br />
     <div class="container" id="tableRanking">
-      
-      <progress id="progressBarLarge" class="progress is-large " value="60" max="100">60</progress>
+      <div class="columns">
+        <div class="column is-offset-2 is-8">
+        <!--<progress id="progressBarLarge" class="progress is-large is-12-mobile" :value="loggedUser.percentWon" max="100" show-value>{{loggedUser.percentWon}}</progress>
+        <p id="totalProgress">3/5</p>-->
+
+          <b-progress id="progressBar" :value="loggedUser.percentWon" size="is-large" show-value>
+              {{achievements.pointsWon}} / {{achievements.length}}
+          </b-progress>
+        </div>
+      </div>
       
     <br />
       <div class="level-item has-text-centered">
         <div id="cardView" class="columns is-multiline">
           <div
-          
-            class="column is-4-mobile is-6-tablet is-4-desktop"
-            v-for="(person,i) in persons"
+          id="cardHover"          
+            class="column is-11-mobile is-6-tablet is-4-desktop is-centered"
+            v-for="(achievement,i) in achievements"
             :key="i"
           >
             <div class="card" id="cardPerson">
@@ -24,13 +32,13 @@
                 <div class="media">
                   <div class="media-left">
                     <figure class="image">
-                      <img id="imageCard" :src="person.photo" alt="Placeholder image" />
+                      <img id="imageCard" :src="achievement.photo" alt="Placeholder image" />
                     </figure>
                   </div>
                   <div class="media-content">
                     <!--<p  class="title is-15">{{person.id}}</p>-->
-                    <p id="cardName" class="subtitle is-12">{{person.username}}</p>
-                    <p class="subtitle is-20">{{person.points}} points</p>
+                    <p id="cardName" class="subtitle is-12">{{achievement.achievement}}</p>
+                    <p id="cardProgress" class="subtitle is-20">{{achievement.pointsWon}}/{{achievement.totalPoints}}</p>
                   </div>
                 </div>
               </div>
@@ -53,87 +61,90 @@ Vue.use(Buefy);
 export default {
   name: "Rankings",
   data() {
-    const data = [
-      {
-        id: 1,
-        username: "Jessie Moores",
-        photo:
-          "https://contigo.uol.com.br/orinoco/media/images/large/2019/10/15/paolla-oliveira-aparece-chorando-em-foto-como-vivi-guedes-na-web-1186472.jpg",
-        points: 1005
-      },
-      {
-        id: 2,
-        username: "John Apted",
-        photo:
-          "https://static1.purepeople.com.br/articles/5/27/69/65/@/3147374-pedro-scooby-tem-suposta-foto-intima-e-c-950x0-2.jpg",
-        points: 903
-      },
-      {
-        id: 3,
-        username: "Tina Garcia",
-        photo:
-          "https://conteudo.imguol.com.br/c/entretenimento/38/2019/07/30/duda-reis-e-acusada-de-mexer-no-corpo-em-foto-1564498888379_v2_450x600.png",
-        points: 554
-      },
-      {
-        id: 4,
-        username: "Aaron Anthonyson",
-        photo:
-          "https://cdn-ofuxico.akamaized.net/img/upload/noticias/2019/12/07/henry_365654_36.jpg",
-        points: 186
-      },
-      {
-        id: 5,
-        username: "Anne Horton",
-        photo:
-          "https://static1.purepeople.com.br/articles/7/27/94/37/@/3174773-thais-fersoza-chamou-atencao-por-foto-de-950x0-3.jpg",
-        points: 55
-      }
-    ];
 
-    let persons = [
+    let loggedUser = {
+      id: 54,
+      username: "James Sully",
+      points: 33,
+      achievements: [
+        {
+          id: 1,
+          progress: 10
+        },
+        {
+          id: 2,
+          progress: 3
+        },
+        {
+          id: 3,
+          progress: 10
+        },
+        {
+          id: 4,
+          progress: 10
+        }
+      ],
+      percentWon: 60
+    }
+
+    let achievements = [
       {
         id: 1,
-        username: "Jessie Moores",
+        achievement: "I'm getting secured!",
         photo:
-          "https://contigo.uol.com.br/orinoco/media/images/large/2019/10/15/paolla-oliveira-aparece-chorando-em-foto-como-vivi-guedes-na-web-1186472.jpg",
-        points: 1005
+          "https://pbs.twimg.com/media/ENwUVtvWkAA3k5x?format=png&name=360x360",
+        totalPoints: 10,
+        pointsWon: 0,
+        percent: 0,
+        type: "silver"
       },
       {
         id: 2,
-        username: "John Apted",
+        achievement: "Logged In 10 Times!",
         photo:
-          "https://static1.purepeople.com.br/articles/5/27/69/65/@/3147374-pedro-scooby-tem-suposta-foto-intima-e-c-950x0-2.jpg",
-        points: 903
+          "https://pbs.twimg.com/media/ENwUVtvWkAA3k5x?format=png&name=360x360",
+        totalPoints: 10,
+        pointsWon: 0,
+        percent: 0,
+        type: "silver"
       },
       {
         id: 3,
-        username: "Tina Garcia",
+        achievement: "I'm Registered!",
         photo:
-          "https://conteudo.imguol.com.br/c/entretenimento/38/2019/07/30/duda-reis-e-acusada-de-mexer-no-corpo-em-foto-1564498888379_v2_450x600.png",
-        points: 554
+          "https://pbs.twimg.com/media/ENwUVtvWkAA3k5x?format=png&name=360x360",
+        totalPoints: 10,
+        pointsWon: 0,
+        percent: 0,
+        type: "gold"
       },
       {
         id: 4,
-        username: "Aaron Anthonyson",
+        achievement: "I have extra security!",
         photo:
-          "https://cdn-ofuxico.akamaized.net/img/upload/noticias/2019/12/07/henry_365654_36.jpg",
-        points: 186
+          "https://pbs.twimg.com/media/ENwUVtvWkAA3k5x?format=png&name=360x360",
+        totalPoints: 10,
+        pointsWon: 0,
+        percent: 0,
+        type: "bronze"
       },
       {
         id: 5,
-        username: "Anne Horton",
+        achievement: "I'm In! ",
         photo:
-          "https://static1.purepeople.com.br/articles/7/27/94/37/@/3174773-thais-fersoza-chamou-atencao-por-foto-de-950x0-3.jpg",
-        points: 55
+          "https://pbs.twimg.com/media/ENwUVtvWkAA3k5x?format=png&name=360x360",
+        totalPoints: 10,
+        pointsWon: 0,
+        percent: 0,
+        type: "gold"
       }
     ];
     return {
-      data,
       searchBar: "",
       filteredUsers: [],
       view: 1,
-      persons
+      achievements,
+      loggedUser
     };
   },
   /*data: function() {
@@ -142,6 +153,28 @@ export default {
     };
   },*/
   created() {
+    let temp = 0
+    for (let j = 0; j < this.achievements.length; j++) {
+      for (let i = 0; i < this.loggedUser.achievements.length; i++) {
+        if(this.loggedUser.achievements[i].id == this.achievements[j].id){
+           // this.achievements[j].pointsWon = this.loggedUser.achievements[i].progress
+            this.achievements[j].percent = this.loggedUser.achievements[i].progress * 10
+            if(this.loggedUser.achievements[i].progress == 10){
+              temp = temp + 1
+            if(this.achievements[j].type == "gold"){
+              this.achievements[j].photo = "https://image.flaticon.com/icons/svg/1152/1152810.svg"
+            }
+            if(this.achievements[j].type == "bronze"){
+            this.achievements[j].photo = "https://pbs.twimg.com/media/ENmx441UcAAGY6J?format=png&name=small"
+            }
+            if(this.achievements[j].type == "silver"){
+              this.achievements[j].photo = "https://pbs.twimg.com/media/ENmx441U0AAv-KU?format=png&name=120x120"
+            }
+            this.achievements.pointsWon = temp
+          }
+        }
+      }
+    }
 
 
     this.tempRanking = JSON.parse(localStorage.getItem("ranking"));
@@ -225,10 +258,15 @@ export default {
   height: 60px;
   object-fit: cover;
   border-radius: 15%;
+  vertical-align: middle !important;
 }
 #cardName {
   vertical-align: middle !important;
-  text-align: center;
+  text-align: center !important;
+}
+#cardProgress {
+  vertical-align: middle !important;
+  text-align: center !important;
 }
 /*#changeView{
   margin-left: 650px;
@@ -278,10 +316,20 @@ export default {
   background-color: #0a1f3c;
 }
 
-#progressBarLarge {
+/*#progressBarLarge {
   background-color: #ffbf2f !important;
   color: #ffbf2f !important;
   margin-left: 160px !important;
   width: 1020px;
+}*/
+#totalProgress {
+  color: #0A1F3C
+}
+
+#cardHover:hover {
+  transform: scale(1.1);
+}
+#progressBar {
+  color: #0A1F3C !important;
 }
 </style>

@@ -16,7 +16,7 @@
             :mobile-cards="false"
             :hoverable="true"
           >
-            <b-tab-item label="Selected" v-if="id==54" id="selected">
+            <b-tab-item label="Selected" v-if="id==loggedUser.id && selected == loggedUser.id" id="selected">
               <pre>{{ selected }}</pre>
             </b-tab-item>
             <template id="itemsTable" slot-scope="props">
@@ -31,20 +31,19 @@
 
               <b-table-column
                 id="usernameItem"
-                style="text-align:left"
+                style="text-align:left !important"
                 field="username"
                 width="15"
                 centered
               >{{ props.row.username }}</b-table-column>
 
               <b-table-column
-                style="text-align:left"
+                style="text-align:left !important"
                 field="points"
                 width="10"
                 numeric
                 centered
               >
-                <span>{{ props.row.points }}</span>
                 <span id="numberOne" v-if="props.row.id == 1">
                   &nbsp;&nbsp;&nbsp;&nbsp; 
                   <i class="fas fa-medal"></i>
@@ -57,6 +56,11 @@
                   &nbsp;&nbsp;&nbsp;&nbsp;
                   <i class="fas fa-medal"></i>
                 </span>
+                <span id="allNumber" v-if="props.row.id != loggedUser.id && props.row.id != 3 && props.row.id != 2 && props.row.id != 1">
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <i class="fas fa-medal"></i>
+                </span>
+                <span>{{ props.row.points }}</span>
               </b-table-column>
               
             </template>
@@ -155,13 +159,19 @@ export default {
         points: 155
       }
     ];
+    let loggedUser = {
+      id: 54,
+      username: "James Sully",
+      points: 33
+    }
     return {
       data,
       selected: data[0],
       searchBar: "",
       filteredUsers: [],
       view: 1,
-      persons
+      persons,
+      loggedUser
     };
   },
   /*data: function() {
@@ -173,7 +183,7 @@ export default {
     let loggedUser = {
       id: 54,
       username: "James Sully",
-      points: 12
+      points: 33
     };
     this.tempRanking = JSON.parse(localStorage.getItem("ranking"));
     // console.log(this.persons)
@@ -266,6 +276,12 @@ export default {
 }
 #numberThree {
   color: #872f00;
+}
+#allNumber {
+  color: white;
+}
+#userLogged {
+  color: #0A1F3C !important;
 }
 #cardView {
   align-self: center !important;
