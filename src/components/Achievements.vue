@@ -13,7 +13,7 @@
         <p id="totalProgress">3/5</p>-->
 
           <b-progress id="progressBar" :value="loggedUser.percentWon" size="is-large" show-value>
-              {{this.tempAchievements.pointsWon}} / {{achievements.length}}
+              {{tempAchievements.pointsWon}} / {{achievements.length}}
           </b-progress>
         </div>
       </div>
