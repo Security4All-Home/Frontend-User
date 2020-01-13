@@ -94,31 +94,31 @@ export default {
       {
         id: 1,
         description: "I'm getting secured!",
-        goal: 0,
+        goal: 20,
         type: "silver"
       },
       {
         id: 2,
         description: "Logged In 10 Times!",
-        goal: 0,
+        goal: 20,
         type: "silver"
       },
       {
         id: 3,
         description: "I'm Registered!",
-        goal: 0,
+        goal: 30,
         type: "gold"
       },
       {
         id: 4,
         description: "I have extra security!",
-        goal: 0,
+        goal: 10,
         type: "bronze"
       },
       {
         id: 5,
         description: "I'm In! ",
-        goal: 0,
+        goal: 30,
         type: "gold"
       }
     ];
