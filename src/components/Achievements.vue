@@ -340,29 +340,6 @@ export default {
   width: 300px;
   margin-left: 250px;
 }*/
-#imageTable {
-  /*width: 10%;
-  height: auto;*/
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
-  border-radius: 50%;
-  vertical-align: middle !important;
-}
-#dataTable {
-  width: 650px;
-  margin-left: auto;
-  margin-right: auto;
-  align-self: center !important;
-  align-items: center !important;
-  margin-top: 30px !important;
-  vertical-align: middle !important;
-  text-align: center;
-}
-#itemsTable {
-  vertical-align: middle !important;
-  text-align: center;
-}
 
 #tableAchievements {
   align-self: center !important;
