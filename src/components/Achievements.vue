@@ -1,12 +1,13 @@
 <template id="achievement">
-  <div class="achievements">
+  <section>
+      <div class="achievements">
     <br />
     <br />
     <br />
-    <h1 id="titleRanking" class="title is-1-desktop is-8-tablet is-12-mobile" >Achievements</h1>
+    <h1 id="titleAchievements" class="title is-1-desktop is-8-tablet is-12-mobile" >Achievements</h1>
     <br />
     <br />
-    <div class="container" id="tableRanking">
+    <div class="container" id="tableAchievements">
       <div class="columns">
         <div class="column is-offset-2 is-8">
         <!--<progress id="progressBarLarge" class="progress is-large is-12-mobile" :value="loggedUser.percentWon" max="100" show-value>{{loggedUser.percentWon}}</progress>
@@ -48,16 +49,17 @@
       </div>
     </div>
   </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+  </section>
 </template>
 
 <script>
-//import { mapState } from "vuex";import Vue from 'vue'
-//import { Table, Input } from 'buefy'
-//import 'buefy/dist/buefy.css'
-import Vue from "vue";
-import Buefy from "buefy";
-import "buefy/dist/buefy.css";
-Vue.use(Buefy);
+
 export default {
   name: "Rankings",
   data() {
@@ -362,13 +364,13 @@ export default {
   text-align: center;
 }
 
-#tableRanking {
+#tableAchievements {
   align-self: center !important;
   align-items: center !important;
   vertical-align: middle !important;
 }
 
-#titleRanking {
+#titleAchievements {
   color: #0a1f3c;
   text-align: center;
 }
