@@ -1,7 +1,7 @@
 <template>
   <div id="app">
 
-    <NavBar></NavBar>
+    <!--<NavBar></NavBar>-->
 
     
     <router-view />
@@ -14,13 +14,13 @@
 
 <script>
 // Components
-import NavBar from './views/NavBar'
+// import NavBar from './views/NavBar'
 import Footer from './views/Footer'
 
 
 export default {
   components: {
-            NavBar,
+            //NavBar,
             Footer
   },
 }

@@ -53,13 +53,15 @@ $family-serif: 'Montserrat', sans-serif;
 //Login style
 #left {
     background-color: $secondary;
-    padding-bottom: 26.1rem !important;
+    //padding-bottom: 20rem !important;
     text-align: center !important;
 }
 //full box of login
 .fullLogin {
     position: relative;
-    //top: 4.6875rem;
+    top: 4rem;
+    
+    
 
 }
 p {
@@ -72,12 +74,13 @@ p {
     margin-left: auto;
     margin-right: auto;
     position: relative;
-    top:4rem;
+    //top:4rem;
+    
 }
 // the title "Login"
 #TitleLogin {
     color: $primary;
-    font-size: 1.875rem;
+    font-size: 1.5rem;
     position: relative;
     left: 2.1875rem;
     top: 1rem;
@@ -91,7 +94,9 @@ p {
     position: relative;
     left: 2.1875rem;
     top: 2.5rem;
-    width: 18rem !important;
+    //width: 24rem !important;
+    max-width: 75% !important;
+    
 }
 // the forgot password link
 #forgotPass {
@@ -99,43 +104,367 @@ p {
     text-decoration: underline;
     position: relative;
     left: 2.1875rem;
-    top: 3.125rem;
+    top: 2.25rem;
 }
 // the login Button
 #logButton {
-    background-color:$primary ;
-    color: $ourWhite;
+    background-color:$secondary;
+    color: #FFF;
     border-radius: 0.5rem;
     position: relative;
     left: 2.1875rem;
-    top: 10rem;
-    width: 8rem;
-    height: 3rem;
-    font-size: 1.25rem;
-    font-weight: bold;
+    top: 5rem;
+    width: 5rem;
+    height: 2rem;
+    font-size: 0.75rem;
+    
+}
+#logButton:hover {
+    border-width: 0.15rem;
+    border-color: $primary;
+    color: $primary;
 }
 // the message below the logo
 #loginMessage {
     font-weight: bold;
-    top: 7rem;
+    //top: 7rem;
     position: relative;
-    font-size:1.25rem;
+    font-size:0.85rem;
 }
 // the labels in the inputs
 .loginLabel {
     position: relative;
     left: 2.4375rem;
     top: 2.5rem;
-    color: $secondary;
-    font-size:1.25rem;
+    color: $secondary !important;
+    font-size:0.9rem !important;
 }
 #right{
     padding-bottom: 12rem !important;
+    background-color: #FFF;
 }
 #introduction {
     color: $primary;
-    font-size: 24px;
+    font-size: 1rem;
     font-weight: bold;
     position: relative;
-    top: 6rem;
+    //top: 6rem;
 }
+#CreateAcc {
+    color: $primary;
+    text-decoration: underline;
+    position: relative;
+    //left: 2.1875rem;
+    //top: 0.25rem;
+}
+#TitleSign {
+    color: $primary;
+    font-size: 1.875rem;
+    position: relative;
+    left: 2.1875rem;
+    top: 1rem;
+    font-weight: bold;
+}
+.step-marker {
+    background-color: $primary !important;
+}
+.is-active {
+    color: $secondary !important;
+}
+
+.login {
+    background: $ourGrey;
+    padding-bottom: 12.2rem !important;
+}
+#rightSign {
+    background-color: $secondary;
+    //padding-bottom: 20rem !important;
+    text-align: center !important;
+}
+#leftSign {
+    padding-bottom: 6.5rem !important;
+    background-color: #FFF;
+}
+.fullSignUp {
+    position: relative;
+    top: 4rem;
+    height: 72vh !important;
+}
+#TitleSignUp{
+    color: $primary;
+    font-size: 1.5rem !important;
+    position: relative;
+    left: 2.1875rem;
+    top: 1rem;
+    font-weight: bold;
+}
+.inputSign{
+    border: 0.05rem solid $secondary !important;
+    border-radius: 0.4rem;
+    position: relative;
+    left: 2.1875rem;
+    top: 1.5rem;
+    height: 2.25em !important;
+    //width: 24rem !important;
+    max-width: 85% !important;
+
+}
+.signLabel {
+    position: relative;
+    left: 2.4375rem;
+    top: 2rem;
+    color: $secondary !important;
+    font-size:0.9rem !important;
+}
+//buttons
+#steps{
+    color: $secondary;
+    position: relative;
+    top: 5.25rem;
+    left: 3rem;
+}
+.enter{
+    position: relative;
+    left: 5rem !important;
+}
+.next{
+    position: relative;
+    left: 4rem !important;
+}
+//sign button in login zone
+#signButton {
+    position: relative;
+    top: 0.65rem;
+    border-color: $primary;
+    color: $primary;
+    font-size: 0.85rem;
+
+}
+#signButton:hover {
+    border-color: #fff;
+    color: #fff;
+    background-color: $secondary;
+}
+.iconDesktop{
+    position: relative;
+    top: 2.5rem !important;
+    left: 2.1875rem !important;
+}
+#nif {
+    max-width: 88% !important;
+}
+.checkbox {
+    position: relative;
+    left: 2.1875rem;
+    font-weight: bold;
+    font-size: 10px;
+    
+}
+.Subtitles {
+    position: relative;
+    left: 2.1875rem;
+    font-size: 18px;
+    font-weight: bold;
+    color: $secondary;
+}
+.box {
+    position: relative !important;
+    left: 2.1875rem !important;
+    max-width: 72%;
+    cursor: pointer;
+}
+.articleTitle {
+    font-size: 22px !important;
+    text-align: center;
+}
+.discount {
+    //padding: 6% 5% !important;
+    //font-size: 10px !important;
+}
+.forty {
+    position: relative;
+    top: 0.7rem;
+}
+.prices{
+    color: $primary !important;
+    font-size: 40px !important;
+    font-weight: bold !important;
+    text-align: center !important;
+}
+.discount{
+    color: $success
+}
+.activePack{
+    background-color: $primary !important;
+}
+.activePackText{
+    color: #FFF !important;
+}
+.doLogin{
+    position: relative;
+    top:7rem;
+    right:5rem;
+}
+//Login Mobile Version
+.mobileVer {
+    background-color: $secondary !important;
+    height: 100vh; 
+}
+.TitleLoginMobile {
+    position: relative;
+    color: $primary !important;
+    text-align: center;
+    font-weight: bold;
+    top: 4rem;
+}
+.inputLoginMobile {
+    border: 0.1875rem solid $secondary !important;
+    border-radius: 0.375rem;
+    position: relative;
+    left: 2.1875rem;
+    top: 3.5rem;
+    max-width: 78% !important;
+}
+.loginLabelMobile {
+    color: #FFF !important;
+    position: relative;
+    left: 2.4375rem;
+    top: 3.5rem;
+    font-size: 11px !important;
+}
+.iconMobile {
+    position: relative;
+    top: 3.5rem !important;
+    left: 2.1875rem !important;
+}
+.logButtonMobile {
+    background-color:$primary !important;
+    color: #FFF !important;
+    border-radius: 0.5rem !important;
+    border-color: $primary !important;
+    position: relative;
+    left: 8rem !important;
+    top: 6rem !important;
+    width: 6rem !important;
+    height: 2.5rem !important;
+    font-size: 0.95rem !important;
+    font-weight: bold;
+}
+#forgotPassMobile {
+    color: #fff;
+    text-decoration: underline;
+    position: relative;
+    left: 0.6rem;
+    top: 8.25rem;
+    font-size: 10px !important;
+}
+#signUpMobile {
+    color: #fff;
+    text-decoration: underline;
+    position: relative;
+    right: 5rem;
+    top: 9.25rem;
+    font-size: 10px !important;
+}
+.inputSignMobile {
+    border: 0.1875rem solid $secondary !important;
+    border-radius: 0.375rem;
+    position: relative;
+    left: 2.1875rem;
+    top: 3.5rem;
+    max-width: 78% !important;
+}
+.SubtitlesMobile {
+    position: relative;
+    top: 3rem;
+    
+    font-size: 18px;
+    font-weight: bold;
+    color: #FFF;
+    text-align: center;
+}
+.signLabelMobile {
+    color: #FFF !important;
+    position: relative;
+    left: 2.4375rem;
+    top: 3.5rem;
+    font-size: 11px !important;
+}
+.nextMobile{
+    background-color:$primary !important;
+    color: #FFF !important;
+    border-radius: 0.5rem !important;
+    border-color: $primary !important;
+    position: relative;
+    left: 9.8rem !important;
+    top: 6rem !important;
+    width: 4rem !important;
+    height: 1.5rem !important;
+    font-size: 0.6rem !important;
+}
+.previousMobile{
+    background-color:$primary !important;
+    color: #FFF !important;
+    border-radius: 0.5rem !important;
+    border-color: $primary !important;
+    position: sticky;
+    left: 4rem !important;
+    top: 6rem !important;
+    width: 4rem !important;
+    height: 1.5rem !important;
+    font-size: 0.6rem !important;
+    
+}
+.checkboxMobile {
+    position: relative;
+    top:5.5rem;
+    right: 14.5rem;
+    font-weight: bold;
+    font-size: 10px;
+    color: #FFF !important;
+
+    
+}
+.checkboxMobileText {
+    position: relative;
+    bottom: 2.2rem;
+    left: 13rem;
+}
+.boxMobile {
+    width: 25rem !important;
+    position: relative;
+    left: 3rem !important;
+    top: 4rem !important;
+}
+.packageListMobile {
+    text-align: center;
+}
+.enterMobile {
+    background-color:$primary !important;
+    color: #FFF !important;
+    border-radius: 0.5rem !important;
+    border-color: $primary !important;
+    position: relative;
+    left: 9.8rem !important;
+    top: 6rem !important;
+    width: 4rem !important;
+    height: 1.5rem !important;
+    font-size: 0.6rem !important;
+}
+.firstStep {
+    position: relative;
+    top:16.5rem !important;
+}
+.secondStep {
+    position: relative;
+    top:21.85rem !important;
+}
+.thirdStep {
+    position: relative;
+    top:6.45rem !important;
+}.fourthStep {
+    position: relative;
+    top:3.55rem !important;
+}
+
+
