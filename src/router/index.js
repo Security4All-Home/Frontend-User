@@ -4,6 +4,8 @@ import Home from "../views/Home.vue";
 import Login from "../views/Login.vue";
 import SignIn from "../views/SignIn.vue";
 import Product from "../views/Product.vue"
+import Ranking from "../views/Ranking.vue"
+import Achievements from "../views/Achievements.vue"
 
 Vue.use(VueRouter);
 
@@ -26,6 +28,16 @@ const routes = [{
     path: "/product",
     name: "product",
     component: Product
+  },
+  {
+    path: "/ranking",
+    name: "ranking",
+    component: Ranking
+  },
+  {
+    path: "/achievements",
+    name: "achievements",
+    component: Achievements
   }
 ];
 
