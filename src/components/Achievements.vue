@@ -9,7 +9,7 @@
     <br />
     <div class="container" id="tableAchievements">
       <div class="columns">
-        <div class="column is-offset-2 is-8">
+        <div class="column is-offset-2 is-8-desktop is-8-tablet is-11-mobile ">
         <!--<progress id="progressBarLarge" class="progress is-large is-12-mobile" :value="loggedUser.percentWon" max="100" show-value>{{loggedUser.percentWon}}</progress>
         <p id="totalProgress">3/5</p>-->
 
@@ -24,7 +24,7 @@
         <div id="cardView" class="columns is-multiline">
           <div
           id="cardHover"          
-            class="column is-11-mobile is-6-tablet is-4-desktop is-centered"
+            class="column is-11-mobile is-8-tablet is-4-desktop is-centered"
             v-for="(achievement,i) in tempAchievements"
             :key="i"
           >
@@ -367,5 +367,6 @@ export default {
 }
 #progressBar {
   color: #0A1F3C !important;
+  align-self: center !important;
 }
 </style>

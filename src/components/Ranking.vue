@@ -5,7 +5,8 @@
     <br />
     <h1 id="titleRanking" class="title is-1">Ranking</h1>
     <div class="container" id="tableRanking">
-      <div>
+      <div class="columns">
+        <div id="columnTable" class="column is-offset-4 is-5-desktop is-15-mobile is-12-tablet">
         <section>
           <b-table
             id="dataTable"
@@ -79,6 +80,7 @@
         </section>
       </div>
       <h1 id="etc">...</h1>
+    </div>
     </div>
   </div>
 </template>
@@ -268,6 +270,12 @@ export default {
   align-items: center !important;
 }
 
+#columnTable {
+  align-content: center !important;
+  align-self: center !important;
+  align-items: center !important;
+}
+
 #numberOne {
   color: #ffbf2f;
 }
@@ -309,11 +317,11 @@ export default {
   margin-left: 250px;
 }*/
 #dataTable {
-  width: 550px;
+  /*width: 550px;
   margin-left: auto;
   margin-right: auto;
   align-self: center !important;
-  margin-top: 30px !important;
+  margin-top: 30px !important;*/
   vertical-align: middle !important;
 }
 #itemsTable {
@@ -323,10 +331,10 @@ export default {
   background-color: yellow;
 }
 
-#tableRanking {
+/*#tableRanking {
   align-self: left !important;
   vertical-align: middle !important;
-}
+}*/
 
 .is-selected {
   background-color: #ffbf2f !important;
