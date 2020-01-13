@@ -24,6 +24,10 @@
       <div id="navbarCenter" class="navbar-end">
         <a class="navbar-item sectionLink has-text-white">Security</a>
         <a class="navbar-item sectionLink has-text-white">Catalog</a>
+        <a class="navbar-item sectionLink has-text-white">Ranking</a>
+        <router-link :to="{{Achievements}}">
+              <a class="navbar-item">Achievements</a>
+            </router-link>
         <!-- Dropdown desktop/tablet-->
         <div class="navbar-item has-dropdown is-hoverable is-hidden-mobile" v-if="user == true">
           <!-- v-if="user" -->
@@ -33,7 +37,9 @@
 
           <div class="navbar-dropdown ">
             <a class="navbar-item">Perfil</a>
-            <a class="navbar-item">Achievements</a>
+            <router-link :to="Achievements">
+              <a class="navbar-item">Achievements</a>
+            </router-link>
             <a class="navbar-item">Settings</a>
             <a class="navbar-item">Home Manager</a>
             <hr class="navbar-divider" />
