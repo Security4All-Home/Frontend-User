@@ -13,7 +13,7 @@
         <p id="totalProgress">3/5</p>-->
 
           <b-progress id="progressBar" :value="loggedUser.percentWon" size="is-large" show-value>
-              {{tempAchievements.pointsWon}} / {{achievements.length}}
+              {{tempPoints}} / {{tempAchievements.length}}
           </b-progress>
         </div>
       </div>
@@ -122,6 +122,8 @@ export default {
         type: "gold"
       }
     ];
+
+    let tempPoints = 0
     let tempAchievements = []
 
     return {
@@ -131,7 +133,8 @@ export default {
       achievements,
       loggedUser, 
       photo,
-      tempAchievements
+      tempAchievements,
+      tempPoints
     };
   },
   /*data: function() {
@@ -200,6 +203,36 @@ export default {
 
             
           this.tempAchievements[j].pointsWon = temp
+          let temp2 = 0
+
+          for (let u = 0; u < this.loggedUser.achievements.length; u++) {
+            for (let j = 0; j < this.tempAchievements.length; j++) {
+              if(this.loggedUser.achievements[u].id == this.tempAchievements[j].id) {
+                if(this.tempAchievements[j].type == "gold" && this.tempAchievements[j].goal == 30){
+                  if(this.loggedUser.achievements[u].progress == 30){
+                    this.tempPoints = temp2 +1
+                  }
+                }
+                if(this.tempAchievements[j].type == "silver" && this.tempAchievements[j].goal == 20){
+                  if(this.loggedUser.achievements[u].progress == 20){
+                    this.tempPoints = temp2 +1
+                  }
+                }
+                if(this.tempAchievements[j].type == "bronze" && this.tempAchievements[j].goal == 10){
+                  if(this.loggedUser.achievements[u].progress == 10){
+                    this.tempPoints = temp2 +1
+                  }
+                }
+              }
+              
+            }
+          }
+
+          //this.tempPoints = temp2
+          //console.log(temp2)
+
+
+
         }
       }
     }
