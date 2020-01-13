@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <NavBar></NavBar>
+    <NavBar v-if="currentRoute!='home'"></NavBar>
 
     <router-view />
 
@@ -10,16 +10,24 @@
 
 <script>
 // Components
-//import NavBar from './components/NavBar'
+import NavBar from './components/Navbar'
 import Footer from './components/Footer'
 
 
 
 export default {
   components: {
-    //NavBar,
+    NavBar,
     Footer
-  }
+  },
+  data() {
+    return {
+      currentRoute: ""
+    }
+  },
+  mounted() {
+    this.currentRoute = this.$router.currentRoute.name
+  },
 };
 </script>
 
