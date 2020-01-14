@@ -49,9 +49,9 @@ $colors: (
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 $family-serif: 'Montserrat', sans-serif;
-
+//##################################################################### MOBILE VERSION ###########################################################################
 .profileMobile {
-    background-color: $secondary !important;
+    background-color: $ourGrey !important;
     height: 100vh !important;
 }
 .profilesTiles {
@@ -71,7 +71,7 @@ $family-serif: 'Montserrat', sans-serif;
     right: 4rem !important;  
 }
 .firstTile {
-    height: 9rem;
+    height: 10.5rem;
 }
 .headingMob {
     color: $secondary !important;
@@ -101,23 +101,129 @@ $family-serif: 'Montserrat', sans-serif;
     bottom: 5rem;
 }
 .profileButtons {
-    border-radius: 50% !important;
     background-color: $primary !important;
     font-weight: bold;
-    padding:12px 9px;
     font-size: 10px;
 }
 .editPhoto {
     position: relative;
-    bottom: 15.8rem;
+    bottom: 4.7rem;
+    padding:12px 9px !important;
     left: 2rem;
 }
 .fa-plus {
     position: relative;
-    bottom: 0.1rem;
+    bottom: 0.15rem;
+    color: #FFF;
 }
 .editUser {
     position: relative;
-    bottom: 18rem;
-    left: 13.7rem;    
+    bottom: 19.7rem;
+    left: 15.7rem;
+    padding:12px 8px !important;
+    color: #FFF;    
+}
+.fa-external-link-alt {
+    position: relative;
+    bottom: 0.2rem;
+    left: 0.08rem;
+
+}
+.modal-card {
+    max-width: 75%;
+    position: relative;
+    right: 2rem;
+    bottom: 3rem;
+    
+}
+.centerAlign {
+    text-align: center;
+}
+.passwordButton {
+    color: #FFF !important;
+    background-color: $secondary !important;
+    border-color: $secondary;
+}
+.saveButton {
+    color: #FFF !important;
+    background-color: $primary !important;
+    border-color: $primary;
+}
+.modal-card-title {
+    color: $primary !important
+}
+.modal-card-head {
+    background-color: $secondary !important;
+    text-align: center !important;
+}
+
+//##################################################################### DESKTOP VERSION ###########################################################################
+
+.profile {
+    background-color: $ourGrey;
+    width: 100vw;
+    height: 100vh;
+}
+.profileTilesDesk {
+    max-width: 85%;
+    position: relative;
+    left: 6.5rem !important;
+    top: 6.5rem;
+}
+.profilePickDesktop {
+    clip-path: circle(70px at center);
+    position: relative;
+    bottom:6.5rem;
+    left: 1rem;
+    width: 1200px !important;
+    
+}
+.userNameDesktop{
+    color: $primary;
+    font-weight: bold;
+    font-size: 26px;
+}
+.infoUserDesktop{
+    position: relative;
+    bottom: 9rem !important;
+    left: 10.2rem !important;
+}
+.editPhotoDesktop {
+    position: relative;
+    bottom: 8.5rem;
+    padding:16px 14px !important;
+    left: 3.5rem;
+    font-size: 18px !important;
+}
+.firstColDesktop {
+    position: relative;
+    bottom: 6.35rem !important;
+    right: 14rem !important;  
+}
+.secondColDesktop {
+    position: relative;
+    bottom: 6.2rem !important;
+    right: 40rem !important;
+}
+.firstTileChange {
+    height: 27rem;
+    min-height: 0;
+    
+}
+.headingMobDesk {
+    color: $secondary !important;
+    font-size: 20px !important;
+}
+.titleMobDesk {
+    color: $primary !important;
+    font-size: 50px !important;
+}
+.editUserDesk {
+    position: relative;
+    bottom: 15.5rem;
+    padding:16px 21px !important;
+    left: 84.7rem;
+    font-size: 18px !important;
+    width: 11px !important;
+    color: #FFF;
 }
