@@ -7,80 +7,86 @@
     <div class="container" id="tableRanking">
       <div class="columns">
         <div id="columnTable" class="column is-offset-4 is-5-desktop is-15-mobile is-12-tablet">
-        <section>
-          <b-table
-            id="dataTable"
-            :data="data"
-            :columns="columns"
-            :selected.sync="selected"
-            ref="table"
-            :mobile-cards="false"
-            :hoverable="true"
-          >
-            <b-tab-item label="Selected" v-if="id==loggedUser.id && selected == loggedUser.id" id="selected">
-              <pre>{{ selected }}</pre>
-            </b-tab-item>
-            <template id="itemsTable" slot-scope="props">
-              <b-table-column
-                style="text-align:center"
-                is-current-sort
-                field="id"
-                width="1"
-                centered
-                numeric
-              >{{ props.row.id }}</b-table-column>
-
-              <b-table-column
-                id="usernameItem"
-                style="text-align:left !important"
-                field="username"
-                width="15"
-                centered
-              >{{ props.row.username }}</b-table-column>
-
-              <b-table-column
-                style="text-align:left !important"
-                field="points"
-                width="10"
-                numeric
-                centered
+          <section>
+            <b-table
+              id="dataTable"
+              :data="data"
+              :columns="columns"
+              :selected.sync="selected"
+              ref="table"
+              :mobile-cards="false"
+              :hoverable="true"
+            >
+              <b-tab-item
+                label="Selected"
+                v-if="id==loggedUser.id && selected == loggedUser.id"
+                id="selected"
               >
-                <span id="numberOne" v-if="props.row.id == 1">
-                  &nbsp;&nbsp;&nbsp;&nbsp; 
-                  <i class="fas fa-medal"></i>
-                </span>
-                <span id="numberTwo" v-if="props.row.id == 2">
-                  &nbsp;&nbsp;&nbsp;&nbsp; 
-                  <i class="fas fa-medal"></i>
-                </span>
-                <span id="numberThree" v-if="props.row.id == 3">
-                  &nbsp;&nbsp;&nbsp;&nbsp;
-                  <i class="fas fa-medal"></i>
-                </span>
-                <span id="allNumber" v-if="props.row.id != loggedUser.id && props.row.id != 3 && props.row.id != 2 && props.row.id != 1">
-                  &nbsp;&nbsp;&nbsp;&nbsp;
-                  <i class="fas fa-medal"></i>
-                </span>
-                <span>{{ props.row.points }}</span>
-              </b-table-column>
-              
-            </template>
+                <pre>{{ selected }}</pre>
+              </b-tab-item>
+              <template id="itemsTable" slot-scope="props">
+                <b-table-column
+                  style="text-align:center"
+                  is-current-sort
+                  field="id"
+                  width="1"
+                  centered
+                  numeric
+                >{{ props.row.id }}</b-table-column>
 
-            <template slot="empty">
-              <section class="section">
-                <div class="content has-text-grey has-text-centered">
-                  <p>
-                    <b-icon icon="emoticon-sad" size="is-large"></b-icon>
-                  </p>
-                  <p>Nothing here.</p>
-                </div>
-              </section>
-            </template>
-          </b-table>
-        </section>
+                <b-table-column
+                  id="usernameItem"
+                  style="text-align:left !important"
+                  field="username"
+                  width="15"
+                  centered
+                >{{ props.row.username }}</b-table-column>
+
+                <b-table-column
+                  style="text-align:left !important"
+                  field="points"
+                  width="10"
+                  numeric
+                  centered
+                >
+                  <span id="numberOne" v-if="props.row.id == 1">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <i class="fas fa-medal"></i>
+                  </span>
+                  <span id="numberTwo" v-if="props.row.id == 2">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <i class="fas fa-medal"></i>
+                  </span>
+                  <span id="numberThree" v-if="props.row.id == 3">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <i class="fas fa-medal"></i>
+                  </span>
+                  <span
+                    id="allNumber"
+                    v-if="props.row.id != loggedUser.id && props.row.id != 3 && props.row.id != 2 && props.row.id != 1"
+                  >
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <i class="fas fa-medal"></i>
+                  </span>
+                  <span>{{ props.row.points }}</span>
+                </b-table-column>
+              </template>
+
+              <template slot="empty">
+                <section class="section">
+                  <div class="content has-text-grey has-text-centered">
+                    <p>
+                      <b-icon icon="emoticon-sad" size="is-large"></b-icon>
+                    </p>
+                    <p>Nothing here.</p>
+                  </div>
+                </section>
+              </template>
+            </b-table>
+          </section>
+        </div>
+        <h1 id="etc">...</h1>
       </div>
-      <h1 id="etc">...</h1>
-    </div>
     </div>
   </div>
 </template>
@@ -89,12 +95,14 @@
 //import { mapState } from "vuex";import Vue from 'vue'
 //import { Table, Input } from 'buefy'
 //import 'buefy/dist/buefy.css'
-import Vue from "vue";
 
 import { getAllUsers } from '../API/apiUser';
+
+
 export default {
   name: "Rankings",
   data() {
+
     const data = [
       {
         id: 1,
@@ -122,9 +130,6 @@ export default {
         points: 155
       }
     ];
-
-    let users
-
     let persons = [
       {
         id: 1,
@@ -175,7 +180,7 @@ export default {
       view: 1,
       persons,
       loggedUser,
-      users
+      users:[]
     };
   },
   /*data: function() {
@@ -185,20 +190,11 @@ export default {
   },*/
   created() {
 
-    getAllUsers()
-      .then(function(response){
-        eval(response.data);
-        this.users = response.data
-      })
-      .catch(function (error) {
-          //console.log(error);
-          this.$toast.open ({
-            message: error,
-            type: "is-danger"
-          })
-      });
-
-
+      getAllUsers().then(response => {
+      this.users = response.data.data;
+      /* eslint-disable */
+      console.log(this.users)
+    });
 
 
 
@@ -309,7 +305,7 @@ export default {
   color: white;
 }
 #userLogged {
-  color: #0A1F3C !important;
+  color: #0a1f3c !important;
 }
 #cardView {
   align-self: center !important;
