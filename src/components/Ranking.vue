@@ -90,9 +90,8 @@
 //import { Table, Input } from 'buefy'
 //import 'buefy/dist/buefy.css'
 import Vue from "vue";
-import Buefy from "buefy";
-import "buefy/dist/buefy.css";
-Vue.use(Buefy);
+
+import { getAllUsers } from '../API/apiUser';
 export default {
   name: "Rankings",
   data() {
@@ -123,6 +122,8 @@ export default {
         points: 155
       }
     ];
+
+    let users
 
     let persons = [
       {
@@ -173,7 +174,8 @@ export default {
       filteredUsers: [],
       view: 1,
       persons,
-      loggedUser
+      loggedUser,
+      users
     };
   },
   /*data: function() {
@@ -182,6 +184,24 @@ export default {
     };
   },*/
   created() {
+
+    getAllUsers()
+      .then(function(response){
+        eval(response.data);
+        this.users = response.data
+      })
+      .catch(function (error) {
+          //console.log(error);
+          this.$toast.open ({
+            message: error,
+            type: "is-danger"
+          })
+      });
+
+
+
+
+
     let loggedUser = {
       id: 54,
       username: "James Sully",
