@@ -3,6 +3,7 @@
   <body>
   <Hero></Hero>
   <Packages></Packages>
+  <Team></Team>
 
 
   </body>
@@ -12,12 +13,14 @@
 <script>
 import Packages from '../components/Package'
 import Hero from '../components/HeroHome'
+import Team from '../components/Team'
 
 export default {
   name: "home",
   components: {
     Packages,
-    Hero
+    Hero,
+    Team
   }
 };
 </script>

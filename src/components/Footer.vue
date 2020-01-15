@@ -1,7 +1,4 @@
 <template>
-  <body>
-  <br>
-  <br>
   <section class="hero isSecondaryBGColor">
     <div class="hero-body" style="padding-bottom:5px !important">
       <div class="container">
@@ -52,8 +49,6 @@
       </div>
     </div>
   </section>
-  
-  </body>
 </template>
 <style>
  section {

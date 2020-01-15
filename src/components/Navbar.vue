@@ -36,13 +36,13 @@
               <a class="navbar-item">Perfil</a>
 
               <a class="navbar-item">
-                <router-link :to="{name: 'achievements'}">Achievements</router-link>
+                <router-link tag="li" :to="{name: 'achievements'}">Achievements</router-link>
               </a>
 
               <a class="navbar-item">Settings</a>
               <a class="navbar-item">Home Manager</a>
               <a class="navbar-item">
-                <router-link :to="{name: 'ranking'}">Ranking</router-link>
+                <router-link tag="li" :to="{name: 'ranking'}">Ranking</router-link>
               </a>
               <hr class="navbar-divider" />
               <a class="navbar-item">Sign out</a>
