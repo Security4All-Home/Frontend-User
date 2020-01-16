@@ -91,10 +91,6 @@
 </template>
 
 <script>
-//import { mapState } from "vuex";import Vue from 'vue'
-//import { Table, Input } from 'buefy'
-//import 'buefy/dist/buefy.css'
-
 import { getAllUsers } from '../API/apiUser';
 
 
@@ -119,11 +115,6 @@ export default {
       users:[]
     };
   },
-  /*data: function() {
-    return {
-      tempRanking: []
-    };
-  },*/
   async created() {
 
       await getAllUsers().then(response => {
@@ -136,7 +127,6 @@ export default {
       a.points > b.points ? 1 : b.points > a.points ? -1 : 0
     );
     /* eslint-disable */
-    //console.log()
     console.log("filtro: " + this.filteredUsers)
 
     let tempI = this.filteredUsers.length - 3
@@ -144,7 +134,6 @@ export default {
 
     for (let i = 0; i < tempI; i++) {
       this.data.push(this.filteredUsers[this.filteredUsers.length-cont])
-     // this.cont++
       cont--
     }
 
@@ -168,38 +157,13 @@ export default {
     });
 
     this.data.push({
-      id: loggedUser.id,
-      username: loggedUser.username,
-      photo: loggedUser.photo,
+      idUser: loggedUser.id,
+      name: loggedUser.username,
       points: loggedUser.points
     });
   },
   mounted() {
-    /* for (let i = 0; i < this.tempRanking.length; i++) {
-      //console.log(this.tempRanking[i].points)
-    //points.sort(function(a, b){return a-b});
-    //document.getElementById("demo").innerHTML = points;
-      
-    }*/
-  },
-  computed: {
-    /*filteredUserFunc() {
-      if (this.data) {  
-
-        this.filteredUsers = this.data.filter(data => {
-          return (
-            data.info.username
-              .toString()
-              .toLowerCase()
-              .normalize("NFD")
-              .replace(/[\u0300-\u036f]/g, "")
-              .indexOf(this.searchBar.toLowerCase()) >= 0
-          );
-        });
-
-        return this.data.length;
-      }
-    }*/
+   
   },
   methods: {}
 };
