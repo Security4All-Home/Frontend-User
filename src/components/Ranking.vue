@@ -10,7 +10,7 @@
           <section>
             <b-table
               id="dataTable"
-              :data="filteredUsers"
+              :data="data"
               :columns="columns"
               :selected.sync="selected"
               ref="table"
@@ -106,8 +106,9 @@ export default {
     let loggedUser = {
       id: 54,
       username: "James Sully",
-      points: 33
+      points: 33,
     }
+    
     return {
       data,
       selected: data[0],
@@ -138,7 +139,14 @@ export default {
     //console.log()
     console.log("filtro: " + this.filteredUsers)
 
+    let tempI = this.filteredUsers.length - 3
+    let cont = this.filteredUsers.length
 
+    for (let i = 0; i < tempI; i++) {
+      this.data.push(this.filteredUsers[this.filteredUsers.length-cont])
+     // this.cont++
+      cont--
+    }
 
     
 
@@ -154,8 +162,8 @@ export default {
     this.tempRanking = JSON.parse(localStorage.getItem("ranking"));
     // console.log(this.persons)
     this.data.push({
-      id: "...",
-      username: "...",
+      idUser: "...",
+      name: "...",
       points: "..."
     });
 
