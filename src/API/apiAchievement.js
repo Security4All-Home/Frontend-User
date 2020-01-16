@@ -1,4 +1,4 @@
-import {get, post, put, remove} from 'Utils/https'
+import {get, post, put, remove} from '../Utils/https'
 
 export function getAllAchievements() {
     return get("/achievement")
@@ -12,6 +12,6 @@ export function addAchievement(body) {
     return post("/achievement", body)
 }
 
-export function removAachievement(body) {
+export function removeAachievement(body) {
     return remove("/achievement", body)
 }

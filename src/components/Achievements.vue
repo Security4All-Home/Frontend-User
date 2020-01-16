@@ -55,6 +55,7 @@
 </template>
 
 <script>
+import { getAllAchievements } from '../API/apiAchievement';
 
 export default {
   name: "Rankings",
@@ -88,39 +89,6 @@ export default {
 
     
 
-    let achievements = [
-      {
-        id: 1,
-        description: "I'm getting secured!",
-        goal: 20,
-        type: "silver"
-      },
-      {
-        id: 2,
-        description: "Logged In 10 Times!",
-        goal: 20,
-        type: "silver"
-      },
-      {
-        id: 3,
-        description: "I'm Registered!",
-        goal: 30,
-        type: "gold"
-      },
-      {
-        id: 4,
-        description: "I have extra security!",
-        goal: 10,
-        type: "bronze"
-      },
-      {
-        id: 5,
-        description: "I'm In! ",
-        goal: 30,
-        type: "gold"
-      }
-    ];
-
     let tempPoints = 0
     let tempAchievements = []
 
@@ -128,7 +96,7 @@ export default {
       searchBar: "",
       filteredUsers: [],
       view: 1,
-      achievements,
+      achievements:[],
       loggedUser, 
       photo,
       tempAchievements,
@@ -140,11 +108,16 @@ export default {
       tempRanking: []
     };
   },*/
-  created() {
+  async created() {
+    await getAllAchievements().then(response => {
+      this.achievements = response.data.data;
+      /* eslint-disable */
+      console.log(this.achievements)
+    });
 
     
    
-    let temp = 0
+    /*let temp = 0
     for (let j = 0; j < this.achievements.length; j++) {
       for (let i = 0; i < this.loggedUser.achievements.length; i++) {
         if(this.achievements[j].type == "gold"){
@@ -157,11 +130,11 @@ export default {
           this.achievements[j].goal = 20
         }
       }
-    }
+    }*/
 
     
 
-    for (let i = 0; i < this.achievements.length; i++) {
+   /* for (let i = 0; i < this.achievements.length; i++) {
 
        this.tempAchievements.push(
           {
@@ -224,18 +197,18 @@ export default {
               }
               
             }
-          }
+          }*/
 
           //this.tempPoints = temp2
           //console.log(temp2)
 
 
 
-        }
-      }
-    }
+        //}
+      //}
+   // }
 
-    this.tempRanking = JSON.parse(localStorage.getItem("ranking"));
+   // this.tempRanking = JSON.parse(localStorage.getItem("ranking"));
     // console.log(this.persons)
   },
   mounted() {
