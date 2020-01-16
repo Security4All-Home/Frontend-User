@@ -2,8 +2,6 @@
   <div class="rankings">
     <br />
     <br />
-    <br />
-    <h1 id="titleRanking" class="title is-1">Ranking</h1>
     <div class="container" id="tableRanking">
       <div>
         <section>
@@ -11,14 +9,10 @@
             id="dataTable"
             :data="data"
             :columns="columns"
-            :selected.sync="selected"
             ref="table"
             :mobile-cards="false"
             :hoverable="true"
           >
-            <b-tab-item label="Selected" v-if="id==loggedUser.id && selected == loggedUser.id" id="selected">
-              <pre>{{ selected }}</pre>
-            </b-tab-item>
             <template id="itemsTable" slot-scope="props">
               <b-table-column
                 style="text-align:center"
@@ -35,7 +29,7 @@
                 field="username"
                 width="15"
                 centered
-              >{{ props.row.username }}</b-table-column>
+              >{{ props.row.sensor }}</b-table-column>
 
               <b-table-column
                 style="text-align:left !important"
@@ -44,24 +38,15 @@
                 numeric
                 centered
               >
-                <span id="numberOne" v-if="props.row.id == 1">
-                  &nbsp;&nbsp;&nbsp;&nbsp; 
-                  <i class="fas fa-medal"></i>
-                </span>
-                <span id="numberTwo" v-if="props.row.id == 2">
-                  &nbsp;&nbsp;&nbsp;&nbsp; 
-                  <i class="fas fa-medal"></i>
-                </span>
-                <span id="numberThree" v-if="props.row.id == 3">
-                  &nbsp;&nbsp;&nbsp;&nbsp;
-                  <i class="fas fa-medal"></i>
-                </span>
-                <span id="allNumber" v-if="props.row.id != loggedUser.id && props.row.id != 3 && props.row.id != 2 && props.row.id != 1">
-                  &nbsp;&nbsp;&nbsp;&nbsp;
-                  <i class="fas fa-medal"></i>
-                </span>
-                <span>{{ props.row.points }}</span>
+              <b-switch type="is-success" :value="props.row.active"></b-switch>
+              <!--<div class="field" v-if="props.row.active == false">
+                <b-switch :value="props.row.active">Default</b-switch>
+              </div>
+              <div v-if="props.row.active == true" class="field">
+                <b-switch :value="props.row.active">Default</b-switch>
+              </div>-->
               </b-table-column>
+              
               
             </template>
 
@@ -97,28 +82,28 @@ export default {
     const data = [
       {
         id: 1,
-        username: "Jessie Moores",
-        points: 1005
+        sensor: "Movement Sensor",
+        active: true
       },
       {
         id: 2,
-        username: "John Apted",
-        points: 903
+        sensor: "Fire Sensor",
+        active: false
       },
       {
         id: 3,
-        username: "Tina Garcia",
-        points: 554
+        sensor: "Sensor #12",
+        active: true
       },
       {
         id: 4,
-        username: "Aaron Anthonyson",
-        points: 186
+        sensor: "Fire Sensor #2",
+        active: true
       },
       {
         id: 5,
-        username: "Anne Horton",
-        points: 155
+        sensor: "Alarm",
+        active: false
       }
     ];
 
@@ -180,25 +165,8 @@ export default {
     };
   },*/
   created() {
-    let loggedUser = {
-      id: 54,
-      username: "James Sully",
-      points: 33
-    };
-    this.tempRanking = JSON.parse(localStorage.getItem("ranking"));
-    // console.log(this.persons)
-    this.data.push({
-      id: "...",
-      username: "...",
-      points: "..."
-    });
+    
 
-    this.data.push({
-      id: loggedUser.id,
-      username: loggedUser.username,
-      photo: loggedUser.photo,
-      points: loggedUser.points
-    });
   },
   mounted() {
     /* for (let i = 0; i < this.tempRanking.length; i++) {
@@ -333,10 +301,6 @@ export default {
   color: #ffbf2f;
 }
 
-#titleRanking {
-  color: #0a1f3c;
-  text-align: center;
-}
 
 #selected {
   background-color: #ffbf2f !important;
