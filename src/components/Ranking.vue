@@ -10,7 +10,8 @@
           <section>
             <b-table
               id="dataTable"
-              :data="data"
+              v-for="(user, i) in filteredUsers"
+              :key="i"
               :columns="columns"
               :selected.sync="selected"
               ref="table"
@@ -19,7 +20,6 @@
             >
               <b-tab-item
                 label="Selected"
-                v-if="id==loggedUser.id && selected == loggedUser.id"
                 id="selected"
               >
                 <pre>{{ selected }}</pre>
@@ -32,7 +32,7 @@
                   width="1"
                   centered
                   numeric
-                >{{ props.row.id }}</b-table-column>
+                >{{ user.idUser }}</b-table-column>
 
                 <b-table-column
                   id="usernameItem"
@@ -40,7 +40,7 @@
                   field="username"
                   width="15"
                   centered
-                >{{ props.row.username }}</b-table-column>
+                >{{ user.name }}</b-table-column>
 
                 <b-table-column
                   style="text-align:left !important"
@@ -68,7 +68,7 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <i class="fas fa-medal"></i>
                   </span>
-                  <span>{{ props.row.points }}</span>
+                  <span>{{ user.points }}</span>
                 </b-table-column>
               </template>
 
@@ -195,6 +195,15 @@ export default {
       /* eslint-disable */
       console.log(this.users)
     });
+    let tempUsers
+
+    this.filteredUsers = this.filteredUsers.sort((b, a) => 
+      a.points > b.points ? 1 : b.points > a.points ? -1 : 0
+    );
+
+    
+
+    
 
 
 
