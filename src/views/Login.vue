@@ -26,7 +26,7 @@
                 <!--Input of email -->
                 <label class="label loginLabel">Email</label>
                 <div class="control has-icons-left">
-                    <input class="input inputLogin is-5-desktop" id="email" type="text">
+                    <input class="input inputLogin is-5-desktop" id="email" type="text" v-model="loginInfo.email">
                     <span class="icon iconDesktop is-small is-left">
                         <i class="fas fa-envelope"></i>
                     </span>
@@ -36,7 +36,7 @@
                 <!--Input of password -->
                 <label class="label loginLabel">Password</label>
                 <div class="control has-icons-left">
-                    <input class="input inputLogin" type="password">
+                    <input class="input inputLogin" type="password" v-model="loginInfo.password">
                     <span class="icon iconDesktop is-small is-left">
                             <i class="fas fa-lock"></i>
                     </span>
@@ -222,20 +222,20 @@
             <h1 class="title TitleLoginMobile">LOGIN</h1>
             <label class="label loginLabelMobile">Email</label>
             <div class="control has-icons-left">
-                <input class="input inputLoginMobile" id="email" type="text" placeholder="Insert your Email">
+                <input class="input inputLoginMobile inputEmailMobile" id="email" type="text" placeholder="Insert your Email" v-model="loginInfo.email">
                 <span class="icon iconMobile is-small is-left">
                     <i class="fas fa-envelope"></i>
                 </span>
             </div>
             <br>
             <label class="label loginLabelMobile">Password</label>
-            <div class="control has-icons-left">
-                    <input class="input inputLoginMobile" type="password" placeholder="Insert your Password">
-                    <span class="icon iconMobile is-small is-left">
-                            <i class="fas fa-lock"></i>
-                    </span>
+            <div class="control has-icons-left">2
+                <input class="input inputLoginMobile inputPassMobile" type="password" placeholder="Insert your Password" v-model="loginInfo.password">
+                <span class="icon iconMobile is-small is-left">
+                        <i class="fas fa-lock"></i>
+                </span>
             </div>
-            <button class="button logButtonMobile">ENTRAR</button>
+            <button class="button logButtonMobile" @click="login()">ENTRAR</button>
             <a id="forgotPassMobile">Esqueceu-se da sua password?</a>
             <a id="signUpMobile" v-on:click="change()" >Criar Conta</a>
         </div>
@@ -353,7 +353,29 @@ export default {
             isActiveBasic: false,
             isActivePremium: false,
             activeSteps: true,
-            chosenPack: ""
+            chosenPack: "",
+            loginInfo: {
+                email:"",
+                password:""
+            },
+            confirmPass:"",
+            signInInfo: {
+                name:"",
+                email:"",
+                number:"",
+                password:"",
+                adress: "",
+                postalCode:"",
+                billingAdress:"",
+                nif:"",
+            },
+            userFirstOrder:{
+                package: 
+            },
+            userHouse:{
+                adress:"",
+                zipCode:""
+            }
             
             
         }
@@ -416,6 +438,12 @@ export default {
                 }
             }
         },
+        loginExe(){
+            
+        },
+        signUp(){
+            
+        }
     },
     created() {
         //este é o metodo em concreto

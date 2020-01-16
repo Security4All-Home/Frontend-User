@@ -318,9 +318,17 @@ p {
     border: 0.1875rem solid $secondary !important;
     border-radius: 0.375rem;
     position: relative;
-    left: 2.1875rem;
+    //left: 2.1875rem;
     top: 3.5rem;
     max-width: 78% !important;
+}
+.inputPassMobile {
+    position: relative;
+    left: 1.5rem;
+}
+.inputEmailMobile {
+    position: relative;
+    left: 2.1875rem;
 }
 .loginLabelMobile {
     color: #FFF !important;
