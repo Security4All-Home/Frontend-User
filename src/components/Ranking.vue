@@ -10,8 +10,7 @@
           <section>
             <b-table
               id="dataTable"
-              v-for="(user, i) in filteredUsers"
-              :key="i"
+              :data="filteredUsers"
               :columns="columns"
               :selected.sync="selected"
               ref="table"
@@ -32,7 +31,7 @@
                   width="1"
                   centered
                   numeric
-                >{{ user.idUser }}</b-table-column>
+                >{{ props.row.idUser }}</b-table-column>
 
                 <b-table-column
                   id="usernameItem"
@@ -40,7 +39,7 @@
                   field="username"
                   width="15"
                   centered
-                >{{ user.name }}</b-table-column>
+                >{{ props.row.name }}</b-table-column>
 
                 <b-table-column
                   style="text-align:left !important"
@@ -61,14 +60,14 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <i class="fas fa-medal"></i>
                   </span>
-                  <span
+                  <!--<span
                     id="allNumber"
                     v-if="props.row.id != loggedUser.id && props.row.id != 3 && props.row.id != 2 && props.row.id != 1"
                   >
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <i class="fas fa-medal"></i>
-                  </span>
-                  <span>{{ user.points }}</span>
+                  </span>-->
+                  <span>{{ props.row.points }}</span>
                 </b-table-column>
               </template>
 
@@ -103,70 +102,7 @@ export default {
   name: "Rankings",
   data() {
 
-    const data = [
-      {
-        id: 1,
-        username: "Jessie Moores",
-        points: 1005
-      },
-      {
-        id: 2,
-        username: "John Apted",
-        points: 903
-      },
-      {
-        id: 3,
-        username: "Tina Garcia",
-        points: 554
-      },
-      {
-        id: 4,
-        username: "Aaron Anthonyson",
-        points: 186
-      },
-      {
-        id: 5,
-        username: "Anne Horton",
-        points: 155
-      }
-    ];
-    let persons = [
-      {
-        id: 1,
-        username: "Jessie Moores",
-        photo:
-          "https://contigo.uol.com.br/orinoco/media/images/large/2019/10/15/paolla-oliveira-aparece-chorando-em-foto-como-vivi-guedes-na-web-1186472.jpg",
-        points: 1005
-      },
-      {
-        id: 2,
-        username: "John Apted",
-        photo:
-          "https://static1.purepeople.com.br/articles/5/27/69/65/@/3147374-pedro-scooby-tem-suposta-foto-intima-e-c-950x0-2.jpg",
-        points: 903
-      },
-      {
-        id: 3,
-        username: "Tina Garcia",
-        photo:
-          "https://conteudo.imguol.com.br/c/entretenimento/38/2019/07/30/duda-reis-e-acusada-de-mexer-no-corpo-em-foto-1564498888379_v2_450x600.png",
-        points: 554
-      },
-      {
-        id: 4,
-        username: "Aaron Anthonyson",
-        photo:
-          "https://cdn-ofuxico.akamaized.net/img/upload/noticias/2019/12/07/henry_365654_36.jpg",
-        points: 186
-      },
-      {
-        id: 5,
-        username: "Anne Horton",
-        photo:
-          "https://static1.purepeople.com.br/articles/7/27/94/37/@/3174773-thais-fersoza-chamou-atencao-por-foto-de-950x0-3.jpg",
-        points: 155
-      }
-    ];
+    const data = [];
     let loggedUser = {
       id: 54,
       username: "James Sully",
@@ -178,7 +114,6 @@ export default {
       searchBar: "",
       filteredUsers: [],
       view: 1,
-      persons,
       loggedUser,
       users:[]
     };
@@ -188,18 +123,22 @@ export default {
       tempRanking: []
     };
   },*/
-  created() {
+  async created() {
 
-      getAllUsers().then(response => {
+      await getAllUsers().then(response => {
       this.users = response.data.data;
       /* eslint-disable */
       console.log(this.users)
     });
-    let tempUsers
 
-    this.filteredUsers = this.filteredUsers.sort((b, a) => 
+    this.filteredUsers = this.users.sort((b, a) => 
       a.points > b.points ? 1 : b.points > a.points ? -1 : 0
     );
+    /* eslint-disable */
+    //console.log()
+    console.log("filtro: " + this.filteredUsers)
+
+
 
     
 
