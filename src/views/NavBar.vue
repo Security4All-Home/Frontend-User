@@ -35,6 +35,12 @@
         </a>
       </router-link>
 
+      <router-link id="GoToRankings" :to="{ name: 'homeManager' }">
+        <a class="navbar-item has-text-white">
+          Home Manager
+        </a>
+      </router-link>
+
       <router-link id="GoToRankings" :to="{ name: 'ranking2' }">
         <a class="navbar-item has-text-white">
           Ranking2

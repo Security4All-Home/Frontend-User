@@ -6,6 +6,7 @@ import SignIn from "../views/SignIn.vue";
 import Rankings from "../components/Rankings.vue";
 import Ranking2 from "../views/Ranking2.vue";
 import Achievements from "../views/Achievements.vue";
+import HomeManager from "../views/HomeManager.vue";
 
 Vue.use(VueRouter);
 
@@ -39,6 +40,11 @@ const routes = [
     path: "/achievements",
     name: "achievements",
     component: Achievements
+  },
+  {
+    path: "/homeManager",
+    name: "homeManager",
+    component: HomeManager
   }
 ];
 
