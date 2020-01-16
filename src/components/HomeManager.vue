@@ -18,6 +18,7 @@
                 style="text-align:center"
                 is-current-sort
                 field="id"
+                label="ID"
                 width="1"
                 centered
                 numeric
@@ -26,14 +27,16 @@
               <b-table-column
                 id="usernameItem"
                 style="text-align:left !important"
-                field="username"
+                field="sensor"
+                label="Sensor"
                 width="15"
                 centered
               >{{ props.row.sensor }}</b-table-column>
 
               <b-table-column
                 style="text-align:left !important"
-                field="points"
+                field="active"
+                label="Active"
                 width="10"
                 numeric
                 centered
