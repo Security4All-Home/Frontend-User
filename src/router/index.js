@@ -6,6 +6,8 @@ import SignIn from "../views/SignIn.vue";
 import Product from "../views/Product.vue";
 import Security from "../views/Security.vue";
 import Catalog from "../views/Catalog.vue";
+import Ranking from "../views/Ranking.vue"
+import Achievements from "../views/Achievements.vue"
 
 Vue.use(VueRouter);
 
@@ -38,6 +40,17 @@ const routes = [{
     path: "/catalog",
     name: "catalog",
     component: Catalog
+
+  },
+  {
+    path: "/ranking",
+    name: "ranking",
+    component: Ranking
+  },
+  {
+    path: "/achievements",
+    name: "achievements",
+    component: Achievements
   }
 ];
 
