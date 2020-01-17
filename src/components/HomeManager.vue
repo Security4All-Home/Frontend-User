@@ -41,16 +41,14 @@
                 numeric
                 centered
               >
-              <b-switch type="is-success" :value="props.row.active"></b-switch>
-              <!--<div class="field" v-if="props.row.active == false">
+                <b-switch type="is-success" :value="props.row.active"></b-switch>
+                <!--<div class="field" v-if="props.row.active == false">
                 <b-switch :value="props.row.active">Default</b-switch>
               </div>
               <div v-if="props.row.active == true" class="field">
                 <b-switch :value="props.row.active">Default</b-switch>
-              </div>-->
+                </div>-->
               </b-table-column>
-              
-              
             </template>
 
             <template slot="empty">
@@ -68,8 +66,44 @@
       </div>
     </div>
 
-    <button id="buttonSOS" class="button is-danger  is-large"><i class="fas fa-phone-square"></i></button>
-    <br/>
+    <button
+    type="button"
+      id="buttonSOS"
+      title="SOS"
+      data-toggle="modal"
+      data-target="#SOSModal"
+      class="button is-danger is-large"
+
+    >
+      <i class="fas fa-phone-square"></i>
+    </button>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="SOSModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="SOSModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="SOSModal">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">...</div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
   </div>
 </template>
 
@@ -153,7 +187,7 @@ export default {
       id: 54,
       username: "James Sully",
       points: 33
-    }
+    };
     return {
       data,
       selected: data[0],
@@ -170,8 +204,15 @@ export default {
     };
   },*/
   created() {
-    
+    $(function() {
 
+  $('[data-toggle="modal"]').hover(function() {
+    var modalId = $(this).data('target');
+    $(modalId).modal('show');
+
+  });
+
+});
   },
   mounted() {
     /* for (let i = 0; i < this.tempRanking.length; i++) {
@@ -200,7 +241,9 @@ export default {
       }
     }*/
   },
-  methods: {}
+  methods: {
+    
+  }
 };
 </script>
 
@@ -254,7 +297,7 @@ export default {
   color: white;
 }
 #userLogged {
-  color: #0A1F3C !important;
+  color: #0a1f3c !important;
 }
 #cardView {
   align-self: center !important;
@@ -282,7 +325,7 @@ export default {
   margin-left: 250px;
 }*/
 #dataTable {
-  width: 550px;
+  width: 1050px;
   margin-left: auto;
   margin-right: auto;
   align-self: center !important;
@@ -305,7 +348,6 @@ export default {
   background-color: #ffbf2f !important;
   color: #ffbf2f;
 }
-
 
 #selected {
   background-color: #ffbf2f !important;

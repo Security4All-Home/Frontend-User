@@ -9,7 +9,14 @@ $navbar-dropdown-arrow: #ffffff !important;
 $progress-value-background-color: #FFBF2F !important;
 $table-row-active-background-color: #0A1F3C !important;
 $progress-text-color: #0A1F3C !important;
-
+/*$table-background-color: #0A1F3C !important;
+$table-color: #f2f2f2 !important;
+$table-row-hover-background-color: #FFBF2F !important;*/
+$table-color: #0A1F3C !important;
+$table-head-cell-color: #0A1F3C !important;
+$table-head-cell-color: #0A1F3C !important;
+$table-row-hover-background-color: #FFBF2F !important;
+$table-row-hover-color: #f2f2f2 !important;
 
 // Import Bulma's core
 @import "~bulma/sass/utilities/_all";
