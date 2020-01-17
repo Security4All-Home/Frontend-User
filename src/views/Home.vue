@@ -1,17 +1,14 @@
 <template>
-  <!-- is-fullheight-with-navbar -->
-  <body>
+<!-- is-fullheight-with-navbar -->
+<body>
   <Hero></Hero>
   <Packages></Packages>
-
-
-  </body>
-  
+</body>
 </template>
 
 <script>
-import Packages from '../components/Package'
-import Hero from '../components/HeroHome'
+import Packages from "../components/Package";
+import Hero from "../components/HeroHome";
 
 export default {
   name: "home",
@@ -22,7 +19,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .hasBackgroundImage {
   background-image: url("../assets/Images/HomeWallpaper.jpg") !important;
 }
@@ -42,14 +39,15 @@ export default {
 }
 
 ul {
-  list-style: none;
+  list-style: none !important;
 }
 
-li:before {
-  content: "\f00c"; /* FontAwesome Unicode */
+ul li:before {
+  content: "\f00c";
+  /* FontAwesome Unicode */
   font-family: FontAwesome;
   display: inline-block;
-  margin-left: -1.3em; /* same as padding-left set on li */
-  width: 1.3em; /* same as padding-left set on li */
+  margin-left: -1.3em;
+  width: 1.3em;
 }
 </style>

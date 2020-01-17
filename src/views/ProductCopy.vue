@@ -1,16 +1,14 @@
 <template>
-<!-- SECÇÃO INFORMAÇÃO SENSOR -->
+<!-- SECÇÃO: INFORMAÇÃO SENSOR -->
+
 <body>
   <div class="container">
-    <section>
-      <Navbar></Navbar>
-    </section>
-    <section id="secInfoSensor" class="section">
-      <div class="box box-shadow">
+    <section id="secInfoSensor" class="hero hero-shadow">
+      <div class="hero-body">
         <div class="columns">
           <div class="column is-12-mobile is-6-tablet is-2-desktop is-centered is-vcentered">
             <figure class="image is-square">
-              <img :src="sensor.image" />
+              <img src="../assets/Images/motion_sensor.png" />
             </figure>
             <span class="is-centered">
               <br />
@@ -18,7 +16,7 @@
             </span>
           </div>
           <div class="column is-12-mobile is-6-tablet is-10-desktop">
-            <p class="title has-text-left is-size-4">{{sensor.name}}</p>
+            <p class="title">PIR MOTION SENSOR</p>
             <p class="text has-text-justified">
               Pyroelectric infrared motion sensor can detect infrared signals from a moving person or moving animal, and output switching signals. It can be applied to a variety of occasions to detect the movement of human body.
               Conventional pyroelectric infrared sensors require body pyroelectric infrared detector, professional chip, complex peripheral circuit, so the size is bigger, with complex circuit, and lower reliability.
@@ -28,14 +26,14 @@
             <br />
             <nav class="level">
               <div class="level-left">
-                <p class="title is-size-4">
-                  <strong>Price: {{sensor.price}}€</strong>
+                <p class="title">
+                  <strong>Preço: 10,00€</strong>
                 </p>
               </div>
               <div class="level-right">
-                <button class="button is-warning" @click="addToCart()">
+                <button class="button is-warning">
                   <span>
-                    Add to cart
+                    Adicionar
                     <i class="fa fa-cart-plus"></i>
                   </span>
                 </button>
@@ -45,64 +43,67 @@
         </div>
       </div>
     </section>
-    <!-- FIM SECCÇÃO INFORMAÇÃO SENSOR -->
 
-    <!-- SECÇÃO MAIS SENSORES -->
-    <section id="secSensores" class="section">
-      <p class="title has-text-left is-size-4">Specifications</p>
-      <div class="box">
+    <!-- SECÇÃO: MAIS SENSORES -->
+    <section id="secSensores" class="hero hero-shadow">
+      <p class="title" id="specsTitle">Specifications</p>
+      <div class="container" id="specs">
         <ul>
           <li>Input Voltage: 3.3 ~ 5V, 6V Maximum</li>
           <li>Working Current: 15uA</li>
           <li>Working Temperature: -20 ~ 85 ℃</li>
         </ul>
+        <!-- <div class="box" id="specs">
+            
+        </div>-->
       </div>
     </section>
-    <!-- FIM SECÇÃO MAIS DO SENSOR -->
 
-    <!-- SECÇÃO AVALIAÇÃO DO SENSOR -->
-    <section id="secAvalia" class="section is-12-mobile is-6-tablet is-2-desktop">
-      <div class="container">
-        <p class="title has-text-left is-size-4">Rate the product</p>
-        <article class="media">
-          <div class="media-content">
-            <div class="field">
-              <p class="control">
-                <textarea class="textarea" placeholder="Adicionar cometário..." rows="2"></textarea>
-              </p>
+    <!-- SECÇÃO: AVALIAÇÃO DO SENSOR -->
+    <section id="secAvalia" class="hero is-12-mobile is-6-tablet is-2-desktop">
+      <p class="title">Rate the product</p>
+      <article class="media">
+        <div class="media-content">
+          <div class="field">
+            <p class="control">
+              <textarea class="textarea" placeholder="Adicionar cometário..." rows="2"></textarea>
+            </p>
+          </div>
+          <nav class="level">
+            <div class="level-left">
+              <p class="text">Rating</p>
+              <StarRating></StarRating>
+              <!-- <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>-->
             </div>
-            <nav class="level">
-              <div class="level-left">
-                <p class="text">Rating:</p>
-                <StarRating></StarRating>
-              </div>
-              <div class="level-right">
+            <div class="level-right">
+              <div class="level-item">
                 <div class="level-item">
-                  <div class="level-item">
-                    <a class="button is-warning">Rate</a>
-                  </div>
+                  <a class="button is-warning">Send</a>
                 </div>
               </div>
-            </nav>
-          </div>
-        </article>
-      </div>
+            </div>
+          </nav>
+        </div>
+      </article>
     </section>
-    <!-- FIM SECÇÃO AVALIAÇÃO DO SENSOR -->
 
     <!-- SECÇÃO: AVALIAÇÕES -->
 
-    <section id="secComentarios" class="section is-12-mobile is-6-tablet is-2-desktop">
-      <p class="title has-text-left is-size-4">Clients Reviews</p>
+    <section id="secComentarios">
+      <p class="title">Clients Reviews</p>
       <article class="media own-comment is-12-mobile is-6-tablet is-2-desktop">
         <figure class="media-left">
           <p class="image is-64x64">
             <img class="is-rounded" src="../assets/Images/user.jpg" />
           </p>
         </figure>
-        <div class="media-content is-12-mobile is-6-tablet is-2-desktop">
+        <div class="media-content">
           <div class="content">
-            <p class="text has-text-left has-text-justified">
+            <p class="text">
               <strong>John Smith</strong>
               <small>@johnsmith</small>
               <small>31m</small>
@@ -111,20 +112,30 @@
 
             <p class="level-right">
               <StarRating></StarRating>
+              <!-- <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>-->
             </p>
           </div>
         </div>
+        <!-- <div class="media-right">
+          <span class="icon is-small">
+            <i class="fa fa-pencil"></i>
+          </span>
+        </div>-->
       </article>
 
-      <article class="media other-comment is-12-mobile is-6-tablet is-2-desktop">
+      <article class="media other-comment is-12-mobile">
         <figure class="media-left">
           <p class="image is-64x64">
             <img class="is-rounded" src="../assets/Images/user2.jpg" />
           </p>
         </figure>
-        <div class="media-content is-12-mobile is-6-tablet is-2-desktop">
+        <div class="media-content">
           <div class="content">
-            <p class="text has-text-left has-text-justified">
+            <p>
               <strong>Mary Jane</strong>
               <small>@maryjane</small>
               <small>31m</small>
@@ -132,6 +143,11 @@
             </p>
             <p class="level-right">
               <StarRating></StarRating>
+              <!-- <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>-->
             </p>
           </div>
         </div>
@@ -143,56 +159,19 @@
 
 <script>
 import StarRating from "../components/StarRating";
-import Navbar from "../components/Navbar";
-import { getSensorById } from "../API/apiSensor";
-import { mapActions } from "vuex";
 
 export default {
-  name: "Product",
   components: {
-    StarRating,
-    Navbar
+    StarRating
   },
-  created() {
-    getSensorById(this.$route.params._id).then(res => {
-      /* eslint-disable */
-      this.sensor = res.data.data[0];
-
-      console.log(this.sensor);
-    });
-  },
-  data() {
-    return {
-      items: [
-        {
-          name: "Motion Sensor",
-          price: 10.0,
-          amount: 1
-        }
-      ],
-
-      sensor: {}
-    };
-  },
-  methods: {
-    ...mapActions(["addSensor", "currentSensor"]),
-
-    addToCart(sensor) {
-      /* eslint-disable */
-      sensor = this.sensor;
-      this.addSensor(sensor);
-      console.log("ADICIONAR:" + sensor.name);
-    }
-  },
-  props: {
-    // sensors: this.sensor
-  }
+  name: "Product",
+  created() {},
+  methods: {}
 };
 </script>
 
 
 <style lang="scss" scoped>
 @import "../assets/product.scss";
-@import "../assets/main.scss";
 </style>
 

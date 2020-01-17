@@ -1,7 +1,6 @@
 <template>
-    <section>
-
-<div id="secPack" class="section is-centered">
+  <section>
+    <div id="secPack" class="section is-centered">
       <div class="container has-text-centered">
         <h1 class="title has-text-white">Become Safe</h1>
         <div class="column is-12 is-offset-2">
@@ -12,7 +11,7 @@
                   <article class="tile is-child box">
                     <div class="content has-text-justified">
                       <h1 id="articleTitle" class="title has-text-black">Basic</h1>
-                      <ul>
+                      <ul class>
                         <li>Access to Mobile app</li>
                         <li>2 sensors included</li>
                         <li>Home Service</li>
@@ -37,9 +36,6 @@
                         <div class="level-left">
                           <h1 id="articleTitle" class="title has-text-black">Premium</h1>
                         </div>
-                        <!-- <div class="level-right discount">
-                          <p class="text">23% off</p>
-                        </div>-->
                         <div class="media-right">
                           <button class="button is-success">23% off</button>
                         </div>
@@ -49,7 +45,6 @@
                         <li>4 sensors included</li>
                         <li>Home Service</li>
                         <li>Instalation Included</li>
-                        <li>3D Model of your house</li>
                       </ul>
                       <nav class="level">
                         <div class="level-left"></div>
@@ -70,9 +65,12 @@
         </div>
       </div>
     </div>
-
-
-
-
-    </section>
+  </section>
 </template>
+
+<style lang="scss" scoped>
+ul li {
+  list-style: none !important;
+}
+</style>
+
