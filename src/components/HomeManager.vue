@@ -66,8 +66,10 @@
           </b-table>
         </section>
       </div>
-      <h1 id="etc">...</h1>
     </div>
+
+    <button id="buttonSOS" class="button is-danger  is-large"><i class="fas fa-phone-square"></i></button>
+    <br/>
   </div>
 </template>
 
@@ -314,5 +316,12 @@ export default {
   align-self: left !important;
   align-content: left !important;
   text-align: left !important;
+}
+
+#buttonSOS {
+  margin-left: 95%;
+  margin-top: 16%;
+  position: absolute;
+  border-radius: 50%;
 }
 </style>
