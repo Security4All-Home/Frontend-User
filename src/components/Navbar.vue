@@ -22,8 +22,14 @@
       </div>
       <div id="navbarContent" class="navbar-menu" v-bind:class="{'is-active': isOpen}">
         <div id="navbarCenter" class="navbar-end">
+<<<<<<< HEAD
           <router-link to="/security" class="navbar-item sectionLink has-text-white">Security</router-link>
           <router-link to="/catalog" class="navbar-item sectionLink has-text-white">Catalog</router-link>
+=======
+          <a class="navbar-item sectionLink has-text-white">Security</a>
+          <a class="navbar-item sectionLink has-text-white">Catalog</a>
+
+>>>>>>> 8e1f7a2b282ac329875dd6ba0bb434a002c64213
           <!-- Dropdown desktop/tablet-->
           <div class="navbar-item has-dropdown is-hoverable is-hidden-mobile" v-if="user == true">
             <!-- v-if="user" -->
@@ -33,9 +39,22 @@
 
             <div class="navbar-dropdown">
               <a class="navbar-item">Perfil</a>
+<<<<<<< HEAD
               <a class="navbar-item">Achievements</a>
               <a class="navbar-item">Settings</a>
               <a class="navbar-item">Home Manager</a>
+=======
+
+              <a class="navbar-item">
+                <router-link :to="{name: 'achievements'}">Achievements</router-link>
+              </a>
+
+              <a class="navbar-item">Settings</a>
+              <a class="navbar-item">Home Manager</a>
+              <a class="navbar-item">
+                <router-link :to="{name: 'ranking'}">Ranking</router-link>
+              </a>
+>>>>>>> 8e1f7a2b282ac329875dd6ba0bb434a002c64213
               <hr class="navbar-divider" />
               <a class="navbar-item">Sign out</a>
             </div>
@@ -79,6 +98,7 @@
             </div>
           </div>
         </div>
+<<<<<<< HEAD
       </div>
       <div class="navbar-item">
         <button class="button is-dark" @click="showModal">
@@ -87,6 +107,8 @@
           </span>
         </button>
         <ShopCart v-show="isModalVisible" @close="closeModal"></ShopCart>
+=======
+>>>>>>> 8e1f7a2b282ac329875dd6ba0bb434a002c64213
       </div>
     </div>
   </nav>
@@ -123,8 +145,11 @@ export default {
   padding-left: 20px !important;
   padding-right: 20px !important;
 }
+<<<<<<< HEAD
 
 #navbarContent {
   position: relative;
 }
+=======
+>>>>>>> 8e1f7a2b282ac329875dd6ba0bb434a002c64213
 </style>
