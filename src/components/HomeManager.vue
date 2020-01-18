@@ -75,7 +75,8 @@
       class="button is-danger is-large"
 
     >
-      <i class="fas fa-phone-square"></i>
+      <img id="imgIcon" src="https://image.flaticon.com/icons/svg/1331/1331428.svg">
+     <!-- <i class="fas fa-phone-square"></i>-->
     </button>
 
     <!-- Modal -->
@@ -204,7 +205,7 @@ export default {
     };
   },*/
   created() {
-    $(function() {
+    /*$(function() {
 
   $('[data-toggle="modal"]').hover(function() {
     var modalId = $(this).data('target');
@@ -212,7 +213,7 @@ export default {
 
   });
 
-});
+});*/
   },
   mounted() {
     /* for (let i = 0; i < this.tempRanking.length; i++) {
