@@ -117,7 +117,7 @@ export default {
 
     
    
-    /*let temp = 0
+    let temp = 0
     for (let j = 0; j < this.achievements.length; j++) {
       for (let i = 0; i < this.loggedUser.achievements.length; i++) {
         if(this.achievements[j].type == "gold"){
@@ -130,11 +130,11 @@ export default {
           this.achievements[j].goal = 20
         }
       }
-    }*/
+    }
 
     
 
-   /* for (let i = 0; i < this.achievements.length; i++) {
+    for (let i = 0; i < this.achievements.length; i++) {
 
        this.tempAchievements.push(
           {
@@ -197,16 +197,16 @@ export default {
               }
               
             }
-          }*/
+          }
 
-          //this.tempPoints = temp2
+          this.tempPoints = temp2
           //console.log(temp2)
 
 
 
-        //}
-      //}
-   // }
+        }
+      }
+    }
 
    // this.tempRanking = JSON.parse(localStorage.getItem("ranking"));
     // console.log(this.persons)
