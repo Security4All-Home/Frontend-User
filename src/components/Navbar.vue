@@ -22,9 +22,8 @@
       </div>
       <div id="navbarContent" class="navbar-menu" v-bind:class="{'is-active': isOpen}">
         <div id="navbarCenter" class="navbar-end">
-          <a class="navbar-item sectionLink has-text-white">Security</a>
-          <a class="navbar-item sectionLink has-text-white">Catalog</a>
-
+          <router-link to="/security" class="navbar-item sectionLink has-text-white">Security</router-link>
+          <router-link to="/catalog" class="navbar-item sectionLink has-text-white">Catalog</router-link>
           <!-- Dropdown desktop/tablet-->
           <div class="navbar-item has-dropdown is-hoverable is-hidden-mobile" v-if="user == true">
             <!-- v-if="user" -->
@@ -61,6 +60,14 @@
             class="navbar-item sectionLink has-text-white is-hidden-tablet"
             v-if="user == true"
           >Settings</a>
+          <div class="navbar-item">
+            <button class="button is-dark" @click="showModal">
+              <span class="icon is-small">
+                <i class="fas fa-cart-plus"></i>
+              </span>
+            </button>
+            <ShopCart v-show="isModalVisible" @close="closeModal"></ShopCart>
+          </div>
 
           <div class="navbar-item">
             <div class="buttons">
@@ -93,13 +100,27 @@
 </template>
 
 <script>
+import ShopCart from "../components/Shopcart";
+
 export default {
   name: "Navbar1",
+  components: {
+    ShopCart
+  },
   data() {
     return {
       isOpen: false,
-      user: true
+      user: true,
+      isModalVisible: false
     };
+  },
+  methods: {
+    showModal() {
+      this.isModalVisible = true;
+    },
+    closeModal() {
+      this.isModalVisible = false;
+    }
   }
 };
 </script>
@@ -108,5 +129,9 @@ export default {
 .sectionLink {
   padding-left: 20px !important;
   padding-right: 20px !important;
+}
+
+#navbarContent {
+  position: relative;
 }
 </style>

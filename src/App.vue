@@ -10,10 +10,8 @@
 
 <script>
 // Components
-import NavBar from './components/Navbar'
-import Footer from './components/Footer'
-
-
+import NavBar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 export default {
   components: {
@@ -23,11 +21,11 @@ export default {
   data() {
     return {
       currentRoute: ""
-    }
+    };
   },
   mounted() {
-    this.currentRoute = this.$router.currentRoute.name
-  },
+    this.currentRoute = this.$router.currentRoute.name;
+  }
 };
 </script>
 
