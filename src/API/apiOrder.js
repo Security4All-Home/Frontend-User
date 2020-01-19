@@ -1,4 +1,9 @@
-import {get, post, put, remove} from 'Utils/https'
+import {
+    get,
+    post,
+    put,
+    remove
+} from '../Utils/https'
 
 export function getAllOrders() {
     return get("/order")

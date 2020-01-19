@@ -4,7 +4,7 @@
     <section>
       <Navbar></Navbar>
     </section>
-    <section class="hero is-medium has-background-white">
+    <!-- <section class="hero is-medium has-background-white">
       <div class="columns">
         <div class="column is-12-mobile is-6-tablet is-4-desktop">
           <img src="../assets/Images/Login.png" width=" 150px;" />
@@ -16,7 +16,7 @@
           >and get ready to protect your home. wdf2et2wetg23 t23t23t 24y34ty423t232 23t23523</h2>
         </div>
       </div>
-    </section>
+    </section>-->
     <section class="hero is-medium has-background-white is-12-mobile is-6-tablet is-2-desktop">
       <div class="hero-body">
         <nav class="level" id>

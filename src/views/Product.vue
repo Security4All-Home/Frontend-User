@@ -146,6 +146,8 @@ import StarRating from "../components/StarRating";
 import AverageRating from "../components/AverageRating";
 import Navbar from "../components/Navbar";
 import { getSensorById } from "../API/apiSensor";
+import { getAllReviews } from "../API/apiReview";
+// import {  postReview } from '../API/apiReview';
 // import { getAverageScore } from "../API/apiReview";
 import { mapActions } from "vuex";
 
@@ -162,10 +164,17 @@ export default {
       this.sensor = res.data.data[0];
       console.log(this.sensor);
     });
+
+    getAllReviews(this.$route.params._id).then(res => {
+      /* eslint-disable */
+      this.reviews = res.data;
+      console.log(this.reviews);
+    });
   },
   data() {
     return {
-      sensor: {}
+      sensor: {},
+      reviews: []
     };
   },
   methods: {
