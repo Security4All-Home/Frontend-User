@@ -39,7 +39,7 @@
                   <div class="media-content">
                     <!--<p  class="title is-15">{{person.id}}</p>-->
                     <p id="cardName" class="subtitle is-12">{{achievement.description}}</p>
-                    <p id="cardProgress" class="subtitle is-20">{{achievement.points}}/{{achievement.goal}}</p>
+                    <p id="cardProgress" class="subtitle is-20">0/{{achievement.goal}}</p>
                   </div>
                 </div>
               </div>
@@ -60,7 +60,7 @@ import { getAllAchievements } from '../API/apiAchievement';
 export default {
   name: "Rankings",
   data() {
-    let photo = "https://pbs.twimg.com/media/ENwUVtvWkAA3k5x?format=png&name=360x360"
+    //let photo = "https://pbs.twimg.com/media/ENwUVtvWkAA3k5x?format=png&name=360x360"
 
     let loggedUser = {
       id: 54,
@@ -89,18 +89,13 @@ export default {
 
     
 
-    let tempPoints = 0
-    let tempAchievements = []
 
     return {
       searchBar: "",
       filteredUsers: [],
       view: 1,
       achievements:[],
-      loggedUser, 
-      photo,
-      tempAchievements,
-      tempPoints
+      loggedUser
     };
   },
   /*data: function() {
@@ -112,7 +107,7 @@ export default {
     await getAllAchievements().then(response => {
       this.achievements = response.data.data;
       /* eslint-disable */
-      console.log(this.achievements)
+      console.log("achievements: " + this.achievements)
     });
 
    // this.tempRanking = JSON.parse(localStorage.getItem("ranking"));

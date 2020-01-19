@@ -1,7 +1,7 @@
 import {get, post, put, remove} from '../Utils/https'
 
 export function getAllAchievements() {
-    return get("/achievement")
+    return get("/achievement/all")
 }
 
 export function editAchievement(body) {
