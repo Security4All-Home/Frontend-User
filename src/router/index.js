@@ -10,6 +10,7 @@ import Ranking from "../views/Ranking.vue"
 import Achievements from "../views/Achievements.vue"
 import Profile from '../views/Perfil.vue'
 import Checkout from '../views/Checkout.vue'
+import HomeManager from '../views/HomeManager.vue'
 
 Vue.use(VueRouter);
 
@@ -63,10 +64,16 @@ const routes = [{
     path: "/checkout",
     name: "checkout",
     component: Checkout
+  },
+  {
+    path: "/homeManager",
+    name: "homeManager",
+    component: HomeManager
   }
 ];
 
 const router = new VueRouter({
+  mode: 'history',
   routes
 });
 

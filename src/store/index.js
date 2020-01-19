@@ -6,7 +6,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     cartSensors: [],
-    currentSensor: {}
+    currentSensor: {},
+    currUser: 0
   },
   getters: {
     getCurrentSensor: state => state.currentSensor,
