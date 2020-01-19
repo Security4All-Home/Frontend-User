@@ -34,7 +34,7 @@
                 label="Sensor"
                 width="15"
                 centered
-              >{{ props.row.sensor }}</b-table-column>
+              >{{ props.row.name }}</b-table-column>
 
               <b-table-column
                 style="text-align:left !important"
