@@ -1,7 +1,7 @@
 import {get, put} from  '../Utils/https'
 
 export function getAllUsers() {
-    return get("/user")
+    return get("/user/all")
 }
 
 export function editUser(body) {

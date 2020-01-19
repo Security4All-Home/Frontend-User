@@ -56,6 +56,7 @@
 
 <script>
 import { getAllAchievements } from '../API/apiAchievement';
+import { getAllUsers } from '../API/apiUser';
 
 export default {
   name: "Rankings",
@@ -92,9 +93,9 @@ export default {
 
     return {
       searchBar: "",
-      filteredUsers: [],
       view: 1,
       achievements:[],
+      users:[],
       loggedUser
     };
   },
@@ -108,6 +109,12 @@ export default {
       this.achievements = response.data.data;
       /* eslint-disable */
       console.log("achievements: " + this.achievements)
+    });
+
+    await getAllUsers().then(response => {
+      this.users = response.data.data;
+      /* eslint-disable */
+      console.log("users: " + this.users)
     });
 
    // this.tempRanking = JSON.parse(localStorage.getItem("ranking"));
@@ -161,13 +168,16 @@ export default {
   color: black !important;
 }
 .card {
-  width: 350px;
-  height: 100px;
+  width: 400px;
+  height: 130px;
   size: 1px;
+  align-items: center !important;
+  vertical-align: middle !important;
   border: #0a1f3c;
   border-radius: 10px;
   border-style: solid;
   border-width: 1px;
+  text-align: center !important;
 }
 .card p {
   color: #f2f2f2;
