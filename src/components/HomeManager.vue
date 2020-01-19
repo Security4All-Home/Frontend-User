@@ -109,7 +109,7 @@ export default {
       console.log("sensors: " + this.sensors);
     });
     for (let i = 0; i < this.sensors.length; i++) {
-        this.data.push(sensors[i])        
+        this.data.push(this.sensors[i])        
     }
   },
   mounted() {
