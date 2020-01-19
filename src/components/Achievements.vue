@@ -14,7 +14,7 @@
         <p id="totalProgress">3/5</p>-->
 
           <b-progress id="progressBar" :value="loggedUser.percentWon" size="is-large" show-value>
-              {{tempPoints}} / {{tempAchievements.length}}
+              {{loggedUser.points}} / {{achievements.length}}
           </b-progress>
         </div>
       </div>
@@ -25,7 +25,7 @@
           <div
           id="cardHover"          
             class="column is-11-mobile is-8-tablet is-4-desktop is-centered"
-            v-for="(achievement,i) in tempAchievements"
+            v-for="(achievement,i) in achievements"
             :key="i"
           >
             <div class="card" id="cardPerson">
@@ -33,13 +33,13 @@
                 <div class="media">
                   <div class="media-left">
                     <figure class="image">
-                      <img id="imageCard" :src="photo" alt="Placeholder image" />
+                      <img id="imageCard" :src="achievement.imageDefault" alt="Placeholder image" />
                     </figure>
                   </div>
                   <div class="media-content">
                     <!--<p  class="title is-15">{{person.id}}</p>-->
                     <p id="cardName" class="subtitle is-12">{{achievement.description}}</p>
-                    <p id="cardProgress" class="subtitle is-20">{{achievement.pointsWon}}/{{achievement.goal}}</p>
+                    <p id="cardProgress" class="subtitle is-20">{{achievement.points}}/{{achievement.goal}}</p>
                   </div>
                 </div>
               </div>
@@ -114,99 +114,6 @@ export default {
       /* eslint-disable */
       console.log(this.achievements)
     });
-
-    
-   
-    let temp = 0
-    for (let j = 0; j < this.achievements.length; j++) {
-      for (let i = 0; i < this.loggedUser.achievements.length; i++) {
-        if(this.achievements[j].type == "gold"){
-          this.achievements[j].goal = 30
-        }
-        if(this.achievements[j].type == "bronze"){
-          this.achievements[j].goal = 10
-        }
-        if(this.achievements[j].type == "silver"){
-          this.achievements[j].goal = 20
-        }
-      }
-    }
-
-    
-
-    for (let i = 0; i < this.achievements.length; i++) {
-
-       this.tempAchievements.push(
-          {
-            id: this.achievements[i].id,
-            description: this.achievements[i].description,
-            goal: this.achievements[i].goal,
-            type: this.achievements[i].type,
-            pointsWon: 0,
-            percent: 0
-          })
-    }
-
-    for (let j = 0; j < this.tempAchievements.length; j++) {
-      for (let i = 0; i < this.loggedUser.achievements.length; i++) {
-        if(this.loggedUser.achievements[i].id == this.tempAchievements[j].id){
-          this.tempAchievements[j].percent = this.loggedUser.achievements[i].progress * 10
-          if(this.loggedUser.achievements[i].progress == 10 && this.tempAchievements[j].type == "bronze"){
-            temp = temp + 1
-
-              
-              if(this.tempAchievements[j].type == "bronze"){
-                this.photo = "https://pbs.twimg.com/media/ENmx441UcAAGY6J?format=png&name=small"
-              }
-              
-              
-            }
-            if(this.loggedUser.achievements[i].progress == 20 && this.tempAchievements.type[j] == "silver"){
-              if(this.tempAchievements[j].type == "silver"){
-                this.photo = "https://pbs.twimg.com/media/ENmx441U0AAv-KU?format=png&name=120x120"
-              }
-            }
-            if(this.loggedUser.achievements[i].progress == 30 && this.tempAchievements.type[j] == "gold"){
-              if(this.tempAchievements[j].type == "gold"){
-                this.photo = "https://image.flaticon.com/icons/svg/1152/1152810.svg"
-              }
-            }
-
-            
-          this.tempAchievements[j].pointsWon = temp
-          let temp2 = 0
-
-          for (let u = 0; u < this.loggedUser.achievements.length; u++) {
-            for (let j = 0; j < this.tempAchievements.length; j++) {
-              if(this.loggedUser.achievements[u].id == this.tempAchievements[j].id) {
-                if(this.tempAchievements[j].type == "gold" && this.tempAchievements[j].goal == 30){
-                  if(this.loggedUser.achievements[u].progress == 30){
-                    this.tempPoints = temp2 +1
-                  }
-                }
-                if(this.tempAchievements[j].type == "silver" && this.tempAchievements[j].goal == 20){
-                  if(this.loggedUser.achievements[u].progress == 20){
-                    this.tempPoints = temp2 +1
-                  }
-                }
-                if(this.tempAchievements[j].type == "bronze" && this.tempAchievements[j].goal == 10){
-                  if(this.loggedUser.achievements[u].progress == 10){
-                    this.tempPoints = temp2 +1
-                  }
-                }
-              }
-              
-            }
-          }
-
-          this.tempPoints = temp2
-          //console.log(temp2)
-
-
-
-        }
-      }
-    }
 
    // this.tempRanking = JSON.parse(localStorage.getItem("ranking"));
     // console.log(this.persons)
