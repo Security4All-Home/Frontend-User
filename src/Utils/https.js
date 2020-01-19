@@ -15,6 +15,8 @@ export function remove(uri, data) {
 
 export function get(uri) {
     return axios.get(endpoint(uri));
+    /* eslint-disable */
+    console.log("hi")
 }
 //
 export function endpoint(uri) {
