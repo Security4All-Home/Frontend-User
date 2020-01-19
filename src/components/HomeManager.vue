@@ -25,7 +25,7 @@
                 width="1"
                 centered
                 numeric
-              >{{ props.row.id }}</b-table-column>
+              >{{ props.row.idSensor }}</b-table-column>
 
               <b-table-column
                 id="usernameItem"
