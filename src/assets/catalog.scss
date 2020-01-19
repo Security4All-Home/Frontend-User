@@ -106,20 +106,15 @@ h5 {
     }
 }
 
-.box-filter {
-    // text-align: center !important;
-    position: sticky !important;
-}
-
 .col-filter {
     position: relative;
     margin-left: 10px;
 }
 
 .content .icon {
-    position: relative;
-    float: right;
-    padding-right: 5px;
+    // position: relative;
+    //     float: right;
+    //     padding-right: 5px;
 }
 
 .menu {
@@ -138,7 +133,7 @@ h5 {
 
 .title {
     text-align: left !important;
-    font-size: 20px;
+    font-size: 14px !important;
     font-weight: bold;
     color: $ourGrey;
     text-transform: uppercase;

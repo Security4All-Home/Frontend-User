@@ -135,7 +135,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .sectionLink {
   padding-left: 20px !important;
   padding-right: 20px !important;
