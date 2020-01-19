@@ -51,8 +51,9 @@ sans-serif;
 
 //##################################################################### MOBILE VERSION ###########################################################################
 .profileMobile {
-    background-color: $ourGrey !important;
-    height: 100vh !important;
+    background-color: #FFF !important;
+    height: 150vh !important;
+    width: 100vw;
 }
 
 .profilesTiles {
@@ -193,14 +194,17 @@ sans-serif;
 }
 
 .profilePickDesktop {
-    clip-path: circle(100px at center);
+    clip-path: circle(90px at center) !important;
     position: relative;
     object-fit: cover;
+    max-width: 100% !important;
     width: 230px !important;
     height: 230px !important;
 
 }
-
+.is-128x128{
+    width: 230px !important;
+}
 .userNameDesktop {
     color: $primary;
     text-align: center;
@@ -326,4 +330,13 @@ sans-serif;
 .qrCode {
     max-width: 75%;
     max-height: 75%;
+}
+.profileZone {
+    background-color: #FFF;
+    height: 100vh;
+}
+.cardDesktop {
+    position: relative;
+    top: 4rem;
+    left: 11rem
 }
