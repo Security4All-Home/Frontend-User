@@ -68,25 +68,7 @@ export default {
     let loggedUser = {
       id: 54,
       username: "James Sully",
-      points: 4,
-      achievements: [
-        {
-          id: 1,
-          progress: 20
-        },
-        {
-          id: 2,
-          progress: 3
-        },
-        {
-          id: 3,
-          progress: 30
-        },
-        {
-          id: 4,
-          progress: 10
-        }
-      ]
+      points: 4
     };
 
     return {
