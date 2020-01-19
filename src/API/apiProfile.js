@@ -6,12 +6,12 @@ import {
 
 //login
 export function GetUserById(id) {
-    return get(`user/${id}`)
+    return get(`/user/${id}`)
 }
 //register
 /* eslint-disable */
 export function EditUserById(id, body) {
-    return put(`user/${id}`, body)
+    return put(`/user/${id}`, body)
 }
 export function GetQrCode(id) {
     return postQr("https://api.qr-code-generator.com/v1/create/", {

@@ -1,15 +1,12 @@
 import {
-    get,
-    post,
-    put,
-    remove
+    post, 
 } from '../Utils/https'
 
 //login
 export function doLogin(data) {
-    return post("/login", data)
+    return post("/auth/login", data)
 }
 //register
 export function doRegister(data) {
-    return post("/register", data)
+    return post("/user/firstRegister", data)
 }
