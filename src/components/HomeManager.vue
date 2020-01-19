@@ -79,8 +79,6 @@
 
     >
     SOS
-     <!--<img id="imgIcon" src="https://image.flaticon.com/icons/svg/1331/1331428.svg">-->
-     <!-- <i class="fas fa-phone-square"></i>-->
     </button>
 
     <br />
@@ -107,6 +105,7 @@ export default {
       this.sensors = response.data.data;
       /* eslint-disable */
       console.log("sensors: " + this.sensors);
+      console.log(this.sensors);
     });
     for (let i = 0; i < this.sensors.length; i++) {
         this.data.push(this.sensors[i])        
