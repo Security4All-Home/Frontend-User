@@ -318,7 +318,7 @@
           <i class="fas fa-lock"></i>
         </span>
       </div>
-      <button class="button logButtonMobile" @click="login()">ENTRAR</button>
+      <button class="button logButtonMobile" @click="loginExe()">ENTRAR</button>
       <a id="forgotPassMobile">Esqueceu-se da sua password?</a>
       <a id="signUpMobile" v-on:click="change()">Criar Conta</a>
     </div>
@@ -328,27 +328,31 @@
         <h3 class="SubtitlesMobile">Personal Info</h3>
         <!--First Name -->
         <label class="label signLabelMobile">Name</label>
-        <input class="input inputSignMobile" type="text" placeholder="Insert your name" />
+        <input class="input inputSignMobile" type="text" placeholder="Insert your name" v-model="signInInfo.name" />
         <br />
         <br />
         <!--Last Name -->
         <label class="label signLabelMobile">Email</label>
-        <input class="input inputSignMobile" type="email" placeholder="Insert your email" />
+        <input class="input inputSignMobile" type="email" placeholder="Insert your email" v-model="signInInfo.email"/>
         <br />
         <br />
         <!--email-->
         <label class="label signLabelMobile">Phone Number</label>
-        <input class="input inputSignMobile" type="number" placeholder="Insert your phone number" />
+        <input class="input inputSignMobile" type="number" placeholder="Insert your phone number" v-model="signInInfo.contacto" />
+        <br />
+        <br />
+        <label class="label signLabelMobile">Nif</label>
+        <input class="input inputSignMobile" type="number" placeholder="Insert your Nif" v-model="signInInfo.nif" />
         <br />
         <button
-          class="button attach previousMobile is-warning firstStep"
+          class="button attach previousMobile is-warning firstStepChange"
           :disabled="isDisabledPrev"
           v-on:click="stepChangeMinus()"
           v-bind:class="[activeSteps ? 'adjustSteps' : '']"
         >ANTERIOR</button>
         <!--<a id="steps">{{currentStep}}</a>-->
         <button
-          class="button attach nextMobile is-warning firstStep"
+          class="button attach nextMobile is-warning firstStepChange"
           :disabled="isDisabledNext"
           v-on:click="stepChangePlus()"
           v-bind:class="[activeSteps ? 'adjustSteps' : '']"
@@ -358,16 +362,16 @@
         <h3 class="SubtitlesMobile">Password</h3>
         <!--Last Name -->
         <label class="label signLabelMobile">Password</label>
-        <input class="input inputSignMobile" type="password" placeholder="Insert your password" />
+        <input class="input inputSignMobile" type="password" placeholder="Insert your password" v-model="signInInfo.password" />
         <br />
         <br />
         <!--email-->
         <label class="label signLabelMobile">Confirm Password</label>
-        <input class="input inputSignMobile" type="password" placeholder="Confirm your password" />
+        <input class="input inputSignMobile" type="password" placeholder="Confirm your password" v-model="confirmPass" />
         <br />
         <br />
         <label class="label signLabelMobile">User name</label>
-        <input class="input inputSignMobile" type="password" placeholder="Insert your Username" />
+        <input class="input inputSignMobile" type="text" placeholder="Insert your Username" v-model="signInInfo.username"/>
         <br />
         <button
           class="button attach previousMobile is-warning firstStep"
@@ -386,11 +390,11 @@
       <div v-if="step == 3">
         <h3 class="SubtitlesMobile">Billing</h3>
         <label class="label signLabelMobile">Adress</label>
-        <input class="input inputSignMobile" type="text" placeholder="Insert your Adress" />
+        <input class="input inputSignMobile" type="text" placeholder="Insert your Adress" v-model="signInInfo.adress" />
         <br />
         <br />
         <label class="label signLabelMobile">Postal-code</label>
-        <input class="input inputSignMobile" type="text" placeholder />
+        <input class="input inputSignMobile" type="text" placeholder v-model="signInInfo.zipCode" />
         <label class="checkboxMobile">
           <input type="checkbox" hoverable="false" v-on:click="checkbox()" />
           <p class="checkboxMobileText">Adress and Billing Adress are the same?</p>
@@ -401,15 +405,16 @@
           type="text"
           placeholder="Insert your Billing Adress"
           v-if="!checked"
+          v-model="signInInfo.taxAdress"
         />
         <br v-if="!checked" />
         <br v-if="!checked" />
         <label class="label signLabelMobile" v-if="!checked">Postal-code</label>
-        <input class="input inputSignMobile" type="text" placeholder v-if="!checked" />
+        <input class="input inputSignMobile" type="text" placeholder v-if="!checked" v-model="signInInfo.taxZipCode" />
         <br v-if="!checked" />
         <br />
-        <label class="label signLabelMobile">NIF</label>
-        <input class="input inputSignMobile" type="text" placeholder="Insert your NIF" />
+        <label class="label signLabelMobile">Local</label>
+        <input class="input inputSignMobile" type="text" placeholder="Insert your Local" v-model="signInInfo.local" />
         <br />
         <button
           class="button attach previousMobile is-warning thirdStep"
@@ -483,6 +488,7 @@
           id="logButton"
           class="button attach enterMobile is-warning fourthStep"
           v-if="step == 4"
+          v-on:click="signUp()"
         >ENTRAR</button>
       </div>
     </div>
@@ -491,6 +497,8 @@
 </template>
 <script>
 //import bulmaSteps from "../../node_modules/bulma-extensions/bulma-steps/src/js/index";
+import { doLogin } from "../API/apiAuth";
+import { doRegister} from "../API/apiAuth";
 export default {
   data() {
     return {
@@ -501,7 +509,7 @@ export default {
       isActiveBasic: false,
       isActivePremium: false,
       activeSteps: true,
-      chosenPack: "",
+      chosenPack: 0,
       loginInfo: {
         email: "",
         password: ""
@@ -510,12 +518,20 @@ export default {
       signInInfo: {
         name: "",
         email: "",
-        number: "",
         password: "",
         adress: "",
-        postalCode: "",
-        billingAdress: "",
-        nif: ""
+        nif: 0,
+        username:"",
+        taxAdress:"",
+        taxZipCode:"",
+        contacto:0,
+        idPackage: 0,
+        zipCode:"",
+        local:"",
+        credit:0,
+        instalation: 1,
+        active: 1,
+        instaled: 0
       },
       userFirstOrder: {
         package: ""
@@ -569,8 +585,12 @@ export default {
       if (!this.isActivePremium) {
         if (this.isActiveBasic) {
           this.isActiveBasic = false;
+          this.signInInfo.idPackage = 0
+          this.signInInfo.credit = 40
         } else {
           this.isActiveBasic = true;
+          this.signInInfo.idPackage = 6
+          this.signInInfo.credit = 40
         }
       }
     },
@@ -578,13 +598,52 @@ export default {
       if (!this.isActiveBasic) {
         if (this.isActivePremium) {
           this.isActivePremium = false;
+          this.signInInfo.idPackage = 0
+          this.signInInfo.credit = 100
         } else {
           this.isActivePremium = true;
+          this.signInInfo.idPackage = 100
         }
       }
     },
-    loginExe() {},
-    signUp() {}
+    loginExe() {
+      doLogin(this.loginInfo).then(response => {
+        /*eslint-disable*/
+        console.log(response.data)
+        if(!response.data.success){
+          this.$buefy.toast.open({
+            message: "Invalid User!",
+            type: "is-danger"
+          });
+          router.push({ path: '/home' })
+        }
+        else{
+          this.$buefy.toast.open({
+            message: "Welcome!",
+            type: "is-success"
+          });
+        }
+      });
+    },
+    signUp() {
+      doRegister(this.signInInfo).then(response => {
+        /*eslint-disable*/
+        console.log(response.data)
+        /*if(!response.data.success){
+          this.$buefy.toast.open({
+            message: "Invalid User!",
+            type: "is-danger"
+          });
+        }
+        else{
+          this.$buefy.toast.open({
+            message: "Welcome!",
+            type: "is-success"
+          });
+          this.login = false
+        }*/
+      });
+    }
   },
   created() {
     //este é o metodo em concreto
