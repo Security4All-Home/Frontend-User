@@ -49,7 +49,7 @@
               </a>
 
               <a class="navbar-item">Settings</a>
-              <a class="navbar-item">Home Manager</a>
+              <a class="navbar-item"> <router-link :to="{name: 'homeManager'}">Home Manager</router-link></a>
               <a class="navbar-item">
                 <router-link :to="{name: 'ranking'}">Ranking</router-link>
               </a>
