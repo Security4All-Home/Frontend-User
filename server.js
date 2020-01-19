@@ -7,5 +7,5 @@ const app = express();
 app.use("/", serveStatic(path.join(__dirname, 'dist')))
 console.log(process.env.PORT)
 app.listen(process.env.PORT || 8003, () => {
-    console.log("Frontend-Company Running")
+    console.log("Frontend-User Running")
 })
