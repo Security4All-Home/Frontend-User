@@ -1,5 +1,5 @@
-<template id="ranking2">
-  <div class="rankings">
+<template id="homeManager">
+  <div class="homeManager">
     <br />
     <br />
     <div class="container" id="tableRanking">
