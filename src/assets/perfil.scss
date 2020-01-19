@@ -130,9 +130,8 @@ $family-serif: 'Montserrat', sans-serif;
 
 }*/
 .modal-card {
-    max-width: 75%;
+    max-width: 100%;
     position: relative;
-    right: 2rem;
     bottom: 3rem;
     
 }
@@ -172,11 +171,11 @@ $family-serif: 'Montserrat', sans-serif;
     width: 8rem;
 }
 .profilePickDesktop {
-    clip-path: circle(60px at center);
+    clip-path: circle(100px at center);
     position: relative;
-    bottom:2.5rem;
-    left: 1.8rem;
-    width: 1200px !important;
+    object-fit: cover;
+    width:230px !important;
+    height:230px !important;
     
 }
 .userNameDesktop{
@@ -246,13 +245,11 @@ $family-serif: 'Montserrat', sans-serif;
     background-color: rgba($color: #f1f1f1, $alpha: 1.0);
 
 }
-.card-header-title {
-    position: relative;
-    top: 4.2rem ;
+.cardTitle {
     text-align: center !important;
-    right: 6.6rem;
     color: $primary;
-    font-size: 24px !important;
+    font-size: 30px !important;
+    font-weight: bold;
 }
 .card {
     border: none !important;
@@ -284,4 +281,8 @@ $family-serif: 'Montserrat', sans-serif;
     top: 7.2rem;
     width: 8rem;
     height: 30.2rem;
+}
+.qrCode{
+    max-width: 75%;
+    max-height: 75%;
 }

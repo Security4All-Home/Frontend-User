@@ -116,7 +116,102 @@
         
     </div>
     <div class="profileMobile is-hidden-tablet">
-        <div class="tile is-ancestor">
+        <div class="card">
+            <header class="card-header">
+                <div class="card-image">
+                    <figure class="image is 96x96">
+                        <img src="../assets/Images/jorge.jpg" class="profilePickDesktop">
+                    </figure>
+                </div>
+            </header>
+            <div class="card-content">
+                <p class="cardTitle">{{user.name}}</p>
+                <p class="usernameDesk">{{user.username}}</p>
+                <p class="emailDesk">{{user.email}}</p>
+                <br>
+                <nav class="level is-mobile">
+                    <div class="level-item has-text-centered">
+                        <div>
+                            <p class="heading headingMobDesk">Pontos</p>
+                            <p class="title titleMobDesk">{{user.points}}</p>
+                        </div>
+                    </div>
+                    <div class="level-item has-text-centered"></div>  
+                    <div class="level-item has-text-centered">
+                        <div>
+                            <p class="heading headingMobDesk">Créditos</p>
+                            <p class="title titleMobDesk">{{user.credit}}</p>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <footer class="card-footer">
+                <a class="card-footer-item" v-on:click="toggleModalUser()"><i class="fas fa-external-link-alt"></i></a>
+                <a class="card-footer-item" v-on:click="toggleModalQr()"><i class="fas fa-qrcode"></i></a>
+                <a class="card-footer-item" v-on:click="toggleModalPhoto()"><i class="fas fa-camera-retro"></i></a>
+            </footer>
+        </div>
+        <div class="modal" v-bind:class="[isModalActiveUser ? 'is-active' : '']">
+                        <div class="modal-background"></div>
+                        <div class="modal-card">
+                            <header class="modal-card-head">
+                            <p class="modal-card-title">EDIT USER</p>
+                            <button class="delete" aria-label="close" v-on:click="toggleModalUser()"></button>
+                            </header>
+                            <section class="modal-card-body centerAlign">
+                                <label class="label is-small">Edit Username</label>
+                                <input class="input is-small" type="text" placeholder="" v-model="editUser.username">
+                                <br>
+                                <br>
+                                <label class="label is-small">Edit Email</label>
+                                <input class="input is-small" type="text" placeholder="" v-model="editUser.email">
+                                <br>
+                                <br>
+                                <button class="button passwordButton is-danger is-small" v-on:click="togglePassword()">Password</button>
+                                <br>
+                                <br>
+                                <div id="passwordSection" v-if="isActivePasswordField">
+                                    <label class="label is-small">Current Password</label>
+                                    <input class="input is-small" type="text" placeholder="" v-model="currPass">
+                                    <br>
+                                    <br>
+                                    <label class="label is-small">New Password</label>
+                                    <input class="input is-small" type="text" placeholder="" v-model="editUser.password">
+                                    <br>
+                                    <br>
+                                </div>
+                            <button class="button is-success saveButton" v-on:click="editUserInfo()">Save</button>
+                            </section>
+                        </div>
+                    </div>
+                    <!-- Modal For Edit User  -->
+                    <div class="modal" v-bind:class="[isModalActivePhoto ? 'is-active' : '']">
+                        <div class="modal-background"></div>
+                        <div class="modal-card">
+                            <header class="modal-card-head">
+                            <p class="modal-card-title">EDIT USER</p>
+                            <button class="delete" aria-label="close" v-on:click="toggleModalPhoto()"></button>
+                            </header>
+                            <section class="modal-card-body centerAlign">
+                                <label class="label is-small">Add Photo Link</label>
+                                <input class="input is-small" type="link" placeholder="">
+                                <br>
+                                <br>
+                            <button class="button is-success saveButton">Save</button>
+                            </section>
+                        </div>
+                    </div>
+                    <!-- modal for qr -->
+                    <div class="modal" v-bind:class="[isModalActiveQr ? 'is-active' : '']">
+                    <div class="modal-background"></div>
+                        <div class="modal-content qrCode">
+                            <p class="image is-square">
+                            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="">
+                            </p>
+                        </div>
+                        <button class="modal-close is-large" v-on:click="toggleModalQr()" aria-label="close"></button>
+                    </div>
+        <div class="tile is-ancestor is-hidden">
             <div class="tile is-4 is-vertical is-parent is-12">
                 <div class="tile is-child box profilesTiles firstTile">
                     <!--<figure class="image is-96x96">
@@ -271,6 +366,7 @@ export default {
         return {
             isModalActiveUser: false,
             isModalActivePhoto: false,
+            isModalActiveQr: false,
             isActivePasswordField: false,
             user: {},
             editUser: {
@@ -311,6 +407,14 @@ export default {
             }
             else {
                 this.isModalActivePhoto = true
+            }
+        },
+        toggleModalQr() {
+            if(this.isModalActiveQr){
+                this.isModalActiveQr = false
+            }
+            else {
+                this.isModalActiveQr = true
             }
         },
         togglePassword() {
