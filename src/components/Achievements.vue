@@ -13,7 +13,7 @@
         <!--<progress id="progressBarLarge" class="progress is-large is-12-mobile" :value="loggedUser.percentWon" max="100" show-value>{{loggedUser.percentWon}}</progress>
         <p id="totalProgress">3/5</p>-->
 
-          <b-progress id="progressBar" :value="loggedUser.percentWon" size="is-large" show-value>
+          <b-progress id="progressBar" :value="loggedUser.points" :max="achievements.length" size="is-large" show-value>
               {{loggedUser.points}} / {{achievements.length}}
           </b-progress>
         </div>
@@ -39,7 +39,7 @@
                   <div class="media-content">
                     <!--<p  class="title is-15">{{person.id}}</p>-->
                     <p id="cardName" class="subtitle is-12">{{achievement.description}}</p>
-                    <p id="cardProgress" class="subtitle is-20">{{achievement.points}}/{{achievement.goal}}</p>
+                    <p id="cardProgress" class="subtitle is-20">0/{{achievement.goal}}</p>
                   </div>
                 </div>
               </div>
@@ -56,16 +56,17 @@
 
 <script>
 import { getAllAchievements } from '../API/apiAchievement';
+import { getAllUsers } from '../API/apiUser';
 
 export default {
   name: "Rankings",
   data() {
-    let photo = "https://pbs.twimg.com/media/ENwUVtvWkAA3k5x?format=png&name=360x360"
+    //let photo = "https://pbs.twimg.com/media/ENwUVtvWkAA3k5x?format=png&name=360x360"
 
     let loggedUser = {
       id: 54,
       username: "James Sully",
-      points: 33,
+      points: 4,
       achievements: [
         {
           id: 1,
@@ -89,18 +90,13 @@ export default {
 
     
 
-    let tempPoints = 0
-    let tempAchievements = []
 
     return {
       searchBar: "",
-      filteredUsers: [],
       view: 1,
       achievements:[],
-      loggedUser, 
-      photo,
-      tempAchievements,
-      tempPoints
+      users:[],
+      loggedUser
     };
   },
   /*data: function() {
@@ -112,7 +108,13 @@ export default {
     await getAllAchievements().then(response => {
       this.achievements = response.data.data;
       /* eslint-disable */
-      console.log(this.achievements)
+      console.log("achievements: " + this.achievements)
+    });
+
+    await getAllUsers().then(response => {
+      this.users = response.data.data;
+      /* eslint-disable */
+      console.log("users: " + this.users)
     });
 
    // this.tempRanking = JSON.parse(localStorage.getItem("ranking"));
@@ -166,13 +168,16 @@ export default {
   color: black !important;
 }
 .card {
-  width: 350px;
-  height: 100px;
+  width: 400px;
+  height: 130px;
   size: 1px;
+  align-items: center !important;
+  vertical-align: middle !important;
   border: #0a1f3c;
   border-radius: 10px;
   border-style: solid;
   border-width: 1px;
+  text-align: center !important;
 }
 .card p {
   color: #f2f2f2;
