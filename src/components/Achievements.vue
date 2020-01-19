@@ -13,7 +13,7 @@
         <!--<progress id="progressBarLarge" class="progress is-large is-12-mobile" :value="loggedUser.percentWon" max="100" show-value>{{loggedUser.percentWon}}</progress>
         <p id="totalProgress">3/5</p>-->
 
-          <b-progress id="progressBar" :value="loggedUser.percentWon" size="is-large" show-value>
+          <b-progress id="progressBar" :value="loggedUser.points" :max="achievements.length" size="is-large" show-value>
               {{loggedUser.points}} / {{achievements.length}}
           </b-progress>
         </div>
@@ -66,7 +66,7 @@ export default {
     let loggedUser = {
       id: 54,
       username: "James Sully",
-      points: 33,
+      points: 4,
       achievements: [
         {
           id: 1,
