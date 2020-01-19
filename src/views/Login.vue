@@ -15,7 +15,6 @@
             <br>
             <p id="loginMessage">Time to make yourself secure</p>
             <button id="signButton" class="button is-warning is-outlined" v-on:click="change()">SIGN UP</button>
-            <router-link to="/perfil">atalho</router-link>
             <br>
             <br>
             <br>
@@ -84,6 +83,11 @@
                     <label class="label signLabel">Confirm Password</label>
                     <input class="input inputSign" type="password" placeholder="Confirm your password">
                     <br>
+                    <br>
+                    <!--First Name -->
+                    <label class="label signLabel">User Name</label>
+                    <input class="input inputSign" type="text" placeholder="Insert your Username">
+                    <br>
                 </div>
                 <div v-if="step == 3">
                     <h3 class="Subtitles">Billing</h3>
@@ -151,7 +155,7 @@
                             <div class="tile is-parent">
                             <article class="tile is-child box" v-bind:class="[isActivePremium ? 'activePack' : '']">
                                 <div class="content has-text-justified" @click="toggleClassPremium()" v-bind:class="[isActivePremium ? 'activePack' : '']">
-                                <h1 class="title articleTitle" @click="toggleClassPremium()" v-bind:class="[isActivePremium ? 'activePackText' : '']">Premium</h1>
+                                <h1 class="title articleTitle" v-bind:class="[isActivePremium ? 'activePackText' : '']">Premium</h1>
                                 <!--<nav class="level">
                                     <div class="level-left">
                                     </div>
@@ -163,7 +167,7 @@
                                     </div> 
                                 </nav> -->
                                 <ul>
-                                    <li @click="toggleClassPremium()" v-bind:class="[isActivePremium ? 'activePackText' : '']">Access to Mobile App</li>
+                                    <li v-bind:class="[isActivePremium ? 'activePackText' : '']">Access to Mobile App</li>
                                     <!--<li>4 sensors included</li>
                                     <li>Home Service</li>
                                     <li>Instalation Included</li>
@@ -180,8 +184,8 @@
                                     </div>
                                     <p class="discount">23% off</p>
                                 </nav>-->
-                                <h3 class="prices" @click="toggleClassPremium()" v-bind:class="[isActivePremium ? 'activePackText' : '']">100€</h3>
-                                <p class="discount" @click="toggleClassPremium()" v-bind:class="[isActivePremium ? 'activePackText' : '']">23% off</p>
+                                <h3 class="prices" v-bind:class="[isActivePremium ? 'activePackText' : '']">100€</h3>
+                                <p class="discount" v-bind:class="[isActivePremium ? 'activePackText' : '']">23% off</p>
                                 </div>
                             </article>
                             </div>
@@ -190,10 +194,10 @@
                     </div>
                 </div>
                 <!--Login Button -->
-                <button id="logButton" class="button attach previous is-warning" :disabled="isDisabledPrev" v-on:click="stepChangeMinus()">ANTERIOR</button>
+                <button id="logButton" class="button attach previous is-warning" :disabled="isDisabledPrev" v-on:click="stepChangeMinus()">PREVIOUS</button>
                 <a id="steps">{{currentStep}}</a>
-                <button id="logButton" class="button attach next is-warning" :disabled="isDisabledNext" v-on:click="stepChangePlus()">PROXIMO</button>
-                <button id="logButton" class="button attach enter is-warning" v-if="step == 4">ENTRAR</button>
+                <button id="logButton" class="button attach next is-warning" :disabled="isDisabledNext" v-on:click="stepChangePlus()">NEXT</button>
+                <button id="logButton" class="button attach enter is-warning" v-if="step == 4">REGISTER</button>
                 <a id="CreateAcc" class="is-hidden-desktop doLogin" v-on:click="change()">So enter your account</a>
                 <br>       
         </div>
@@ -272,9 +276,13 @@
                     <label class="label signLabelMobile">Confirm Password</label>
                     <input class="input inputSignMobile" type="password" placeholder="Confirm your password">
                     <br>
-                    <button class="button attach previousMobile is-warning secondStep" :disabled="isDisabledPrev" v-on:click="stepChangeMinus()" v-bind:class="[activeSteps ? 'adjustSteps' : '']">ANTERIOR</button>
+                    <br>
+                    <label class="label signLabelMobile">User name</label>
+                    <input class="input inputSignMobile" type="password" placeholder="Insert your Username">
+                    <br>
+                    <button class="button attach previousMobile is-warning firstStep" :disabled="isDisabledPrev" v-on:click="stepChangeMinus()" v-bind:class="[activeSteps ? 'adjustSteps' : '']">ANTERIOR</button>
                     <!--<a id="steps">{{currentStep}}</a>-->
-                    <button class="button attach nextMobile is-warning secondStep" :disabled="isDisabledNext" v-on:click="stepChangePlus()" v-bind:class="[activeSteps ? 'adjustSteps' : '']">PROXIMO</button>
+                    <button class="button attach nextMobile is-warning firstStep" :disabled="isDisabledNext" v-on:click="stepChangePlus()" v-bind:class="[activeSteps ? 'adjustSteps' : '']">PROXIMO</button>
             </div>
             <div v-if="step == 3">
                     <h3 class="SubtitlesMobile">Billing</h3>
@@ -342,7 +350,7 @@
   </body>
 </template>
 <script>
-import bulmaSteps from "../../node_modules/bulma-extensions/bulma-steps/src/js/index";
+//import bulmaSteps from "../../node_modules/bulma-extensions/bulma-steps/src/js/index";
 export default {
     data() {
         return {
@@ -370,7 +378,7 @@ export default {
                 nif:"",
             },
             userFirstOrder:{
-                package: 
+                package: ""
             },
             userHouse:{
                 adress:"",
@@ -382,8 +390,13 @@ export default {
     },
     methods: {
         change() {
-            this.login = false;
-            bulmaSteps.attach();
+            if(this.login){
+                this.login = false;
+            }
+            else{
+                this.login = true;
+            }
+            
         },
         stepChangePlus() {
             this.step++
@@ -447,7 +460,7 @@ export default {
     },
     created() {
         //este é o metodo em concreto
-        bulmaSteps.attach();
+        //bulmaSteps.attach();
     },
     computed: {
         isDisabledPrev : function(){
@@ -469,6 +482,6 @@ export default {
     },
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
     @import "../assets/login.scss";
 </style>

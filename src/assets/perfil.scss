@@ -56,7 +56,7 @@ $family-serif: 'Montserrat', sans-serif;
 }
 .profilesTiles {
     position: relative;
-    top: 5rem !important;
+    top: 2rem !important;
     left: 1.8rem !important;
     max-width: 85% ;
 }
@@ -71,7 +71,7 @@ $family-serif: 'Montserrat', sans-serif;
     right: 4rem !important;  
 }
 .firstTile {
-    height: 10.5rem;
+    height: 30.5rem;
 }
 .headingMob {
     color: $secondary !important;
@@ -123,12 +123,12 @@ $family-serif: 'Montserrat', sans-serif;
     padding:12px 8px !important;
     color: #FFF;    
 }
-.fa-external-link-alt {
+/*.fa-external-link-alt {
     position: relative;
     bottom: 0.2rem;
     left: 0.08rem;
 
-}
+}*/
 .modal-card {
     max-width: 75%;
     position: relative;
@@ -165,21 +165,23 @@ $family-serif: 'Montserrat', sans-serif;
     height: 100vh;
 }
 .profileTilesDesk {
-    max-width: 85%;
+    max-width: 100% !important;
     position: relative;
     left: 6.5rem !important;
     top: 6.5rem;
+    width: 8rem;
 }
 .profilePickDesktop {
-    clip-path: circle(70px at center);
+    clip-path: circle(60px at center);
     position: relative;
-    bottom:6.5rem;
-    left: 1rem;
+    bottom:2.5rem;
+    left: 1.8rem;
     width: 1200px !important;
     
 }
 .userNameDesktop{
     color: $primary;
+    text-align: center;
     font-weight: bold;
     font-size: 26px;
 }
@@ -206,24 +208,80 @@ $family-serif: 'Montserrat', sans-serif;
     right: 40rem !important;
 }
 .firstTileChange {
-    height: 27rem;
+    height: 29rem;
     min-height: 0;
     
 }
 .headingMobDesk {
     color: $secondary !important;
-    font-size: 20px !important;
+    font-size: 16px !important;
 }
 .titleMobDesk {
     color: $primary !important;
-    font-size: 50px !important;
+    font-size: 35px !important;
 }
 .editUserDesk {
     position: relative;
-    bottom: 15.5rem;
+    bottom: 14.5rem;
     padding:16px 21px !important;
     left: 84.7rem;
     font-size: 18px !important;
     width: 11px !important;
     color: #FFF;
+}
+.CreateQRcode {
+    position: relative;
+    bottom: 14rem;
+    padding:16px 21px !important;
+    left: 84.7rem;
+    font-size: 18px !important;
+    width: 11px !important;
+    color: #FFF;
+}
+.card-header {
+    display: flex !important;
+    justify-content: center !important;
+    max-width: 100%;
+    height: 14rem;
+    background-color: rgba($color: #f1f1f1, $alpha: 1.0);
+
+}
+.card-header-title {
+    position: relative;
+    top: 4.2rem ;
+    text-align: center !important;
+    right: 6.6rem;
+    color: $primary;
+    font-size: 24px !important;
+}
+.card {
+    border: none !important;
+}
+.usernameDesk {
+    text-align: center;
+    color: $secondary;
+    font-size:14px;
+}
+.emailDesk {
+    text-align: center;
+    color: $ourGrey;
+    font-size: 11px;
+}
+.card-footer-item {
+    background-color: $secondary;
+    color: $primary;
+    border-color: $secondary !important;
+}
+.card-footer-item:hover  {
+    background-color: $secondary;
+    color: $primary;
+    border-color: $secondary !important;
+}
+.getHere {
+    max-width: 100% !important;
+    position: relative;
+    right: 29rem !important;
+    top: 7.2rem;
+    width: 8rem;
+    height: 30.2rem;
 }

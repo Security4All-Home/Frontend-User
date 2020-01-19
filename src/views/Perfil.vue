@@ -1,16 +1,58 @@
 <template>
     <body>
     <div class="profile is-hidden-mobile">
-        <div class="tile is-ancestor firstTileChange">
-            <div class="tile is-vertical is-parent">
-                <div class="tile is-child box profileTilesDesk firstTileChange">
-                    <figure class="image is-128x128">
+        <div class="tile is-ancestor">
+            <div class="tile is-parent">
+                <div class="tile is-child box is-4 profileTilesDesk">
+                    <!--<figure class="image is-128x128">
                         <img src="../assets/Images/jorge.jpg" class="is-rounded profilePickDesktop">
                     </figure>
-                    <h2 class="userNameDesktop infoUserDesktop">Jorge Coelho</h2>
-                    <button class="button profileButtons editPhotoDesktop is-rounded isPrimaryBGColor is-small" v-on:click="toggleModalPhoto()"><i class="fas fa-plus" ></i></button>
+                    <h2 class="userNameDesktop ">{{user.name}}</h2>
+                    <button class="button profileButtons editPhotoDesktop is-rounded isPrimaryBGColor is-small" v-on:click="toggleModalPhoto()"><i class="fas fa-plus" ></i></button> -->
                     <!-- level -->
-                    
+                    <div class="card">
+                        <header class="card-header">
+                            <div class="card-image">
+                                <figure class="image is 96x96">
+                                    <img src="../assets/Images/jorge.jpg" class="profilePickDesktop">
+                                </figure>
+                            </div>
+                            <p class="card-header-title">
+                            {{user.name}}
+                            </p>
+                        </header>
+                        <div class="card-content">
+                            <p class="usernameDesk">
+                            {{user.username}}
+                            </p>
+                            <p class="emailDesk">
+                            {{user.email}}
+                            </p>
+                            <br>
+                            <nav class="level">
+                            <div class="level-item has-text-centered">
+                                <div>
+                                    <p class="heading headingMobDesk">Pontos</p>
+                                    <p class="title titleMobDesk">{{user.points}}</p>
+                                </div>
+                            </div>
+                            <div class="level-item has-text-centered">
+
+                            </div>  
+                            <div class="level-item has-text-centered">
+                                <div>
+                                    <p class="heading headingMobDesk">Créditos</p>
+                                    <p class="title titleMobDesk">{{user.credit}}</p>
+                                </div>
+                            </div>
+                        </nav>
+                        </div>
+                        <footer class="card-footer">
+                            <a class="card-footer-item" v-on:click="toggleModalUser()"><i class="fas fa-external-link-alt"></i></a>
+                            <a class="card-footer-item"><i class="fas fa-qrcode"></i></a>
+                            <a class="card-footer-item" v-on:click="toggleModalPhoto()"><i class="fas fa-camera-retro"></i></a>
+                        </footer>
+                    </div>
                     <div class="modal" v-bind:class="[isModalActiveUser ? 'is-active' : '']">
                         <div class="modal-background"></div>
                         <div class="modal-card">
@@ -20,11 +62,11 @@
                             </header>
                             <section class="modal-card-body centerAlign">
                                 <label class="label is-small">Edit Username</label>
-                                <input class="input is-small" type="text" placeholder="">
+                                <input class="input is-small" type="text" placeholder="insert your new username" v-model="editUser.username">
                                 <br>
                                 <br>
                                 <label class="label is-small">Edit Email</label>
-                                <input class="input is-small" type="text" placeholder="">
+                                <input class="input is-small" type="email" placeholder="insert your new email" v-model="editUser.email">
                                 <br>
                                 <br>
                                 <button class="button passwordButton is-danger is-small" v-on:click="togglePassword()">Password</button>
@@ -32,15 +74,15 @@
                                 <br>
                                 <div id="passwordSection" v-if="isActivePasswordField">
                                     <label class="label is-small">Current Password</label>
-                                    <input class="input is-small" type="text" placeholder="">
+                                    <input class="input is-small" type="text" placeholder="Insert old password" v-model="editUser.password">
                                     <br>
                                     <br>
                                     <label class="label is-small">New Password</label>
-                                    <input class="input is-small" type="text" placeholder="">
+                                    <input class="input is-small" type="text" placeholder="Insert new password" v-model="currPass">
                                     <br>
                                     <br>
                                 </div>
-                            <button class="button is-success saveButton">Save</button>
+                            <button class="button is-success saveButton" v-on:click="editUserInfo()">Save</button>
                             </section>
                         </div>
                     </div>
@@ -61,49 +103,70 @@
                             </section>
                         </div>
                     </div>
-                    <nav class="level">
-                        <div class="level-item has-text-centered">
-                            <div>
-                                <p class="heading headingMobDesk firstColDesktop">Pontos</p>
-                                <p class="title titleMobDesk firstColDesktop">24</p>
-                            </div>
-                        </div>
-                        <!--<div class="level-item has-text-centered">
-                            <div>
-                                <p class="heading headingMob firstCol">Following</p>
-                                <p class="title titleMob firstCol">123</p>
-                            </div>
-                        </div> -->
-                        <div class="level-item has-text-centered">
-                            <div>
-                                <p class="heading headingMobDesk secondColDesktop">Créditos</p>
-                                <p class="title titleMobDesk secondColDesktop">5</p>
-                            </div>
-                        </div>
-                        <!--<div class="level-item has-text-centered">
-                            <div>
-                                <p class="heading headingMob secondCol">Likes</p>
-                                <p class="title titleMob secondCol">789</p>
-                            </div>
-                        </div>-->
-                    </nav>
+                    
                 </div>
-                 <div class="tile is-child box is-12 profileTilesDesk">
-                    aqui é para os achivements
+                </div>
+                 <div class="tile is-child box is-4 getHere">
+                    
                 </div>
                 <button class="button profileButtons editUserDesk is-rounded isPrimaryBGColor is-small" v-on:click="toggleModalUser()" ><i class="fas fa-external-link-alt"></i></button>
+                <button class="button profileButtons CreateQRcode is-rounded isPrimaryBGColor is-small" v-on:click="toggleModalUser()" ><i class="fas fa-qrcode"></i></button>
+                
             </div>
-        </div>
+        
     </div>
     <div class="profileMobile is-hidden-tablet">
         <div class="tile is-ancestor">
             <div class="tile is-4 is-vertical is-parent is-12">
                 <div class="tile is-child box profilesTiles firstTile">
-                    <figure class="image is-96x96">
+                    <!--<figure class="image is-96x96">
                         <img src="../assets/Images/jorge.jpg" class="profilePick">
                     </figure>
                     <button class="button profileButtons editPhoto is-rounded isPrimaryBGColor is-small" v-on:click="toggleModalPhoto()"><i class="fas fa-plus"></i> </button>
-                    <h2 class="userName infoUser">Jorge Coelho</h2>
+                    <h2 class="userName infoUser">{{user.name}}</h2>-->
+                    <div class="card">
+                        <header class="card-header">
+                            <div class="card-image">
+                                <figure class="image is 96x96">
+                                    <img src="../assets/Images/jorge.jpg" class="profilePickDesktop">
+                                </figure>
+                            </div>
+                            <p class="card-header-title">
+                            {{user.name}}
+                            </p>
+                        </header>
+                        <div class="card-content">
+                            <p class="usernameDesk">
+                            {{user.username}}
+                            </p>
+                            <p class="emailDesk">
+                            {{user.email}}
+                            </p>
+                            <br>
+                            <nav class="level is-mobile">
+                            <div class="level-item has-text-centered">
+                                <div>
+                                    <p class="heading headingMobDesk">Pontos</p>
+                                    <p class="title titleMobDesk">{{user.points}}</p>
+                                </div>
+                            </div>
+                            <div class="level-item has-text-centered">
+
+                            </div>  
+                            <div class="level-item has-text-centered">
+                                <div>
+                                    <p class="heading headingMobDesk">Créditos</p>
+                                    <p class="title titleMobDesk">{{user.credit}}</p>
+                                </div>
+                            </div>
+                        </nav>
+                        </div>
+                        <footer class="card-footer">
+                            <a class="card-footer-item" v-on:click="toggleModalUser()"><i class="fas fa-external-link-alt"></i></a>
+                            <a class="card-footer-item"><i class="fas fa-qrcode"></i></a>
+                            <a class="card-footer-item" v-on:click="toggleModalPhoto()"><i class="fas fa-camera-retro"></i></a>
+                        </footer>
+                    </div>
                     <!-- Modal For Edit User  -->
                     <div class="modal" v-bind:class="[isModalActiveUser ? 'is-active' : '']">
                         <div class="modal-background"></div>
@@ -114,11 +177,11 @@
                             </header>
                             <section class="modal-card-body centerAlign">
                                 <label class="label is-small">Edit Username</label>
-                                <input class="input is-small" type="text" placeholder="">
+                                <input class="input is-small" type="text" placeholder="" v-model="editUser.username">
                                 <br>
                                 <br>
                                 <label class="label is-small">Edit Email</label>
-                                <input class="input is-small" type="text" placeholder="">
+                                <input class="input is-small" type="text" placeholder="" v-model="editUser.email">
                                 <br>
                                 <br>
                                 <button class="button passwordButton is-danger is-small" v-on:click="togglePassword()">Password</button>
@@ -126,15 +189,15 @@
                                 <br>
                                 <div id="passwordSection" v-if="isActivePasswordField">
                                     <label class="label is-small">Current Password</label>
-                                    <input class="input is-small" type="text" placeholder="">
+                                    <input class="input is-small" type="text" placeholder="" v-model="currPass">
                                     <br>
                                     <br>
                                     <label class="label is-small">New Password</label>
-                                    <input class="input is-small" type="text" placeholder="">
+                                    <input class="input is-small" type="text" placeholder="" v-model="editUser.password">
                                     <br>
                                     <br>
                                 </div>
-                            <button class="button is-success saveButton">Save</button>
+                            <button class="button is-success saveButton" v-on:click="editUserInfo()">Save</button>
                             </section>
                         </div>
                     </div>
@@ -157,36 +220,36 @@
                     </div>
                     <!-- Level -->
 
-                    <nav class="level profileLevel">
+                    <!--<nav class="level profileLevel">
                         <div class="level-item has-text-centered">
                             <div>
                                 <p class="heading headingMob firstCol">Pontos</p>
-                                <p class="title titleMob firstCol">24</p>
+                                <p class="title titleMob firstCol">{{user.points}}</p>
                             </div>
                         </div>
-                        <!--<div class="level-item has-text-centered">
+                        <div class="level-item has-text-centered">
                             <div>
                                 <p class="heading headingMob firstCol">Following</p>
                                 <p class="title titleMob firstCol">123</p>
                             </div>
-                        </div> -->
+                        </div>
                         <div class="level-item has-text-centered">
                             <div>
                                 <p class="heading headingMob secondCol">Créditos</p>
-                                <p class="title titleMob secondCol">5</p>
+                                <p class="title titleMob secondCol">{{user.credit}}</p>
                             </div>
                         </div>
-                        <!--<div class="level-item has-text-centered">
+                        <div class="level-item has-text-centered">
                             <div>
                                 <p class="heading headingMob secondCol">Likes</p>
                                 <p class="title titleMob secondCol">789</p>
                             </div>
-                        </div>-->
-                    </nav>
+                        </div>
+                    </nav> -->
 
                     <!-- buttons -->
                     
-                    <button class="button profileButtons editUser is-rounded isPrimaryBGColor is-small" v-on:click="toggleModalUser()" ><i class="fas fa-external-link-alt"></i></button>
+                   <!-- <button class="button profileButtons editUser is-rounded isPrimaryBGColor is-small" v-on:click="toggleModalUser()" ><i class="fas fa-external-link-alt"></i></button>-->
                 </div>
                 <div class="tile is-child box profilesTiles">
                     <p class="title">nao tocar</p>
@@ -196,17 +259,42 @@
     </div>
     </body>
 </template>
-<style lang="scss">
+<style lang="scss" scoped>
     @import "../assets/perfil.scss";
 </style>
 <script>
+import { GetUserById } from "../API/apiProfile"
+import { EditUserById } from "../API/apiProfile"
+//import { GetQrCode } from "../API/apiProfile"
 export default {
     data() {
         return {
             isModalActiveUser: false,
             isModalActivePhoto: false,
             isActivePasswordField: false,
+            user: {},
+            editUser: {
+                username: "",
+                email:"",
+                password:""
+            },
+            currPass:"",
+            addPhoto:""
         }
+    },
+    async created() {
+        GetUserById(1).then(response => {
+            this.user = response.data.data[0]
+        })
+        // codigo para qr code
+        /*GetQrCode(1).then(response =>{
+            eslint-disable
+            console.log(response)
+            
+        })*/
+        
+
+
     },
     methods: {
         toggleModalUser() {
@@ -232,6 +320,29 @@ export default {
             else {
                 this.isActivePasswordField = true
             }
+        },
+        editUserInfo(){
+            if(this.editUser.password != ""){
+                if(this.editUser.password == this.currPass){
+                        EditUserById(1,this.editUser).then(response => {
+                        /* eslint-disable */
+                        console.log(response.data)  
+                    })
+                }
+                else{
+                    /* eslint-disable */
+                        console.log("the passwords do not match")
+                }
+            }
+            else{
+               EditUserById(1,this.editUser).then(response => {
+                /* eslint-disable */
+                console.log(response.data)  
+            }) 
+            }
+        },
+        addUserPhoto(){
+
         }
     },
 }
