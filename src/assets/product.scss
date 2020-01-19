@@ -9,10 +9,6 @@ $section-padding: 10rem 1.5rem !default;
 $section-padding-medium: 9rem 1.5rem !default;
 $section-padding-large: 18rem 1.5rem !default;
 
-body {
-    background-attachment: fixed;
-    background-color: #F2F2F2;
-}
 
 #secInfoSensor {
     position: relative;
@@ -55,6 +51,11 @@ body {
     color: black
 }
 
+
+.media {
+    min-width: 350px;
+}
+
 .own-comment {
     box-shadow: 0 2px 4px 0 rgba(75, 75, 75, 0.1), 0 2px 5px 0 rgba(75, 75, 75, 0.1);
     border: 0.5px solid #f3ffad;
@@ -74,6 +75,12 @@ body {
 ul {
     list-style: none;
     margin: 0 20px;
+}
+
+.avg-rating {
+    position: relative;
+    padding-left: 25px;
+    padding-top: 15px;
 }
 
 // Shopping cart

@@ -1,0 +1,329 @@
+// Import Bulma's core
+@import "~bulma/sass/utilities/_all";
+
+// Import Bulma and Buefy styles
+@import "~bulma/bulma";
+@import "~buefy/src/scss/buefy";
+
+// Colors
+$primary: #FFBF2F;
+$primary-invert: findColorInvert($primary);
+$secondary: #0A1F3C;
+$secondary-invert: findColorInvert($primary);
+$ourWhite: #F2F2F2;
+$ourWhite-invert: findColorInvert($primary);
+$ourGrey: #6D6D73;
+$ourGrey-invert: findColorInvert($primary);
+
+$dark: #373737;
+$dark-invert: findColorInvert($dark);
+$danger: #FF1053;
+$danger-invert: findColorInvert($danger);
+$white: #FFF;
+$white-invert: findColorInvert($white);
+$light: #F8F9FA;
+$light-invert: findColorInvert($light);
+$success: #27AE60;
+$success-invert: findColorInvert($success);
+$warning: #FFC107;
+$warning-invert: findColorInvert($warning);
+
+$facebook: #3B5998;
+$google: #dd4b39;
+$twitter: #1da1f2;
+$youtube: #FF0000;
+$linkedin: #4875B4;
+$whatsapp: #25D366;
+$reddit: #ff4500;
+
+$colors: ("primary": ($primary, $primary-invert),
+    "dark": ($dark, $dark-invert),
+    "danger": ($danger, $danger-invert),
+    "white": ($white, $white-invert),
+    "success": ($success, $success-invert),
+    "warning": ($warning, $warning-invert));
+
+// Fonts
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+$family-serif: 'Montserrat',
+sans-serif;
+
+//##################################################################### MOBILE VERSION ###########################################################################
+.profileMobile {
+    background-color: $ourGrey !important;
+    height: 100vh !important;
+}
+
+.profilesTiles {
+    position: relative;
+    top: 2rem !important;
+    left: 1.8rem !important;
+    max-width: 85%;
+}
+
+.secondCol {
+    position: relative;
+    bottom: 9.7rem !important;
+    left: 4rem !important
+}
+
+.firstCol {
+    position: relative;
+    bottom: 5.35rem !important;
+    right: 4rem !important;
+}
+
+.firstTile {
+    height: 30.5rem;
+}
+
+.headingMob {
+    color: $secondary !important;
+}
+
+.titleMob {
+    color: $primary !important;
+}
+
+.userEmail {
+    color: $secondary !important;
+    font-size: 12px;
+    position: relative;
+    bottom: 8.4rem !important;
+    left: 7rem !important;
+}
+
+.userName {
+    color: $primary;
+    font-weight: bold;
+}
+
+.infoUser {
+    position: relative;
+    bottom: 9rem !important;
+    left: 7rem !important;
+}
+
+.profilePick {
+    clip-path: circle(50px at center);
+    position: relative;
+    bottom: 5rem;
+}
+
+.profileButtons {
+    background-color: $primary !important;
+    font-weight: bold;
+    font-size: 10px;
+}
+
+.editPhoto {
+    position: relative;
+    bottom: 4.7rem;
+    padding: 12px 9px !important;
+    left: 2rem;
+}
+
+.fa-plus {
+    position: relative;
+    bottom: 0.15rem;
+    color: #FFF;
+}
+
+.editUser {
+    position: relative;
+    bottom: 19.7rem;
+    left: 15.7rem;
+    padding: 12px 8px !important;
+    color: #FFF;
+}
+
+/*.fa-external-link-alt {
+    position: relative;
+    bottom: 0.2rem;
+    left: 0.08rem;
+
+}*/
+.modal-card {
+    max-width: 100%;
+    position: relative;
+    bottom: 3rem;
+
+}
+
+.centerAlign {
+    text-align: center;
+}
+
+.passwordButton {
+    color: #FFF !important;
+    background-color: $secondary !important;
+    border-color: $secondary;
+}
+
+.saveButton {
+    color: #FFF !important;
+    background-color: $primary !important;
+    border-color: $primary;
+}
+
+.modal-card-title {
+    color: $primary !important
+}
+
+.modal-card-head {
+    background-color: $secondary !important;
+    text-align: center !important;
+}
+
+//##################################################################### DESKTOP VERSION ###########################################################################
+
+.profile {
+    background-color: $ourGrey;
+    width: 100vw;
+    height: 100vh;
+}
+
+.profileTilesDesk {
+    max-width: 100% !important;
+    position: relative;
+    left: 6.5rem !important;
+    top: 6.5rem;
+    width: 8rem;
+}
+
+.profilePickDesktop {
+    clip-path: circle(100px at center);
+    position: relative;
+    object-fit: cover;
+    width: 230px !important;
+    height: 230px !important;
+
+}
+
+.userNameDesktop {
+    color: $primary;
+    text-align: center;
+    font-weight: bold;
+    font-size: 26px;
+}
+
+.infoUserDesktop {
+    position: relative;
+    bottom: 9rem !important;
+    left: 10.2rem !important;
+}
+
+.editPhotoDesktop {
+    position: relative;
+    bottom: 8.5rem;
+    padding: 16px 14px !important;
+    left: 3.5rem;
+    font-size: 18px !important;
+}
+
+.firstColDesktop {
+    position: relative;
+    bottom: 6.35rem !important;
+    right: 14rem !important;
+}
+
+.secondColDesktop {
+    position: relative;
+    bottom: 6.2rem !important;
+    right: 40rem !important;
+}
+
+.firstTileChange {
+    height: 29rem;
+    min-height: 0;
+
+}
+
+.headingMobDesk {
+    color: $secondary !important;
+    font-size: 16px !important;
+}
+
+.titleMobDesk {
+    color: $primary !important;
+    font-size: 35px !important;
+}
+
+.editUserDesk {
+    position: relative;
+    bottom: 14.5rem;
+    padding: 16px 21px !important;
+    left: 84.7rem;
+    font-size: 18px !important;
+    width: 11px !important;
+    color: #FFF;
+}
+
+.CreateQRcode {
+    position: relative;
+    bottom: 14rem;
+    padding: 16px 21px !important;
+    left: 84.7rem;
+    font-size: 18px !important;
+    width: 11px !important;
+    color: #FFF;
+}
+
+.card-header {
+    display: flex !important;
+    justify-content: center !important;
+    max-width: 100%;
+    height: 14rem;
+    background-color: rgba($color: #f1f1f1, $alpha: 1.0);
+
+}
+
+.cardTitle {
+    text-align: center !important;
+    color: $primary;
+    font-size: 30px !important;
+    font-weight: bold;
+}
+
+.card {
+    border: none !important;
+}
+
+.usernameDesk {
+    text-align: center;
+    color: $secondary;
+    font-size: 14px;
+}
+
+.emailDesk {
+    text-align: center;
+    color: $ourGrey;
+    font-size: 11px;
+}
+
+.card-footer-item {
+    background-color: $secondary;
+    color: $primary;
+    border-color: $secondary !important;
+}
+
+.card-footer-item:hover {
+    background-color: $secondary;
+    color: $primary;
+    border-color: $secondary !important;
+}
+
+.getHere {
+    max-width: 100% !important;
+    position: relative;
+    right: 29rem !important;
+    top: 7.2rem;
+    width: 8rem;
+    height: 30.2rem;
+}
+
+.qrCode {
+    max-width: 75%;
+    max-height: 75%;
+}

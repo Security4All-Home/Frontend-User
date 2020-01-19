@@ -8,13 +8,13 @@
     <section id="secInfoSensor" class="section">
       <div class="box box-shadow">
         <div class="columns">
-          <div class="column is-12-mobile is-6-tablet is-2-desktop is-centered is-vcentered">
+          <div class="column is-4-mobile is-6-tablet is-2-desktop is-centered is-vcentered">
             <figure class="image is-square">
               <img :src="sensor.image" />
             </figure>
-            <span class="is-centered">
+            <span>
               <br />
-              <StarRating></StarRating>
+              <AverageRating class="avg-rating"></AverageRating>
             </span>
           </div>
           <div class="column is-12-mobile is-6-tablet is-10-desktop">
@@ -71,7 +71,7 @@
                 <textarea class="textarea" placeholder="Adicionar cometário..." rows="2"></textarea>
               </p>
             </div>
-            <nav class="level">
+            <nav class="levels">
               <div class="level-left">
                 <p class="text">Rating:</p>
                 <StarRating></StarRating>
@@ -79,7 +79,7 @@
               <div class="level-right">
                 <div class="level-item">
                   <div class="level-item">
-                    <a class="button is-warning">Rate</a>
+                    <a class="button btn-rate is-warning">Rate</a>
                   </div>
                 </div>
               </div>
@@ -92,17 +92,17 @@
 
     <!-- SECÇÃO: AVALIAÇÕES -->
 
-    <section id="secComentarios" class="section is-12-mobile is-6-tablet is-2-desktop">
+    <section id="secComentarios" class="section">
       <p class="title has-text-left is-size-4">Clients Reviews</p>
-      <article class="media own-comment is-12-mobile is-6-tablet is-2-desktop">
+      <article class="media own-comment is-12-mobile">
         <figure class="media-left">
           <p class="image is-64x64">
             <img class="is-rounded" src="../assets/Images/user.jpg" />
           </p>
         </figure>
-        <div class="media-content is-12-mobile is-6-tablet is-2-desktop">
+        <div class="media-content">
           <div class="content">
-            <p class="text has-text-left has-text-justified">
+            <p class="text">
               <strong>John Smith</strong>
               <small>@johnsmith</small>
               <small>31m</small>
@@ -116,15 +116,15 @@
         </div>
       </article>
 
-      <article class="media other-comment is-12-mobile is-6-tablet is-2-desktop">
+      <article class="media other-comment is-12-mobile">
         <figure class="media-left">
           <p class="image is-64x64">
             <img class="is-rounded" src="../assets/Images/user2.jpg" />
           </p>
         </figure>
-        <div class="media-content is-12-mobile is-6-tablet is-2-desktop">
+        <div class="media-content">
           <div class="content">
-            <p class="text has-text-left has-text-justified">
+            <p class="text">
               <strong>Mary Jane</strong>
               <small>@maryjane</small>
               <small>31m</small>
@@ -143,34 +143,28 @@
 
 <script>
 import StarRating from "../components/StarRating";
+import AverageRating from "../components/AverageRating";
 import Navbar from "../components/Navbar";
 import { getSensorById } from "../API/apiSensor";
+// import { getAverageScore } from "../API/apiReview";
 import { mapActions } from "vuex";
 
 export default {
   name: "Product",
   components: {
     StarRating,
+    AverageRating,
     Navbar
   },
   created() {
     getSensorById(this.$route.params._id).then(res => {
       /* eslint-disable */
       this.sensor = res.data.data[0];
-
       console.log(this.sensor);
     });
   },
   data() {
     return {
-      items: [
-        {
-          name: "Motion Sensor",
-          price: 10.0,
-          amount: 1
-        }
-      ],
-
       sensor: {}
     };
   },
@@ -182,11 +176,14 @@ export default {
       sensor = this.sensor;
       this.addSensor(sensor);
       console.log("ADICIONAR:" + sensor.name);
+
+      this.$buefy.toast.open({
+        message: "Sensor has been added to cart!",
+        type: "is-success"
+      });
     }
   },
-  props: {
-    // sensors: this.sensor
-  }
+  props: {}
 };
 </script>
 

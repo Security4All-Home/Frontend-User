@@ -3,9 +3,9 @@ import {
 } from '../Utils/https'
 
 export function getAllReviews() {
-    return get("")
+    return get('')
 }
 
-export function getReviewById(id) {
-    return get(`/reviews/${id}`)
+export function getAverageScore(id) {
+    return get(`/sensors/score/average/${id}`)
 }

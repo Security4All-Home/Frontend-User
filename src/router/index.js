@@ -8,6 +8,7 @@ import Security from "../views/Security.vue";
 import Catalog from "../views/Catalog.vue";
 import Ranking from "../views/Ranking.vue"
 import Achievements from "../views/Achievements.vue"
+import Profile from '../views/Perfil.vue'
 
 Vue.use(VueRouter);
 
@@ -51,6 +52,11 @@ const routes = [{
     path: "/achievements",
     name: "achievements",
     component: Achievements
+  },
+  {
+    path: "/profile",
+    name: "profile",
+    component: Profile
   }
 ];
 

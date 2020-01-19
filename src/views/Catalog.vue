@@ -8,12 +8,12 @@
       <h1 class="title section-title has-text-weight-bold">Catalog</h1>
 
       <div class="tile is-ancestor">
-        <div class="tile is-2 is-vertical is-parent">
+        <div class="tile is-3 is-vertical is-parent">
           <!--Coluna dos Filtros-->
           <div class="tile is-parent is-12 box box-filter">
             <div class="columns col-filter is-multiline is-12-mobile is-6-tablet is-2-desktop">
-              <b-menu class="menu">
-                <b-menu-list label="Filtro">
+              <b-menu class="menu is-vcentered">
+                <b-menu-list label="FILTERS">
                   <b-field label="Price Range">
                     <b-slider type="is-warning" v-model="range" :min="0" :max="200"></b-slider>
                   </b-field>
@@ -50,7 +50,7 @@
         <div class="tile is-parent">
           <div class="tile is-child box">
             <!--Barra de Pesquisa-->
-            <div class="columns is-vcentered">
+            <div class="columns is-vcentered is-multiline">
               <div class="column is-10">
                 <div class="panel-block">
                   <p class="control has-icons-left">
@@ -72,7 +72,6 @@
                     <i class="fas fa-table"></i>
                   </span>
                 </a>
-
                 <a class="button">
                   <span class="icon is-small">
                     <i class="fas fa-address-card"></i>
@@ -80,11 +79,53 @@
                 </a>
               </div>
             </div>
-
             <!-- Card-->
             <div class="columns is-multiline is-12-mobile is-6-tablet is-3-desktop">
-              <div class="column is-3" v-for="sensor in filteredSensors" :key="sensor.title">
-                <div class="card is-rounded">
+              <div
+                class="column is-3-desktop"
+                v-for="sensor in filteredSensors"
+                :key="sensor.title"
+              >
+                <div class="card">
+                  <div class="card-image">
+                    <figure class="image is-4by3">
+                      <img v-bind:src="sensor.image" />
+                    </figure>
+                  </div>
+                  <div class="card-content">
+                    <div class="media">
+                      <div class="media-left">
+                        <router-link
+                          :to="{name: 'product', params: {_id: sensor.idSensor}}"
+                        >{{sensor.name}}</router-link>
+                      </div>
+                      <!-- No stock -->
+                      <div class="media-content" style="position: relative; float: right;">
+                        <div class="content has-text-right" v-if="sensor.stock <= 0">
+                          <span class="icon has-text-danger">
+                            <i class="fas fa-ban"></i>
+                          </span>
+                        </div>
+                        <!-- Stock available -->
+                        <div class="content has-text-right" v-if="sensor.stock >= 1">
+                          <span class="icon has-text-success">
+                            <i class="fas fa-check-square"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="content">
+                      <p class="subtitle is-3">Price: {{sensor.price}}€</p>
+                      <!-- <a>@bulmaio</a>.
+                      <a href="#">#css</a>
+                      <a href="#">#responsive</a>-->
+                      <br />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- <div class="card" style="max-height: 380px">
                   <div class="image">
                     <figure class="image is-5by4 has-image-centered">
                       <img v-bind:src="sensor.image" />
@@ -103,26 +144,29 @@
 
                         <p class="subtitle is-3">Price: {{sensor.price}}€</p>
 
-                        <div
-                          class="content has-text-right is-clearfix"
-                          v-if="sensor.state == 'unavailable'"
-                        >
+                        <div class="content has-text-right is-clearfix" v-if="sensor.stock <= 0">
                           <span class="icon has-text-danger">
                             <i class="fas fa-ban"></i>
-                            <i></i>
                           </span>
                         </div>
 
-                        <div class="content has-text-right is-clearfix" v-else>
+                        <div class="content has-text-right is-clearfix" v-if="sensor.stock >= 1">
                           <span class="icon has-text-success">
                             <i class="fas fa-check-square"></i>
-                            <i></i>
                           </span>
-                        </div>
-                      </div>
+                </div>-->
+                <!-- <div class="card-footer" style="border: none">
+                          <div class="content" style="align-content: right">
+                            <span class="icon has-text-success">
+                              <i class="fas fa-check-square"></i>
+                              <i></i>
+                            </span>
+                          </div>
+                </div>-->
+                <!-- </div>
                     </div>
                   </div>
-                </div>
+                </div>-->
               </div>
             </div>
 
