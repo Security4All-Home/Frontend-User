@@ -1,45 +1,50 @@
 <template id="achievement">
   <section>
-      <div class="achievements">
-    <br />
-    <br />
-    <br />
-    <h1 id="titleAchievements" class="title is-1-desktop is-8-tablet is-12-mobile" >Achievements</h1>
-    <br />
-    <br />
-    <div class="container" id="tableAchievements">
-      <div class="columns">
-        <div class="column is-offset-2 is-8-desktop is-8-tablet is-11-mobile ">
-        <!--<progress id="progressBarLarge" class="progress is-large is-12-mobile" :value="loggedUser.percentWon" max="100" show-value>{{loggedUser.percentWon}}</progress>
-        <p id="totalProgress">3/5</p>-->
+    <div class="achievements">
+      <br />
+      <br />
+      <br />
+      <h1 id="titleAchievements" class="title is-1-desktop is-8-tablet is-12-mobile">Achievements</h1>
+      <br />
+      <br />
+      <div class="container" id="tableAchievements">
+        <div class="columns">
+          <div class="column is-offset-2 is-8-desktop is-8-tablet is-11-mobile">
+            <!--<progress id="progressBarLarge" class="progress is-large is-12-mobile" :value="loggedUser.percentWon" max="100" show-value>{{loggedUser.percentWon}}</progress>
+            <p id="totalProgress">3/5</p>-->
 
-          <b-progress id="progressBar" :value="loggedUser.points" :max="achievements.length" size="is-large" show-value>
-              {{loggedUser.points}} / {{achievements.length}}
-          </b-progress>
+            <b-progress
+              id="progressBar"
+              :value="loggedUser.points"
+              :max="achievements.length"
+              size="is-large"
+              show-value
+            >{{loggedUser.points}} / {{achievements.length}}</b-progress>
+          </div>
         </div>
-      </div>
-      
-    <br />
-      <div class="level-item has-text-centered">
-        <div id="cardView" class="columns is-multiline">
-          <div
-          id="cardHover"          
-            class="column is-11-mobile is-8-tablet is-4-desktop is-centered"
-            v-for="(achievement,i) in achievements"
-            :key="i"
-          >
-            <div class="card" id="cardPerson">
-              <div class="card-content">
-                <div class="media">
-                  <div class="media-left">
-                    <figure class="image">
-                      <img id="imageCard" :src="achievement.imageDefault" alt="Placeholder image" />
-                    </figure>
-                  </div>
-                  <div class="media-content">
-                    <!--<p  class="title is-15">{{person.id}}</p>-->
-                    <p id="cardName" class="subtitle is-12">{{achievement.description}}</p>
-                    <p id="cardProgress" class="subtitle is-20">0/{{achievement.goal}}</p>
+
+        <br />
+        <div class="level-item has-text-centered">
+          <div id="cardView" class="columns is-multiline">
+            <div
+              id="cardHover"
+              class="column is-11-mobile is-8-tablet is-4-desktop is-centered"
+              v-for="(achievement,i) in achievements"
+              :key="i"
+            >
+              <div class="card" id="cardPerson">
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-left">
+                      <figure class="image">
+                        <img id="imageCard" :src="achievement.imageDefault" alt="Placeholder image" />
+                      </figure>
+                    </div>
+                    <div class="media-content">
+                      <!--<p  class="title is-15">{{person.id}}</p>-->
+                      <p id="cardName" class="subtitle is-12">{{achievement.description}}</p>
+                      <p id="cardProgress" class="subtitle is-20">0/{{achievement.goal}}</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -48,21 +53,18 @@
         </div>
       </div>
     </div>
-  </div>
     <br />
     <br />
   </section>
 </template>
 
 <script>
-import { getAllAchievements } from '../API/apiAchievement';
-import { getAllUsers } from '../API/apiUser';
+import { getAllAchievements } from "../API/apiAchievement";
+import { getAllUsers } from "../API/apiUser";
 
 export default {
   name: "Rankings",
   data() {
-    //let photo = "https://pbs.twimg.com/media/ENwUVtvWkAA3k5x?format=png&name=360x360"
-
     let loggedUser = {
       id: 54,
       username: "James Sully",
@@ -84,18 +86,14 @@ export default {
           id: 4,
           progress: 10
         }
-      ],
-      percentWon: 60
-    }
-
-    
-
+      ]
+    };
 
     return {
       searchBar: "",
       view: 1,
-      achievements:[],
-      users:[],
+      achievements: [],
+      users: [],
       loggedUser
     };
   },
@@ -108,20 +106,19 @@ export default {
     await getAllAchievements().then(response => {
       this.achievements = response.data.data;
       /* eslint-disable */
-      console.log("achievements: " + this.achievements)
+      console.log("achievements: " + this.achievements);
     });
 
     await getAllUsers().then(response => {
       this.users = response.data.data;
       /* eslint-disable */
-      console.log("users: " + this.users)
+      console.log("users: " + this.users);
     });
 
-   // this.tempRanking = JSON.parse(localStorage.getItem("ranking"));
+    // this.tempRanking = JSON.parse(localStorage.getItem("ranking"));
     // console.log(this.persons)
   },
   mounted() {
-    
     /* for (let i = 0; i < this.tempRanking.length; i++) {
       //console.log(this.tempRanking[i].points)
     //points.sort(function(a, b){return a-b});
@@ -233,7 +230,7 @@ export default {
   text-align: center;
 }
 
-#cardPerson {  
+#cardPerson {
   background-color: #0a1f3c;
 }
 
@@ -244,14 +241,14 @@ export default {
   width: 1020px;
 }*/
 #totalProgress {
-  color: #0A1F3C
+  color: #0a1f3c;
 }
 
 #cardHover:hover {
   transform: scale(1.1);
 }
 #progressBar {
-  color: #0A1F3C !important;
+  color: #0a1f3c !important;
   align-self: center !important;
 }
 </style>
