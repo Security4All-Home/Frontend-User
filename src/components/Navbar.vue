@@ -23,7 +23,17 @@
       <div id="navbarContent" class="navbar-menu" v-bind:class="{'is-active': isOpen}">
         <div id="navbarCenter" class="navbar-end">
           <router-link to="/security" class="navbar-item sectionLink has-text-white">Security</router-link>
+
           <router-link to="/catalog" class="navbar-item sectionLink has-text-white">Catalog</router-link>
+          <!--  -->
+          <div class="navbar-item is-hidden-mobile" v-if="user == true">
+            <a class="navbar-link has-text-white" @click="showModal">
+              <i class="fas fa-cart-plus" style="margin-right:5px"></i>
+            </a>
+          </div>
+          <ShopCart v-show="isModalVisible" @close="closeModal"></ShopCart>
+          <!--  -->
+
           <!-- Dropdown desktop/tablet-->
           <div class="navbar-item has-dropdown is-hoverable is-hidden-mobile" v-if="user == true">
             <!-- v-if="user" -->
@@ -60,24 +70,24 @@
             class="navbar-item sectionLink has-text-white is-hidden-tablet"
             v-if="user == true"
           >Settings</a>
-          <div class="navbar-item">
-            <button class="button is-dark" @click="showModal">
-              <span class="icon is-small">
-                <i class="fas fa-cart-plus"></i>
-              </span>
-            </button>
-            <ShopCart v-show="isModalVisible" @close="closeModal"></ShopCart>
-          </div>
+
 
           <div class="navbar-item">
             <div class="buttons">
+              
+
               <a class="button is-info is-hidden-tablet" v-if="user == true">
                 <span class="icon">
                   <i class="fas fa-home"></i>
                 </span>
                 <span>Home Manager</span>
               </a>
-
+              <a class="button is-warning is-outlined is-hidden-tablet" v-if="user == true" @click="showModal">
+                <span class="icon">
+                  <i class="fas fa-cart-plus"></i>
+                </span>
+                <span>Cart</span>
+              </a>
               <a class="button buttonBorderDanger is-hidden-tablet" v-if="user == true">
                 <span class="icon">
                   <i class="fas fa-sign-out-alt"></i>
