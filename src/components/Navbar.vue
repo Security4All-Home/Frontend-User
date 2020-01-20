@@ -3,7 +3,7 @@
     <div class="container">
       <div class="navbar-brand">
         <a class="navbar-item logo" href="#">
-          <img src="./img/1.png" width="161" height="28" />
+          <img src="../assets/Images/1.png" width="161" height="28" />
         </a>
         <!-- BURGER -->
         <a
@@ -49,7 +49,9 @@
               </a>
 
               <a class="navbar-item">Settings</a>
-              <a class="navbar-item"> <router-link :to="{name: 'homeManager'}">Home Manager</router-link></a>
+              <a class="navbar-item">
+                <router-link :to="{name: 'homeManager'}">Home Manager</router-link>
+              </a>
               <a class="navbar-item">
                 <router-link :to="{name: 'ranking'}">Ranking</router-link>
               </a>
@@ -71,18 +73,19 @@
             v-if="user == true"
           >Settings</a>
 
-
           <div class="navbar-item">
             <div class="buttons">
-              
-
               <a class="button is-info is-hidden-tablet" v-if="user == true">
                 <span class="icon">
                   <i class="fas fa-home"></i>
                 </span>
                 <span>Home Manager</span>
               </a>
-              <a class="button is-warning is-outlined is-hidden-tablet" v-if="user == true" @click="showModal">
+              <a
+                class="button is-warning is-outlined is-hidden-tablet"
+                v-if="user == true"
+                @click="showModal"
+              >
                 <span class="icon">
                   <i class="fas fa-cart-plus"></i>
                 </span>
