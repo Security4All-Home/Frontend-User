@@ -1,7 +1,7 @@
 <template>
   <div class="box">
     <button class="delete" aria-label="close" @click="$emit('close')"></button>
-    <span v-if="!hasSensor()">No products :/</span>
+    <span v-if="!hasSensor()">No sensors in your cart :/</span>
     <div v-for="(sensor, index) in getSensorsInCart" :key="index" class="box-item">
       <img :src="sensor.image" alt class="item-thumb" />
       <h3 class="item-name">{{ sensor.name }}</h3>
@@ -11,7 +11,7 @@
     <div class="cart-info" v-if="hasSensor()">
       <span>Total: €{{ totalPrice() }}, 00</span>
       <router-link to="/checkout">
-        <a href="#" class="button is-info is-small">Checkout</a>
+        <router-link to="/checkout" class="button is-info is-small">Checkout</router-link>
       </router-link>
     </div>
   </div>
@@ -86,8 +86,7 @@ export default {
     },
     showCart() {
       // this.showOrHiddenCart();
-    },
-    hasProduct() {}
+    }
   },
   computed: {
     ...mapGetters(["getSensorsInCart"])
@@ -99,7 +98,7 @@ export default {
 .box {
   width: 400px;
   height: auto;
-  background-color: #fafafa;
+  background-color: #e7e7e7;
   box-shadow: 0px 0px 10px rgba(73, 74, 78, 0.1);
   border-radius: 5px;
   box-sizing: border-box;
@@ -107,7 +106,7 @@ export default {
   z-index: 1;
   // padding: ;
   top: 100px;
-  right: 70px;
+  right: 170px;
 }
 
 .box:after {
@@ -128,7 +127,7 @@ export default {
   box-sizing: border-box;
   border-radius: 3px;
   padding: 0 0.5em;
-  margin-top: 0.3em;
+  margin-top: 0.6em;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
@@ -161,144 +160,9 @@ export default {
   align-items: center;
 }
 
-.delete {
-  display: inline-block;
+.button {
+  display: block;
+  float: right;
+  padding-top: 5px;
 }
-
-// $main-color: #6394f8;
-// $light-text: #abb0be;
-
-// .lighter-text {
-//   color: $light-text;
-// }
-
-// .main-color-text {
-//   color: $main-color;
-// }
-
-// .container {
-//   margin: auto;
-//   width: 80%;
-// }
-
-// .badge {
-//   background-color: #6394f8;
-//   border-radius: 10px;
-//   color: white;
-//   display: inline-block;
-//   font-size: 12px;
-//   line-height: 1;
-//   padding: 3px 7px;
-//   text-align: center;
-//   vertical-align: middle;
-//   white-space: nowrap;
-// }
-
-// .shopping-cart {
-//   margin: 50px -300px;
-//   float: right;
-//   background: #0a0f18;
-//   width: 400px;
-//   position: absolute;
-//   border-radius: 3px;
-//   padding: 20px;
-//   right: 270px;
-
-//   .shopping-cart-header {
-//     border-bottom: 1px solid #e8e8e8;
-//     padding-bottom: 15px;
-
-//     .shopping-cart-total {
-//       float: right;
-//     }
-
-//     .cart-total {
-//       padding-right: 15px;
-//     }
-//   }
-
-//   .shopping-cart-items {
-//     padding-top: 20px;
-
-//     .cart-products {
-//       color: white;
-//       text-align: center;
-//     }
-
-//     ul {
-//       list-style: none !important;
-//     }
-
-//     li {
-//       display: inline;
-//       padding-left: 20px;
-//       list-style: none !important;
-//     }
-
-//     img {
-//       float: left;
-//       margin-right: 12px;
-//     }
-
-//     .item-name {
-//       display: block;
-//       padding-top: 10px;
-
-//       font-size: 16px;
-//       color: black;
-//     }
-
-//     .item-price {
-//       color: $main-color;
-//       margin-right: 8px;
-//     }
-
-//     .item-quantity {
-//       color: $light-text;
-//     }
-//   }
-// }
-
-// .shopping-cart:after {
-//   bottom: 100%;
-//   left: 89%;
-//   border: solid transparent;
-//   content: "";
-//   height: 0;
-//   width: 0;
-//   position: absolute;
-//   pointer-events: none;
-//   border-bottom-color: white;
-//   border-width: 8px;
-//   margin-left: -8px;
-// }
-
-// .cart-icon {
-//   color: #515783;
-//   font-size: 24px;
-//   margin-right: 7px;
-//   float: left;
-// }
-
-// .button {
-//   background: $main-color;
-//   color: white;
-//   text-align: center;
-//   padding: 12px;
-//   text-decoration: none;
-//   display: block;
-//   border-radius: 3px;
-//   font-size: 16px;
-//   margin: 25px 0 15px 0;
-
-//   &:hover {
-//     background: lighten($main-color, 3%);
-//   }
-// }
-
-// .clearfix:after {
-//   content: "";
-//   display: table;
-//   clear: both;
-// }
 </style>

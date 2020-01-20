@@ -7,10 +7,10 @@
     <section class="section">
       <h1 class="title section-title has-text-weight-bold">Catalog</h1>
 
-      <div class="tile is-ancestor">
+      <div class="tile is-ancestor is-vcentered">
         <div class="tile is-3 is-vertical is-parent">
           <!--Coluna dos Filtros-->
-          <div class="tile is-parent is-12 box box-filter">
+          <div class="tile is-parent is-12 box box-filter is-vcentered is-centered">
             <div class="columns col-filter is-multiline is-12-mobile is-6-tablet is-2-desktop">
               <b-menu class="menu is-vcentered">
                 <b-menu-list label="FILTERS">
@@ -117,56 +117,10 @@
 
                     <div class="content">
                       <p class="subtitle is-3">Price: {{sensor.price}}€</p>
-                      <!-- <a>@bulmaio</a>.
-                      <a href="#">#css</a>
-                      <a href="#">#responsive</a>-->
                       <br />
                     </div>
                   </div>
                 </div>
-
-                <!-- <div class="card" style="max-height: 380px">
-                  <div class="image">
-                    <figure class="image is-5by4 has-image-centered">
-                      <img v-bind:src="sensor.image" />
-                    </figure>
-                  </div>
-                  <div class="card-content">
-                    <div class="media">
-                      <div class="media-content">
-                        <p class="title is-6">
-                          <router-link
-                            :to="{name: 'product', params: {_id: sensor.idSensor}}"
-                          >{{sensor.name}}</router-link>
-                        </p>
-
-                        <div class="Stars" style="--rating: 4.5 " aria-label></div>
-
-                        <p class="subtitle is-3">Price: {{sensor.price}}€</p>
-
-                        <div class="content has-text-right is-clearfix" v-if="sensor.stock <= 0">
-                          <span class="icon has-text-danger">
-                            <i class="fas fa-ban"></i>
-                          </span>
-                        </div>
-
-                        <div class="content has-text-right is-clearfix" v-if="sensor.stock >= 1">
-                          <span class="icon has-text-success">
-                            <i class="fas fa-check-square"></i>
-                          </span>
-                </div>-->
-                <!-- <div class="card-footer" style="border: none">
-                          <div class="content" style="align-content: right">
-                            <span class="icon has-text-success">
-                              <i class="fas fa-check-square"></i>
-                              <i></i>
-                            </span>
-                          </div>
-                </div>-->
-                <!-- </div>
-                    </div>
-                  </div>
-                </div>-->
               </div>
             </div>
 

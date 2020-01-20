@@ -7,8 +7,6 @@ import {
 //login
 export function GetUserById(id) {
     return get(`/user/${id}`)
-    /* eslint-disable */
-    console.log("hi")
 }
 //register
 /* eslint-disable */
