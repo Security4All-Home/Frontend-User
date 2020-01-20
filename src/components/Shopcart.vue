@@ -15,6 +15,42 @@
       </router-link>
     </div>
   </div>
+
+  <!-- <div class="container">
+    <div class="shopping-cart is-dark">
+      <div class="shopping-cart-header">
+        <i class="fa fa-shopping-cart cart-icon"></i>
+        <span class="badge">3</span>
+        <div class="shopping-cart-total">
+          <span class="lighter-text">Total:</span>
+          <span class="cart-total main-color-text">{{totalPrice()}}</span>
+          <button class="delete" aria-label="close" @click="$emit('close')"></button>
+        </div>
+      </div>
+      <ul class="shopping-cart-items">
+        <span class="cart-products" v-if="!hasSensor()">No products :/</span>
+        <li class="clearfix" v-for="(sensor, index) in getSensorsInCart" :key="index">
+          <div class="columns is-vcentered">
+            <div class="column">
+              <div class="level">
+                <div class="level-item">
+                  <figure class="image is-128x128">
+                    <img src="./img/sensor.png" alt="item1" />
+                  </figure>
+                </div>
+              </div>
+            </div>
+            <div class="column">
+              <span class="item-name">{{sensor.name}}</span>
+              <span class="item-price">{{sensor.price}}</span>
+              <span class="item-quantity">Quantity: 01</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <a href="#" class="button">Checkout</a>
+    </div>
+  </div>-->
 </template>
 
 <script>
@@ -27,7 +63,7 @@ export default {
       items: [
         {
           id: 1,
-          image: "./assets/Images/motion_sensor.png",
+          image: "./img/motion_sensor.png",
           name: "Motion Sensor",
           price: 10.0,
           amount: "1"

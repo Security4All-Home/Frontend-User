@@ -60,13 +60,6 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <i class="fas fa-medal"></i>
                   </span>
-                  <!--<span
-                    id="allNumber"
-                    v-if="props.row.id != loggedUser.id && props.row.id != 3 && props.row.id != 2 && props.row.id != 1"
-                  >
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <i class="fas fa-medal"></i>
-                  </span>-->
                   <span>{{ props.row.points }}</span>
                 </b-table-column>
               </template>

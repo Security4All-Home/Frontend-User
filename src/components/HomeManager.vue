@@ -25,7 +25,7 @@
                 width="1"
                 centered
                 numeric
-              >{{ props.row.id }}</b-table-column>
+              >{{ props.row.idSensor }}</b-table-column>
 
               <b-table-column
                 id="usernameItem"
@@ -34,7 +34,7 @@
                 label="Sensor"
                 width="15"
                 centered
-              >{{ props.row.sensor }}</b-table-column>
+              >{{ props.row.name }}</b-table-column>
 
               <b-table-column
                 style="text-align:left !important"
@@ -79,8 +79,6 @@
 
     >
     SOS
-     <!--<img id="imgIcon" src="https://image.flaticon.com/icons/svg/1331/1331428.svg">-->
-     <!-- <i class="fas fa-phone-square"></i>-->
     </button>
 
     <br />
@@ -107,9 +105,10 @@ export default {
       this.sensors = response.data.data;
       /* eslint-disable */
       console.log("sensors: " + this.sensors);
+      console.log(this.sensors);
     });
     for (let i = 0; i < this.sensors.length; i++) {
-        this.data.push(sensors[i])        
+        this.data.push(this.sensors[i])        
     }
   },
   mounted() {
