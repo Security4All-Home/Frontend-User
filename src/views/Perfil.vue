@@ -435,7 +435,7 @@ export default {
     };
   },
   created() {
-    GetUserById(9).then(response => {
+    GetUserById(this.$route.params._id).then(response => {
       this.user = response.data.data[0];
       /*eslint-disable*/
       console.log(response.data)
