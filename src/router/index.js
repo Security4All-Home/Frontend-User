@@ -54,7 +54,7 @@ const routes = [{
     component: Achievements
   },
   {
-    path: "/profile",
+    path: "/profile/:_id",
     name: "profile",
     component: Profile
   }

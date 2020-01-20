@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <NavBar v-if="currentRoute!='home'"></NavBar>
+    <NavBar></NavBar>
 
     <router-view />
 

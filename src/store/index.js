@@ -11,7 +11,10 @@ export default new Vuex.Store({
   },
   getters: {
     getCurrentSensor: state => state.currentSensor,
-    getSensorsInCart: state => state.cartSensors
+    getSensorsInCart: state => state.cartSensors,
+    getUserId(state){
+      return state.currUser
+    },
   },
   mutations: {
     ADD_SENSOR: (state, product) => {
@@ -20,6 +23,13 @@ export default new Vuex.Store({
 
     REMOVE_SENSOR: (state, index) => {
       state.cartSensors.splice(index, 1)
+    },
+
+    SET_USER_ID: (state, index) => {
+      state.currUser = index
+    },
+    LOG_OUT: (state) => {
+      state.currUser = 0
     }
   },
   actions: {
@@ -33,6 +43,12 @@ export default new Vuex.Store({
 
     currentSensor: (context, product) => {
       context.commit('CURRENT_SENSOR', product);
+    },
+    set_user_id: (context, id) => {
+      context.commit('SET_USER_ID', id);
+    },
+    log_out: (context) => {
+      context.commit('LOG_OUT');
     }
   },
   modules: {}

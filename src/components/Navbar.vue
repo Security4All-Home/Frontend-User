@@ -26,7 +26,7 @@
 
           <router-link to="/catalog" class="navbar-item sectionLink has-text-white">Catalog</router-link>
           <!--  -->
-          <div class="navbar-item is-hidden-mobile" v-if="user == true">
+          <div class="navbar-item is-hidden-mobile">
             <a class="navbar-link has-text-white" @click="showModal">
               <i class="fas fa-cart-plus" style="margin-right:5px"></i>
             </a>
@@ -35,71 +35,73 @@
           <!--  -->
 
           <!-- Dropdown desktop/tablet-->
-          <div class="navbar-item has-dropdown is-hoverable is-hidden-mobile" v-if="user == true">
+          <div class="navbar-item has-dropdown is-hoverable is-hidden-mobile">
             <!-- v-if="user" -->
             <a class="navbar-link has-text-white">
               <i class="fas fa-user-circle is-white" style="margin-right:5px"></i>Rodrigo
             </a>
 
             <div class="navbar-dropdown">
-              <a class="navbar-item">Perfil</a>
+              <a class="navbar-item"><router-link :to="{ name: 'profile', params: { _id: userId } }">Profile</router-link></a>
 
-              <a class="navbar-item">
+              <a class="navbar-item" v-if="userId != 0">
                 <router-link :to="{name: 'achievements'}">Achievements</router-link>
               </a>
 
               <a class="navbar-item">Settings</a>
-              <a class="navbar-item">Home Manager</a>
+              <a class="navbar-item" v-if="userId != 0">Home Manager</a>
               <a class="navbar-item">
                 <router-link :to="{name: 'ranking'}">Ranking</router-link>
               </a>
               <hr class="navbar-divider" />
-              <a class="navbar-item">Sign out</a>
+              <a class="navbar-item" v-if="userId != 0" v-on:click="signOut()">Sign out</a>
             </div>
           </div>
           <!-- Mobile dropdown -->
           <a
             class="navbar-item sectionLink has-text-white is-hidden-tablet"
-            v-if="user == true"
-          >Perfil</a>
+          ></a>
           <a
             class="navbar-item sectionLink has-text-white is-hidden-tablet"
-            v-if="user == true"
-          >Achievements</a>
+            v-if="userId != 0"
+          ><router-link tag="span" :to="{name: 'achievements'}">Achievements</router-link></a>
           <a
             class="navbar-item sectionLink has-text-white is-hidden-tablet"
-            v-if="user == true"
           >Settings</a>
+          <a
+            class="navbar-item sectionLink has-text-white is-hidden-tablet"
+            v-if="userId != 0"
+          ><router-link tag="span" :to="{ name: 'profile', params: { _id: userId } }">Profile</router-link></a>
 
 
           <div class="navbar-item">
             <div class="buttons">
               
 
-              <a class="button is-info is-hidden-tablet" v-if="user == true">
+              <a class="button is-info is-hidden-tablet" v-if="userId != 0">
                 <span class="icon">
                   <i class="fas fa-home"></i>
                 </span>
                 <span>Home Manager</span>
               </a>
-              <a class="button is-warning is-outlined is-hidden-tablet" v-if="user == true" @click="showModal">
+              <a class="button is-warning is-outlined is-hidden-tablet" @click="showModal">
                 <span class="icon">
                   <i class="fas fa-cart-plus"></i>
                 </span>
                 <span>Cart</span>
               </a>
-              <a class="button buttonBorderDanger is-hidden-tablet" v-if="user == true">
+              <a class="button buttonBorderDanger is-hidden-tablet" v-if="userId != 0" v-on:click="signOut()">
                 <span class="icon">
                   <i class="fas fa-sign-out-alt"></i>
                 </span>
                 <span>Sign Out</span>
               </a>
 
-              <a class="button buttonBorderPrimary" v-if="user == false">
+              <a class="button buttonBorderPrimary" v-if="userId == 0">
                 <span class="icon is-hidden-tablet">
                   <i class="fas fa-sign-in-alt"></i>
                 </span>
-                <span>Log In</span>
+                <span><router-link tag="span" :to="{name: 'login'}">Log In</router-link></span>
               </a>
             </div>
           </div>
@@ -111,7 +113,7 @@
 
 <script>
 import ShopCart from "../components/Shopcart";
-
+import { GetUserById } from "../API/apiProfile";
 export default {
   name: "Navbar1",
   components: {
@@ -120,9 +122,21 @@ export default {
   data() {
     return {
       isOpen: false,
-      user: true,
-      isModalVisible: false
+      userLogged: "A",
+      isModalVisible: false,
+      userId: 0
     };
+  },
+  async created() {
+    this.userId = this.$store.getters.getUserId
+    /*eslint-disable*/
+    console.log(this.userId)
+    var self = this
+     await GetUserById(this.userId).then(response => {
+      self.userLogged = response.data.data[0];
+      /*eslint-disable*/
+      console.log(self.userLogged)
+    });
   },
   methods: {
     showModal() {
@@ -130,6 +144,10 @@ export default {
     },
     closeModal() {
       this.isModalVisible = false;
+    },
+    signOut(){
+      this.$store.dispatch("log_out")
+      this.$router.push({name: "login"})
     }
   }
 };
