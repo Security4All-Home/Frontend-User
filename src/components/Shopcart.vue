@@ -35,7 +35,7 @@
               <div class="level">
                 <div class="level-item">
                   <figure class="image is-128x128">
-                    <img src="../assets/Images/sensor.png" alt="item1" />
+                    <img src="./img/sensor.png" alt="item1" />
                   </figure>
                 </div>
               </div>
@@ -63,7 +63,7 @@ export default {
       items: [
         {
           id: 1,
-          image: "./assets/Images/motion_sensor.png",
+          image: "./img/motion_sensor.png",
           name: "Motion Sensor",
           price: 10.0,
           amount: "1"

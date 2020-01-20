@@ -10,7 +10,7 @@
           <div class="level-left">
             <div class="level-item">
               <a class="logo" href="#">
-                <img src="../assets/Images/LogoFont.png" width="161" height="28" />
+                <img src="./img/LogoFont.png" width="161" height="28" />
               </a>
             </div>
           </div>

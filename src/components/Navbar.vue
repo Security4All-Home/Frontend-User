@@ -3,7 +3,7 @@
     <div class="container">
       <div class="navbar-brand">
         <a class="navbar-item logo" href="#">
-          <img src="../assets/Images/1.png" width="161" height="28" />
+          <img src="./img/1.png" width="161" height="28" />
         </a>
         <!-- BURGER -->
         <a
@@ -49,7 +49,7 @@
               </a>
 
               <a class="navbar-item">Settings</a>
-              <a class="navbar-item" v-if="userId != 0">Home Manager</a>
+              <a class="navbar-item"> <router-link :to="{name: 'homeManager'}">Home Manager</router-link></a>
               <a class="navbar-item">
                 <router-link :to="{name: 'ranking'}">Ranking</router-link>
               </a>

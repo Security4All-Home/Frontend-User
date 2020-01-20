@@ -9,6 +9,7 @@ import Catalog from "../views/Catalog.vue";
 import Ranking from "../views/Ranking.vue"
 import Achievements from "../views/Achievements.vue"
 import Profile from '../views/Perfil.vue'
+import HomeManager from '../views/HomeManager.vue'
 
 Vue.use(VueRouter);
 
@@ -57,6 +58,11 @@ const routes = [{
     path: "/profile/:_id",
     name: "profile",
     component: Profile
+  },
+  {
+    path: "/homeManager",
+    name: "homeManager",
+    component: HomeManager
   }
 ];
 
