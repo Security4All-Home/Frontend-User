@@ -101,7 +101,7 @@ export default {
       console.log("usersensors");
       console.log(this.userSensors);
     });
-    for (let i = 0; i < 21; i++) {
+    for (let i = 0; i < this.achievements.length; i++) {
       this.tempAchievements.push({
         imageType: {
           type: this.achievements[i].imageType.type,
