@@ -2,14 +2,24 @@
   <div class="box">
     <button class="delete" aria-label="close" @click="$emit('close')"></button>
     <span v-if="!hasSensor()">No sensors in your cart :/</span>
+    <span v-if="hasSensor()">
+      <i class="fas fa-shopping-cart"></i>
+      Your Shopping Cart
+    </span>
     <div v-for="(sensor, index) in getSensorsInCart" :key="index" class="box-item">
       <img :src="sensor.image" alt class="item-thumb" />
       <h3 class="item-name">{{ sensor.name }}</h3>
-      <span class="item-amount">Amount: 1</span>
+      <span class="item-amount">Choose quantity in checkout</span>
       <span class="item-price">€{{ sensor.price }}, 00</span>
+      <!-- <button class="button item-remove" @click="deleteSensor(sensor.name, index)">
+        <i class="fas fa-trash"></i>
+      </button>-->
     </div>
     <div class="cart-info" v-if="hasSensor()">
-      <span>Total: €{{ totalPrice() }}, 00</span>
+      <span>
+        Total:
+        <bold>€{{ totalPrice() }},00</bold>
+      </span>
       <router-link to="/checkout">
         <router-link to="/checkout" class="button is-info is-small">Checkout</router-link>
       </router-link>
@@ -106,7 +116,7 @@ export default {
   z-index: 1;
   // padding: ;
   top: 100px;
-  right: 170px;
+  right: 250px;
 }
 
 .box:after {
@@ -143,26 +153,51 @@ export default {
 }
 
 .item-name {
+  font-weight: bold !important;
   grid-column: 2/4;
-  grid-row: 1/2;
+  grid-row: 2/4;
   font-weight: normal;
+  padding-left: 10px;
 }
 
 .item-amount {
   grid-column: 2/3;
-  grid-row: 2/4;
-  color: #ddd;
+  grid-row: 3/4;
+  color: rgb(23, 33, 90);
+  font-size: 12px;
+  float: right;
+  font-size: 10px;
+  padding-left: 10px;
 }
+
+.item-price {
+  grid-column: 4/4;
+  grid-row: 3/4;
+  padding-right: 10px;
+}
+
+// .item-remove {
+//   width: 9%;
+//   border: none;
+// }
+
+// button {
+//   grid-column: 4/4;
+//   grid-row: 1/4;
+//   margin-left: 40px;
+// }
 
 .cart-info {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 10px;
 }
 
-.button {
+.delete {
   display: block;
   float: right;
-  padding-top: 5px;
+  margin-top: 5px;
+  margin-bottom: 10px;
 }
 </style>

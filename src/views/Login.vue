@@ -57,7 +57,7 @@
           <a id="forgotPass">Esqueceu-se da sua password?</a>
           <!--Login Button -->
           <br />
-          <button id="logButton" class="button is-warning">ENTRAR</button>
+          <button id="logButton" class="button is-warning" @click="loginExe()">ENTRAR</button>
           <br />
         </div>
       </div>

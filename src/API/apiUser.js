@@ -1,4 +1,7 @@
-import {get, put} from  '../Utils/https'
+import {
+    get,
+    put
+} from '../Utils/https'
 
 export function getAllUsers() {
     return get("/user")

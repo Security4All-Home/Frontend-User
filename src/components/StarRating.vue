@@ -1,6 +1,6 @@
 <template>
   <section>
-    <b-rate icon-pack="fa" @change="success"></b-rate>
+    <b-rate icon-pack="fa"></b-rate>
   </section>
 </template>
 
@@ -8,12 +8,12 @@
 export default {
   name: "StarRating",
   methods: {
-    success() {
-      this.$buefy.toast.open({
-        message: "Thanks for you Rate!",
-        type: "is-success"
-      });
-    }
+    // success() {
+    //   this.$buefy.toast.open({
+    //     message: "Thanks for you Rate!",
+    //     type: "is-success"
+    //   });
+    // }
   }
 };
 </script>

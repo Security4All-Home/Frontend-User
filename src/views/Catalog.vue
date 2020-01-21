@@ -8,7 +8,7 @@
       <h1 class="title section-title has-text-weight-bold">Catalog</h1>
 
       <div class="tile is-ancestor is-vcentered">
-        <div class="tile is-3 is-vertical is-parent">
+        <div class="tile is-2 is-vertical is-parent">
           <!--Coluna dos Filtros-->
           <div class="tile is-parent is-12 box box-filter is-vcentered is-centered">
             <div class="columns col-filter is-multiline is-12-mobile is-6-tablet is-2-desktop">
