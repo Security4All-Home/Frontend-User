@@ -1,5 +1,5 @@
 <template>
-  <div class="box">
+  <div class="box is-flex-mobile">
     <button class="delete" aria-label="close" @click="$emit('close')"></button>
     <span v-if="!hasSensor()">No sensors in your cart :/</span>
     <span v-if="hasSensor()">
@@ -11,9 +11,9 @@
       <h3 class="item-name">{{ sensor.name }}</h3>
       <span class="item-amount">Choose quantity in checkout</span>
       <span class="item-price">€{{ sensor.price }}, 00</span>
-      <!-- <button class="button item-remove" @click="deleteSensor(sensor.name, index)">
+      <button class="button item-remove" @click="deleteSensor(sensor.name, index)">
         <i class="fas fa-trash"></i>
-      </button>-->
+      </button>
     </div>
     <div class="cart-info" v-if="hasSensor()">
       <span>
@@ -176,16 +176,16 @@ export default {
   padding-right: 10px;
 }
 
-// .item-remove {
-//   width: 9%;
-//   border: none;
-// }
+.item-remove {
+  width: 9%;
+  border: none;
+}
 
-// button {
-//   grid-column: 4/4;
-//   grid-row: 1/4;
-//   margin-left: 40px;
-// }
+button {
+  grid-column: 4/4;
+  grid-row: 1/4;
+  margin-left: 40px;
+}
 
 .cart-info {
   display: flex;

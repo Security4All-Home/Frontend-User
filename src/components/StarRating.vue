@@ -1,6 +1,6 @@
 <template>
   <section>
-    <b-rate icon-pack="fa"></b-rate>
+    <b-rate icon-pack="fa" :value="rate"></b-rate>
   </section>
 </template>
 

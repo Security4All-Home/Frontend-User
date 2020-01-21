@@ -72,14 +72,14 @@
                   class="textarea"
                   placeholder="Adicionar cometário..."
                   rows="2"
-                  v-model="text"
+                  v-model="userReview.text"
                 ></textarea>
               </p>
             </div>
             <nav class="levels">
               <div class="level-left">
                 <p class="text">Rating:</p>
-                <StarRating v-model="rating"></StarRating>
+                <StarRating :value="userReview.rate"></StarRating>
               </div>
               <div class="level-right">
                 <div class="level-item">
@@ -96,7 +96,6 @@
     <!-- FIM SECÇÃO AVALIAÇÃO DO SENSOR -->
 
     <!-- SECÇÃO: AVALIAÇÕES -->
-
     <section id="secComentarios" class="section">
       <p class="title has-text-left is-size-4">Clients Reviews</p>
       <article
@@ -171,8 +170,8 @@ export default {
       sensor: {},
       reviews: [],
       userReview: {
-        text: this.text,
-        rating: this.rating
+        text: "",
+        rate: ""
       },
       users: []
     };
@@ -195,7 +194,7 @@ export default {
     doReview(review) {
       /* eslint-disable */
       review = this.userReview;
-      console.log("Text: " + review.text + "and rating: " + review.rating);
+      console.log("Text: " + review.text + " and rating: " + review.rate);
     }
   },
   props: {}
