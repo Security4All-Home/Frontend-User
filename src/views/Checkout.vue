@@ -2,7 +2,7 @@
   <section class="section">
     <div class="container empty-state" v-if="!hasSensor()">
       <figure class="image is-centered is-vcentered">
-        <img src="../assets/Images/shopping-cart-empty.svg" alt />
+        <img src="../assets/img/shopping-cart-empty.svg" alt />
       </figure>
     </div>
 
