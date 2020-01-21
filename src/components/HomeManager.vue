@@ -112,14 +112,15 @@ export default {
     });
     console.log("houseId: " + this.houseById)
 
-    await getAllHouseSensors().then(response => {
+    await getAllHouseSensors(this.houseById).then(response => {
+        this.sensors = response.data.data
 
     });
 
 
 
-    for (let i = 0; i < this.userSensors.length; i++) {
-      this.data.push(this.userSensors[i]);
+    for (let i = 0; i < this.sensors.length; i++) {
+      this.data.push(this.sensors[i]);
     }
   },
   mounted() {},
