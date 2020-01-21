@@ -79,7 +79,7 @@
             <nav class="levels">
               <div class="level-left">
                 <p class="text">Rating:</p>
-                <StarRating :value="userReview.rate"></StarRating>
+                <StarRating v-model="userReview.rate" @update="updateRate($event)"></StarRating>
               </div>
               <div class="level-right">
                 <div class="level-item">
@@ -145,7 +145,7 @@ export default {
     AverageRating,
     Navbar
   },
-  created() {
+  async created() {
     getSensorById(this.$route.params._id).then(res => {
       /* eslint-disable */
       this.sensor = res.data.data[0];
@@ -155,7 +155,7 @@ export default {
     getAllReviews(this.$route.params._id).then(res => {
       /* eslint-disable */
       this.reviews = res.data.data;
-      console.log("REVIEWS: " + this.reviews);
+      console.log("REVIEWS: " + JSON.stringify(this.reviews));
     });
 
     getAllUsers().then(res => {
@@ -164,6 +164,12 @@ export default {
       let str = JSON.stringify(users);
       console.log("Users: " + str);
     });
+
+    //FAzes um ciclo que percorre todas as Reviews, e depois com o iddo User, fazes getUserById(idUser).photo
+    for (let i = 0; i < this.reviews.lenght; i++) {
+      this.reviews[i].userPhoto = await getUserById(this.reviews[i].idUser)
+        .photo;
+    }
   },
   data() {
     return {
@@ -190,7 +196,9 @@ export default {
         type: "is-success"
       });
     },
-
+    updateRate(rate) {
+      this.userReview.rate = rate;
+    },
     doReview(review) {
       /* eslint-disable */
       review = this.userReview;

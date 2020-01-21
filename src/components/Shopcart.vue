@@ -1,5 +1,5 @@
 <template>
-  <div class="box is-flex-mobile">
+  <div class="box is-hidden-mobile">
     <button class="delete" aria-label="close" @click="$emit('close')"></button>
     <span v-if="!hasSensor()">No sensors in your cart :/</span>
     <span v-if="hasSensor()">
