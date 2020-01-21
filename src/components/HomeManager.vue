@@ -67,8 +67,7 @@
       type="button"
       id="buttonSOS"
       title="SOS"
-      data-toggle="modal"
-      data-target="#SOSModal"
+      @click="createAnAlert()"
       class="button is-danger is-large"
     >SOS</button>
     <br />
@@ -80,6 +79,8 @@
 <script>
 //import { getAllHouseSensors } from "../API/apiSensor";
 import { getUserById, getUserSpaces } from "../API/apiUser";
+import { addAlert } from "../API/apiAlert";
+import { ToastProgrammatic as toast } from "buefy";
 
 export default {
   name: "Rankings",
@@ -132,10 +133,26 @@ export default {
       this.data.push(this.userSensors[i]);
     }
   },
-  mounted() {},
+  mounted() {
+    
+  },
   computed: {},
-  methods: {}
-};
+  methods: {
+      createAnAlert(nameUser){ //Vais buscar o nome do user da forma que quiseres
+        let temp = {
+          "alertText": "User" + nameUser + "pressed the emergency button!",
+          "alertType": "Danger"
+        }
+        addAlert(temp)
+        .then(() =>{
+          toast.open({
+                        message: "Alert sent",
+                        type: "is-warning"
+          })
+
+        }
+      }
+    }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
