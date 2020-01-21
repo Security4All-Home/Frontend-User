@@ -33,7 +33,7 @@ export default {
         axios.defaults.headers.common['x-access-token'] = token
     }
 
-  }
+  },
 };
 </script>
 

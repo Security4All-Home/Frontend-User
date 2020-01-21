@@ -35,7 +35,7 @@
           <!--  -->
 
           <!-- Dropdown desktop/tablet-->
-          <div class="navbar-item has-dropdown is-hoverable is-hidden-mobile">
+          <div class="navbar-item has-dropdown is-hoverable is-hidden-mobile" v-if="userId != 0">
             <!-- v-if="user" -->
             <a class="navbar-link has-text-white">
               <i class="fas fa-user-circle is-white" style="margin-right:5px"></i>{{userName}}
@@ -73,7 +73,7 @@
 
           <div class="navbar-item">
             <div class="buttons">
-              <a class="button is-info is-hidden-tablet" v-if="user == true">
+              <a class="button is-info is-hidden-tablet" v-if="userId != 0">
                 <span class="icon">
                   <i class="fas fa-home"></i>
                 </span>
@@ -116,6 +116,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import ShopCart from "../components/Shopcart";
 import { GetUserById } from "../API/apiProfile";
 export default {
@@ -126,7 +127,7 @@ export default {
   data() {
     return {
       isOpen: false,
-      userLogged: "A",
+      userLogged: "",
       isModalVisible: false,
       userId: 0,
       userName: ""
@@ -152,10 +153,13 @@ export default {
       this.isModalVisible = false;
     },
     signOut() {
-      this.$store.dispatch("log_out");
+      //this.$store.dispatch("log_out");
       this.$router.push({ name: "login" });
       localStorage.removeItem("token");
       localStorage.removeItem("user");
+      axios.defaults.headers.common['x-access-token'] = ""
+      this.userLogged = ""
+      this.userId = 0
       
     }
   }

@@ -66,4 +66,7 @@ section {
   left: 0;
   width: 100%;
 }
+p{
+  color: white;
+}
 </style>

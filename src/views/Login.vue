@@ -499,6 +499,7 @@
 //import bulmaSteps from "../../node_modules/bulma-extensions/bulma-steps/src/js/index";
 import { doLogin } from "../API/apiAuth";
 import { doRegister} from "../API/apiAuth";
+import { addAlert } from "../API/apiAlert";
 export default {
   data() {
     return {
@@ -602,7 +603,7 @@ export default {
           this.signInInfo.credit = 100
         } else {
           this.isActivePremium = true;
-          this.signInInfo.idPackage = 100
+          this.signInInfo.idPackage = 1
         }
       }
     },
@@ -618,16 +619,25 @@ export default {
         }
         else{
           /*eslint-disable*/
-          console.log(response.data)
-          console.log(response.data.data)
-          this.$buefy.toast.open({
-            message: "Welcome!",
-            type: "is-success"
-          });
-          this.$router.push({name: "home"})
-          this.$store.dispatch("set_user_id",response.data.data)
-          localStorage.setItem("token", response.data.token)
-          localStorage.setItem("user",JSON.stringify(response.data.data)) 
+          if(response.data.data.disabled == 0){
+            console.log(response.data)
+            console.log(response.data.data.disabled)
+            this.$buefy.toast.open({
+              message: "Welcome!",
+              type: "is-success"
+            });
+            this.$router.push({name: "home"})
+            this.$store.dispatch("set_user_id",response.data.data)
+            localStorage.setItem("token", response.data.token)
+            localStorage.setItem("user",JSON.stringify(response.data.data))
+          }
+          else {
+            this.$buefy.toast.open({
+              message: "You are Blocked!!",
+              type: "is-danger"
+            });
+          }
+           
         }
       });
     },
@@ -635,7 +645,7 @@ export default {
       doRegister(this.signInInfo).then(response => {
         /*eslint-disable*/
         console.log(response.data)
-        /*if(!response.data.success){
+        if(!response.data.success){
           this.$buefy.toast.open({
             message: "Invalid User!",
             type: "is-danger"
@@ -646,8 +656,13 @@ export default {
             message: "Welcome!",
             type: "is-success"
           });
-          this.login = false
-        }*/
+          this.login = true
+          addAlert({"alertText": "New user " + this.signInInfo.name,"alertType": "Success"}).then(response => {
+              /*eslint-disable*/
+              console.log(response.data)
+          })
+        }
+
       });
     }
   },
