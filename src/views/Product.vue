@@ -5,7 +5,7 @@
     <section>
       <Navbar></Navbar>
     </section>
-    <section id="secInfoSensor" class="section">
+    <section id="secInfoSensor" class="section" style="margin-top: 30px;">
       <div class="box box-shadow">
         <div class="columns">
           <div class="column is-4-mobile is-6-tablet is-2-desktop is-centered is-vcentered">
@@ -68,18 +68,23 @@
           <div class="media-content">
             <div class="field">
               <p class="control">
-                <textarea class="textarea" placeholder="Adicionar cometário..." rows="2"></textarea>
+                <textarea
+                  class="textarea"
+                  placeholder="Adicionar cometário..."
+                  rows="2"
+                  v-model="text"
+                ></textarea>
               </p>
             </div>
             <nav class="levels">
               <div class="level-left">
                 <p class="text">Rating:</p>
-                <StarRating></StarRating>
+                <StarRating v-model="rating"></StarRating>
               </div>
               <div class="level-right">
                 <div class="level-item">
                   <div class="level-item">
-                    <a class="button btn-rate is-warning">Rate</a>
+                    <a class="button btn-rate is-warning" @click="doReview()">Rate</a>
                   </div>
                 </div>
               </div>
@@ -94,7 +99,7 @@
 
     <section id="secComentarios" class="section">
       <p class="title has-text-left is-size-4">Clients Reviews</p>
-      <article class="media own-comment is-12-mobile">
+      <article class="media own-comment is-12-mobile" v-for="review in reviews" :key="review">
         <figure class="media-left">
           <p class="image is-64x64">
             <img class="is-rounded" src="../assets/Images/user.jpg" />
@@ -103,33 +108,12 @@
         <div class="media-content">
           <div class="content">
             <p class="text">
-              <strong>John Smith</strong>
+              <strong>{{review.idUser}}</strong>
               <small>@johnsmith</small>
-              <small>31m</small>
-              <br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
+              <br />
+              {{review.text}}
             </p>
 
-            <p class="level-right">
-              <StarRating></StarRating>
-            </p>
-          </div>
-        </div>
-      </article>
-
-      <article class="media other-comment is-12-mobile">
-        <figure class="media-left">
-          <p class="image is-64x64">
-            <img class="is-rounded" src="../assets/Images/user2.jpg" />
-          </p>
-        </figure>
-        <div class="media-content">
-          <div class="content">
-            <p class="text">
-              <strong>Mary Jane</strong>
-              <small>@maryjane</small>
-              <small>31m</small>
-              <br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
-            </p>
             <p class="level-right">
               <StarRating></StarRating>
             </p>
@@ -147,8 +131,8 @@ import AverageRating from "../components/AverageRating";
 import Navbar from "../components/Navbar";
 import { getSensorById } from "../API/apiSensor";
 import { getAllReviews } from "../API/apiReview";
+import { getAllUsers } from "../API/apiUser";
 // import {  postReview } from '../API/apiReview';
-// import { getAverageScore } from "../API/apiReview";
 import { mapActions } from "vuex";
 
 export default {
@@ -162,19 +146,31 @@ export default {
     getSensorById(this.$route.params._id).then(res => {
       /* eslint-disable */
       this.sensor = res.data.data[0];
-      console.log(this.sensor);
+      // console.log(this.sensor);
     });
 
     getAllReviews(this.$route.params._id).then(res => {
       /* eslint-disable */
-      this.reviews = res.data;
-      console.log(this.reviews);
+      this.reviews = res.data.data;
+      console.log("REVIEWS: " + this.reviews);
+    });
+
+    getAllUsers().then(res => {
+      /* eslint-disable */
+      this.users = res.data;
+      let str = JSON.stringify(users);
+      console.log("Users: " + str);
     });
   },
   data() {
     return {
       sensor: {},
-      reviews: []
+      reviews: [],
+      userReview: {
+        text: this.text,
+        rating: this.rating
+      },
+      users: []
     };
   },
   methods: {
@@ -190,6 +186,12 @@ export default {
         message: "Sensor has been added to cart!",
         type: "is-success"
       });
+    },
+
+    doReview(review) {
+      /* eslint-disable */
+      review = this.userReview;
+      console.log("Text: " + review.text + "and rating: " + review.rating);
     }
   },
   props: {}
