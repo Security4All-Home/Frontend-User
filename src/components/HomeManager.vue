@@ -138,10 +138,11 @@ export default {
   },
   computed: {},
   methods: {
-      createAnAlert(nameUser){ //Vais buscar o nome do user da forma que quiseres
+    createAnAlert(){ //Ou mandas o nome pela função la em cima e aqui colocas o nome dentro dos ()
+    let nameUser = "X" //Ou colocas o nome aqui
         let temp = {
-          "alertText": "User" + nameUser + "pressed the emergency button!",
-          "alertType": "Danger"
+          alertText: "User" + nameUser + "pressed the emergency button!",
+          alertType: "Danger"
         }
         addAlert(temp)
         .then(() =>{
@@ -150,7 +151,7 @@ export default {
                         type: "is-warning"
           })
 
-        }
+        })
       }
     }
 </script>
