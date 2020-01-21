@@ -71,6 +71,7 @@
       data-target="#SOSModal"
       class="button is-danger is-large"
     >SOS</button>
+    <br />
 
     <br />
   </div>
@@ -101,16 +102,18 @@ export default {
       console.log(this.sensors);
     });
 
-    for (let i = 0; i < this.sensors.length; i++) {
-      this.data.push(this.sensors[i]);
-    }
-
-    await getAllUsersSensors().then(response => {
+    
+    await getAllUsersSensors(2).then(response => {
       this.userSensors = response.data.data;
       /* eslint-disable */
       console.log("sensors: " + this.userSensors);
       console.log(this.userSensors);
     });
+
+    for (let i = 0; i < this.userSensors.length; i++) {
+      this.data.push(this.userSensors[i]);
+    }
+
   },
   mounted() {},
   computed: {},
