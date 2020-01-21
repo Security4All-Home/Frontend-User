@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar is-fixed-top">
+  <nav class="navbar adjustNav is-fixed-top">
     <div class="container">
       <div class="navbar-brand">
         <a class="navbar-item logo" href="#">
@@ -38,24 +38,24 @@
           <div class="navbar-item has-dropdown is-hoverable is-hidden-mobile">
             <!-- v-if="user" -->
             <a class="navbar-link has-text-white">
-              <i class="fas fa-user-circle is-white" style="margin-right:5px"></i>Rodrigo
+              <i class="fas fa-user-circle is-white" style="margin-right:5px"></i>{{userName}}
             </a>
 
-            <div class="navbar-dropdown">
-              <a class="navbar-item">
-                <router-link :to="{ name: 'profile', params: { _id: userId } }">Profile</router-link>
+            <div class="navbar-dropdown isSecondaryBGColor">
+              <a class="navbar-item " v-if="userId != 0">
+                <router-link tag="span" :to="{ name: 'profile', params: { _id: userId } }">Profile</router-link>
               </a>
 
               <a class="navbar-item" v-if="userId != 0">
-                <router-link :to="{name: 'achievements'}">Achievements</router-link>
+                <router-link tag="span" :to="{name: 'achievements'}">Achievements</router-link>
               </a>
 
               <a class="navbar-item">Settings</a>
-              <a class="navbar-item">
-                <router-link :to="{name: 'homeManager'}">Home Manager</router-link>
+              <a class="navbar-item" v-if="userId != 0">
+                <router-link tag="span" :to="{name: 'homeManager'}">Home Manager</router-link>
               </a>
-              <a class="navbar-item">
-                <router-link :to="{name: 'ranking'}">Ranking</router-link>
+              <a class="navbar-item" v-if="userId != 0">
+                <router-link tag="span" :to="{name: 'ranking'}">Ranking</router-link>
               </a>
               <hr class="navbar-divider" />
               <a class="navbar-item" v-if="userId != 0" v-on:click="signOut()">Sign out</a>
@@ -81,7 +81,6 @@
               </a>
               <a
                 class="button is-warning is-outlined is-hidden-tablet"
-                v-if="user == true"
                 @click="showModal"
               >
                 <span class="icon">
@@ -129,11 +128,13 @@ export default {
       isOpen: false,
       userLogged: "A",
       isModalVisible: false,
-      userId: 0
+      userId: 0,
+      userName: ""
     };
   },
-  async created() {
-    this.userId = this.$store.getters.getUserId;
+  async mounted() {
+    this.userId = JSON.parse(localStorage.getItem("user")).idUser
+    this.userName = JSON.parse(localStorage.getItem("user")).name
     /*eslint-disable*/
     console.log(this.userId);
     var self = this;
@@ -153,6 +154,9 @@ export default {
     signOut() {
       this.$store.dispatch("log_out");
       this.$router.push({ name: "login" });
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      
     }
   }
 };
@@ -166,5 +170,8 @@ export default {
 
 #navbarContent {
   position: relative;
+}
+.adjustNav {
+  width: 100vx;
 }
 </style>
