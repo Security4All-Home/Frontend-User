@@ -45,12 +45,6 @@
                 centered
               >
                 <b-switch type="is-success" :value="props.row.active"></b-switch>
-                <!--<div class="field" v-if="props.row.active == false">
-                <b-switch :value="props.row.active">Default</b-switch>
-              </div>
-              <div v-if="props.row.active == true" class="field">
-                <b-switch :value="props.row.active">Default</b-switch>
-                </div>-->
               </b-table-column>
             </template>
 
@@ -70,16 +64,13 @@
     </div>
 
     <button
-    type="button"
+      type="button"
       id="buttonSOS"
       title="SOS"
       data-toggle="modal"
       data-target="#SOSModal"
       class="button is-danger is-large"
-
-    >
-    SOS
-    </button>
+    >SOS</button>
 
     <br />
   </div>
@@ -87,37 +78,43 @@
 
 <script>
 import { getAllSensors } from "../API/apiSensor";
+import { getAllUsersSensors } from "../API/apiUser";
 
 export default {
   name: "Rankings",
   data() {
-      const data = []
-    
+    const data = [];
+
     return {
       data,
       selected: data[0],
       searchBar: "",
-      sensors: []
+      sensors: [],
+      userSensors: []
     };
   },
   async created() {
-      await getAllSensors().then(response => {
+    await getAllSensors().then(response => {
       this.sensors = response.data.data;
       /* eslint-disable */
       console.log("sensors: " + this.sensors);
       console.log(this.sensors);
     });
+
     for (let i = 0; i < this.sensors.length; i++) {
-        this.data.push(this.sensors[i])        
+      this.data.push(this.sensors[i]);
     }
+
+    await getAllUsersSensors().then(response => {
+      this.userSensors = response.data.data;
+      /* eslint-disable */
+      console.log("sensors: " + this.userSensors);
+      console.log(this.userSensors);
+    });
   },
-  mounted() {
-  },
-  computed: {
-  },
-  methods: {
-    
-  }
+  mounted() {},
+  computed: {},
+  methods: {}
 };
 </script>
 

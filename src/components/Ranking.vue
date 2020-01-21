@@ -48,15 +48,15 @@
                   numeric
                   centered
                 >
-                  <span id="numberOne" v-if="props.row.id == 1">
+                  <span id="numberOne" v-if="props.row.idUser == 1">
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <i class="fas fa-medal"></i>
                   </span>
-                  <span id="numberTwo" v-if="props.row.id == 2">
+                  <span id="numberTwo" v-if="props.row.idUser == 2">
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <i class="fas fa-medal"></i>
                   </span>
-                  <span id="numberThree" v-if="props.row.id == 3">
+                  <span id="numberThree" v-if="props.row.idUser == 3">
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <i class="fas fa-medal"></i>
                   </span>
@@ -80,6 +80,9 @@
         <h1 id="etc">...</h1>
       </div>
     </div>
+    <br />
+    <br />
+    <br />
   </div>
 </template>
 
@@ -95,7 +98,7 @@ export default {
     let loggedUser = {
       id: 54,
       username: "James Sully",
-      points: 33,
+      points: 0,
     }
     
     return {
@@ -122,14 +125,18 @@ export default {
     /* eslint-disable */
     console.log("filtro: " + this.filteredUsers)
 
-    let tempI = this.filteredUsers.length - 3
-    let cont = this.filteredUsers.length
 
-    for (let i = 0; i < tempI; i++) {
-      this.data.push(this.filteredUsers[this.filteredUsers.length-cont])
-      cont--
-    }
+      this.filteredUsers[0].idUser = 1
+      this.filteredUsers[1].idUser = 2
+      this.filteredUsers[2].idUser = 3
+      this.filteredUsers[3].idUser = 4
+      this.filteredUsers[4].idUser = 5
 
+      this.data.push(this.filteredUsers[0])
+      this.data.push(this.filteredUsers[1])
+      this.data.push(this.filteredUsers[2])
+      this.data.push(this.filteredUsers[3])
+      this.data.push(this.filteredUsers[4])
     
 
     
@@ -139,7 +146,7 @@ export default {
     let loggedUser = {
       id: 54,
       username: "James Sully",
-      points: 33
+      points: 0
     };
     this.tempRanking = JSON.parse(localStorage.getItem("ranking"));
     // console.log(this.persons)

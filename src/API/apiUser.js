@@ -7,8 +7,8 @@ export function getAllUsers() {
     return get("/user")
 }
 
-export function getUser(id) {
-    return get(`/user/${id}`)
+export function getAllUsersSensors(id) {
+    return get(`/user/sensors/${id}`)
 }
 
 export function editUser(body) {
