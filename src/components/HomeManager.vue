@@ -78,8 +78,8 @@
 </template>
 
 <script>
-import { getAllSensors } from "../API/apiSensor";
-import { getAllUsersSensors } from "../API/apiUser";
+//import { getAllHouseSensors } from "../API/apiSensor";
+import { getUserById, getUserSpaces } from "../API/apiUser";
 
 export default {
   name: "Rankings",
@@ -88,32 +88,49 @@ export default {
 
     return {
       data,
+      house: "",
+      user: {},
       selected: data[0],
       searchBar: "",
       sensors: [],
-      userSensors: []
+      userSensors: [],
+      userSpaces:[]
     };
   },
   async created() {
-    await getAllSensors().then(response => {
-      this.sensors = response.data.data;
-      /* eslint-disable */
-      console.log("sensors: " + this.sensors);
-      console.log(this.sensors);
+    //buscar id do user pelo token, mas como nao temos token, vou dar um id de exmplo
+    let idUser = 1;
+    await getUserById(idUser).then(response => {
+      this.user = response.data.data;
     });
+    /* eslint-disable */
+    console.log("USER: " + JSON.stringify(this.user));
 
-    
-    await getAllUsersSensors(2).then(response => {
-      this.userSensors = response.data.data;
-      /* eslint-disable */
-      console.log("sensors: " + this.userSensors);
-      console.log(this.userSensors);
+    //buscar todas as informações de um espaço
+    await getUserSpaces(idUser).then(response => {
+      this.userSpaces = response.data.data;
     });
+    /* eslint-disable */
+    console.log("spaces: " + JSON.stringify(this.userSpaces[0]))
+
+    //buscar idCasa pelo idSpace
+    await getHouseBySpace(this.userSpaces[0].idSpace).then(res => {
+
+    })
+
+    //guardar id da casa
+    
+    //buscar sensores pelo id da casa
+/*
+    await getAllHouseSensors(idCasa).then(response => {
+      this.userSensors = response.data.data;
+    });*/
+
+   // this.usersSensors --> Todos os sensores desta casa
 
     for (let i = 0; i < this.userSensors.length; i++) {
       this.data.push(this.userSensors[i]);
     }
-
   },
   mounted() {},
   computed: {},

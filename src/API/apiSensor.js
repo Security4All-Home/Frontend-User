@@ -9,6 +9,15 @@ export function getAllSensors() {
     return get("/sensors")
 }
 
+export function getAllHouseSensors(id) {
+    return get(`/sensors/house/${id}`)
+}
+
+/*export function getHouseInfo(id) {
+    return get(`/`)
+}*/
+
+
 export function getSensorById(id) {
     return get(`/sensors/${id}`)
 }

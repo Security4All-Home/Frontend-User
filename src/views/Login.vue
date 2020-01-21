@@ -619,13 +619,15 @@ export default {
         else{
           /*eslint-disable*/
           console.log(response.data)
+          console.log(response.data.data)
           this.$buefy.toast.open({
             message: "Welcome!",
             type: "is-success"
           });
           this.$router.push({name: "home"})
-          this.$store.dispatch("set_user_id",response.data.data.idUser)
-          localStorage.setItem("token", response.data.token);
+          this.$store.dispatch("set_user_id",response.data.data)
+          localStorage.setItem("token", response.data.token)
+          localStorage.setItem("user",JSON.stringify(response.data.data)) 
         }
       });
     },
