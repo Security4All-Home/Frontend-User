@@ -86,7 +86,7 @@
                 <div class="column has-text-centered  is-3">
                     <nav class="level">
                         <div class="level-item has-text-centered">
-                            <figure class='image is-128x128'><img src='https://bulma.io/images/placeholders/128x128.png' class="is-rounded"></figure>
+                            <figure class='image is-128x128'><img src='../assets/Images/team/joao.png' class="is-rounded"></figure>
                         </div>
                     </nav>
                     <h1 class="name isPrimaryColor">João Campos</h1>
@@ -95,7 +95,7 @@
                 <div class="column has-text-centered is-3">
                    <nav class="level">
                         <div class="level-item has-text-centered">
-                            <figure class='image is-128x128'><img src='https://bulma.io/images/placeholders/128x128.png' class="is-rounded"></figure>
+                            <figure class='image is-128x128'><img src='../assets/Images/team/sara.jpg' class="imgClip"></figure>
                         </div>
                     </nav>
                     <h1 class="name isPrimaryColor">Sara Rodrigues</h1>
@@ -104,7 +104,7 @@
                 <div class="column has-text-centered is-3">
                    <nav class="level">
                         <div class="level-item has-text-centered">
-                            <figure class='image is-128x128'><img src='https://bulma.io/images/placeholders/128x128.png' class="is-rounded"></figure>
+                            <figure class='image is-128x128'><img src='../assets/Images/team/tiago.jpg' class="is-rounded"></figure>
                         </div>
                     </nav>
                     <h1 class="name isPrimaryColor">Tiago Fernandes</h1>
