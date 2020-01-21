@@ -95,7 +95,7 @@ export default {
       searchBar: "",
       sensors: [],
       userSensors: [],
-      userSpaces:[]
+      userSpaces: []
     };
   },
   async created() {
@@ -112,48 +112,44 @@ export default {
       this.userSpaces = response.data.data;
     });
     /* eslint-disable */
-    console.log("spaces: " + JSON.stringify(this.userSpaces[0]))
+    console.log("spaces: " + JSON.stringify(this.userSpaces[0]));
 
     //buscar idCasa pelo idSpace
-    await getHouseBySpace(this.userSpaces[0].idSpace).then(res => {
-
-    })
+    await getHouseBySpace(this.userSpaces[0].idSpace).then(res => {});
 
     //guardar id da casa
-    
+
     //buscar sensores pelo id da casa
-/*
+    /*
     await getAllHouseSensors(idCasa).then(response => {
       this.userSensors = response.data.data;
     });*/
 
-   // this.usersSensors --> Todos os sensores desta casa
+    // this.usersSensors --> Todos os sensores desta casa
 
     for (let i = 0; i < this.userSensors.length; i++) {
       this.data.push(this.userSensors[i]);
     }
   },
-  mounted() {
-    
-  },
+  mounted() {},
   computed: {},
   methods: {
-    createAnAlert(){ //Ou mandas o nome pela função la em cima e aqui colocas o nome dentro dos ()
-    let nameUser = "X" //Ou colocas o nome aqui
-        let temp = {
-          alertText: "User" + nameUser + "pressed the emergency button!",
-          alertType: "Danger"
-        }
-        addAlert(temp)
-        .then(() =>{
-          toast.open({
-                        message: "Alert sent",
-                        type: "is-warning"
-          })
-
-        })
-      }
+    createAnAlert() {
+      //Ou mandas o nome pela função la em cima e aqui colocas o nome dentro dos ()
+      let nameUser = " X "; //Ou colocas o nome aqui
+      let temp = {
+        alertText: "User" + nameUser + "pressed the emergency button!",
+        alertType: "Danger"
+      };
+      addAlert(temp).then(() => {
+        toast.open({
+          message: "Alert sent",
+          type: "is-warning"
+        });
+      });
     }
+  }
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
