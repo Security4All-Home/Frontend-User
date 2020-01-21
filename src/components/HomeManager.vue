@@ -78,7 +78,7 @@
 
 <script>
 //import { getAllHouseSensors } from "../API/apiSensor";
-import { getUserById, getUserSpaces } from "../API/apiUser";
+import { getUserById, getUserSpaces, getUserHouseByID } from "../API/apiUser";
 import { addAlert } from "../API/apiAlert";
 import { ToastProgrammatic as toast } from "buefy";
 
@@ -95,12 +95,17 @@ export default {
       searchBar: "",
       sensors: [],
       userSensors: [],
-      userSpaces: []
+      userSpaces: [],
+      userHouse: []
     };
   },
   async created() {
     //buscar id do user pelo token, mas como nao temos token, vou dar um id de exmplo
     let idUser = 1;
+    let loggedUser2 = localStorage.getItem("user")
+    /* eslint-disable */
+    console.log(loggedUser2)
+
     await getUserById(idUser).then(response => {
       this.user = response.data.data;
     });
@@ -115,7 +120,16 @@ export default {
     console.log("spaces: " + JSON.stringify(this.userSpaces[0]));
 
     //buscar idCasa pelo idSpace
-    await getHouseBySpace(this.userSpaces[0].idSpace).then(res => {});
+    /*await getHouseBySpace(this.userSpaces[0].idSpace).then(res => {
+
+    });*/
+
+    //buscar user_house
+    await getUserHouseByID().then(res => {
+      this.userHouse = res.data.data
+    });
+    /* eslint-disable */
+    console.log("user_house: " + JSON.stringify(this.userHouse[0]));
 
     //guardar id da casa
 
@@ -136,7 +150,7 @@ export default {
   methods: {
     createAnAlert() {
       //Ou mandas o nome pela função la em cima e aqui colocas o nome dentro dos ()
-      let nameUser = " X "; //Ou colocas o nome aqui
+      let nameUser = loggedUser2; //Ou colocas o nome aqui
       let temp = {
         alertText: "User" + nameUser + "pressed the emergency button!",
         alertType: "Danger"
