@@ -609,6 +609,7 @@ export default {
     loginExe() {
       doLogin(this.loginInfo).then(response => {
         /*eslint-disable*/
+        console.log(response.data)
         if(!response.data.success){
           this.$buefy.toast.open({
             message: "Invalid User!",
@@ -616,12 +617,15 @@ export default {
           });
         }
         else{
+          /*eslint-disable*/
+          console.log(response.data)
           this.$buefy.toast.open({
             message: "Welcome!",
             type: "is-success"
           });
           this.$router.push({name: "home"})
           this.$store.dispatch("set_user_id",response.data.data.idUser)
+          localStorage.setItem("token", response.data.token);
         }
       });
     },
