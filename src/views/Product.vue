@@ -99,7 +99,11 @@
 
     <section id="secComentarios" class="section">
       <p class="title has-text-left is-size-4">Clients Reviews</p>
-      <article class="media own-comment is-12-mobile" v-for="review in reviews" :key="review">
+      <article
+        class="media own-comment is-12-mobile"
+        v-for="review in reviews"
+        :key="review.idUser"
+      >
         <figure class="media-left">
           <p class="image is-64x64">
             <img class="is-rounded" src="../assets/img/user.jpg" />

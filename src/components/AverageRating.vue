@@ -15,10 +15,12 @@ export default {
       score: []
     };
   },
-  created() {
+  mounted() {
+    console.log("ASD");
     getAverageScore(this.$route.params._id).then(res => {
       this.score = JSON.stringify(res.data.data[0]);
-      this.rating = this.score.replace('{"AVG(score)" : ', "");
+      // console.log(this.score);
+      this.rating = this.score.replace('{"AVG(score)":', "");
       this.rating = this.rating.replace("}", "");
       /* eslint-disable */
       console.log("Average score:" + this.rating);
