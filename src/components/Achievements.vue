@@ -29,7 +29,7 @@
             <div
               id="cardHover"
               class="column is-11-mobile is-8-tablet is-4-desktop is-centered"
-              v-for="(achievement,i) in achievements"
+              v-for="(achievement,i) in tempAchievements"
               :key="i"
             >
               <div class="card" id="cardPerson">
@@ -37,7 +37,8 @@
                   <div class="media">
                     <div class="media-left">
                       <figure class="image">
-                        <img id="imageCard" :src="achievement.imageDefault" alt="Placeholder image" />
+                        <img id="imageCard" v-if="achievement.isActive == false" :src="achievement.imageDefault" alt="Placeholder image" />
+                        <img id="imageCard" v-if="achievement.isActive == true" :src="achievement.imageType.image" alt="Placeholder image" />
                       </figure>
                     </div>
                     <div class="media-content">
@@ -60,35 +61,32 @@
 
 <script>
 import { getAllAchievements } from "../API/apiAchievement";
-import { getAllUsers } from "../API/apiUser";
+import { getAllUsers, getAllUsersSensors } from "../API/apiUser";
 
 export default {
-  name: "Rankings",
+  name: "Achievements",
   data() {
-    let loggedUser = {
-      id: 54,
-      username: "James Sully",
-      points: 4
-    };
+    
 
     return {
       searchBar: "",
       view: 1,
       achievements: [],
       users: [],
-      loggedUser
+      userSensors: [],
+      loggedUser: "",
+      tempAchievements:[],
+      isActive: false,
     };
   },
-  /*data: function() {
-    return {
-      tempRanking: []
-    };
-  },*/
   async created() {
+    this.loggedUser = JSON.parse(localStorage.getItem("user"))
+    let idUser = this.loggedUser.idUser;
+
     await getAllAchievements().then(response => {
       this.achievements = response.data.data;
       /* eslint-disable */
-      console.log("achievements: " + this.achievements);
+      console.log(this.achievements);
     });
 
     await getAllUsers().then(response => {
@@ -97,39 +95,43 @@ export default {
       console.log("users: " + this.users);
     });
 
-    // this.tempRanking = JSON.parse(localStorage.getItem("ranking"));
-    // console.log(this.persons)
+    await getAllUsersSensors(idUser).then(response => {
+      this.userSensors = response.data.data;
+      /* eslint-disable */
+      console.log("usersensors");
+      console.log(this.userSensors);
+    });
+    for (let i = 0; i < 21; i++) {
+      this.tempAchievements.push({
+        imageType: {
+          type: this.achievements[i].imageType.type,
+          image: this.achievements[i].imageType.image
+        },
+        description: this.achievements[i].description,
+        goal: this.achievements[i].goal,
+        imageDefault: this.achievements[i].imageDefault,
+        isActive: false
+      })
+
+      console.log(this.tempAchievements)
+      
+      if(this.userSensors.length >= 1){
+        this.tempAchievements[19].isActive = true
+
+      }
+      if(this.userSensors.length >= 5){
+        this.tempAchievements[18].isActive = true
+      }
+    }
+    
+    
   },
   mounted() {
-    /* for (let i = 0; i < this.tempRanking.length; i++) {
-      //console.log(this.tempRanking[i].points)
-    //points.sort(function(a, b){return a-b});
-    //document.getElementById("demo").innerHTML = points;
-      
-    }*/
   },
   computed: {
-    /*filteredUserFunc() {
-      if (this.data) {  
-
-        this.filteredUsers = this.data.filter(data => {
-          return (
-            data.info.username
-              .toString()
-              .toLowerCase()
-              .normalize("NFD")
-              .replace(/[\u0300-\u036f]/g, "")
-              .indexOf(this.searchBar.toLowerCase()) >= 0
-          );
-        });
-
-        return this.data.length;
-      }
-    }*/
   },
   methods: {
     isActive(n) {
-      //console.log("entrei")
       return n == this.view
         ? { "background-color": "#F2F2F2" }
         : { "background-color": "#FFBF2F" };
