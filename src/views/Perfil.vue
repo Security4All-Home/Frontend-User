@@ -513,7 +513,7 @@ export default {
       }
     },
     async addUserPhoto() {
-      await EditUserById(9, {image: this.addPhoto}).then(response => {
+      await EditUserById(this.$route.params._id, {image: this.addPhoto}).then(response => {
             /* eslint-disable */
             console.log(response.data);
             this.$buefy.toast.open({
@@ -521,7 +521,7 @@ export default {
               type: "is-success"
           });
       });
-      await GetUserById(9).then(response => {
+      await GetUserById(this.$route.params._id).then(response => {
         this.user = response.data.data[0];
         /*eslint-disable*/
         console.log(response.data)

@@ -102,7 +102,7 @@
       <article class="media own-comment is-12-mobile" v-for="review in reviews" :key="review">
         <figure class="media-left">
           <p class="image is-64x64">
-            <img class="is-rounded" src="../assets/Images/user.jpg" />
+            <img class="is-rounded" src="../assets/img/user.jpg" />
           </p>
         </figure>
         <div class="media-content">

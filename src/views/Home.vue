@@ -21,7 +21,7 @@ export default {
 
 <style scoped>
 .hasBackgroundImage {
-  background-image: url("../assets/Images/HomeWallpaper.jpg") !important;
+  background-image: url("../assets/img/HomeWallpaper.jpg") !important;
 }
 
 #secPack {

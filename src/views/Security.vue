@@ -25,7 +25,7 @@
             <h2 class="subtitle">and get ready to protect your home.</h2>
           </div>
           <div class="level-right">
-            <img class="image" src="../assets/Images/Login.png" />
+            <img class="image" src="../assets/img/Login.png" />
           </div>
         </nav>
       </div>
@@ -34,7 +34,7 @@
       <div class="hero-body">
         <nav class="level">
           <div class="level-left">
-            <img class="image" src="../assets/Images/Choose.png" />
+            <img class="image" src="../assets/img/Choose.png" />
           </div>
           <div class="level-right">
             <h1 class="title">Choose your plan</h1>
@@ -51,7 +51,7 @@
             <h2 class="subtitle">Delivery and installation</h2>
           </div>
           <div class="level-right">
-            <img class="image" src="../assets/Images/Delivery.png" />
+            <img class="image" src="../assets/img/Delivery.png" />
           </div>
         </nav>
       </div>
@@ -60,7 +60,7 @@
       <div class="hero-body">
         <nav class="level">
           <div class="level-left">
-            <img class="image" src="../assets/Images/Payment.png" />
+            <img class="image" src="../assets/img/Payment.png" />
           </div>
           <div class="level-right">
             <h1 class="title" style="font-size: 60px">You can pay from anywhere</h1>
