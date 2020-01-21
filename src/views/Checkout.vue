@@ -54,12 +54,12 @@
         <nav class="level">
           <div class="level-left">
             <figure class="image is-128x128">
-              <img src="../assets/Images/paypal.svg" />
+              <img src="../assets/img/paypal.svg" />
             </figure>
           </div>
           <div class="level-right">
             <figure class="image is-128x128">
-              <img src="../assets/Images/MBWay.png" />
+              <img src="../assets/img/MBWay.png" />
             </figure>
           </div>
         </nav>

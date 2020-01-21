@@ -9,7 +9,7 @@
           <br />
           <br />
           <figure class="image is-128x128" id="LogoLogin">
-            <img src="../assets/Images/logo.png" />
+            <img src="../assets/img/logo.png" />
           </figure>
           <h1 id="introduction">
             Welcome to Security4All
@@ -271,7 +271,7 @@
           <br />
           <br />
           <figure class="image is-128x128" id="LogoLogin">
-            <img src="../assets/Images/logo.png" />
+            <img src="../assets/img/logo.png" />
           </figure>
           <h1 id="introduction">
             Welcome to Security4All

@@ -97,7 +97,7 @@
       <article class="media own-comment is-12-mobile">
         <figure class="media-left">
           <p class="image is-64x64">
-            <img class="is-rounded" src="../assets/Images/user.jpg" />
+            <img class="is-rounded" src="../assets/img/user.jpg" />
           </p>
         </figure>
         <div class="media-content">
@@ -119,7 +119,7 @@
       <article class="media other-comment is-12-mobile">
         <figure class="media-left">
           <p class="image is-64x64">
-            <img class="is-rounded" src="../assets/Images/user2.jpg" />
+            <img class="is-rounded" src="../assets/img/user2.jpg" />
           </p>
         </figure>
         <div class="media-content">

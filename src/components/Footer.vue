@@ -1,8 +1,7 @@
 <template>
-<body>
-  <br />
-  <br />
   <section class="hero isSecondaryBGColor">
+    <br />
+    <br />
     <div class="hero-body" style="padding-bottom:5px !important">
       <div class="container">
         <nav class="level">
@@ -10,7 +9,7 @@
           <div class="level-left">
             <div class="level-item">
               <a class="logo" href="#">
-                <img src="./img/LogoFont.png" width="161" height="28" />
+                <img src="../assets/img/LogoFont.png" width="161" height="28" />
               </a>
             </div>
           </div>
@@ -59,7 +58,6 @@
       </div>
     </div>
   </section>
-</body>
 </template>
 <style scoped>
 section {
