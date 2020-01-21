@@ -29,7 +29,7 @@
             <div
               id="cardHover"
               class="column is-11-mobile is-8-tablet is-4-desktop is-centered"
-              v-for="(achievement,i) in tempAchievements"
+              v-for="(achievement,i) in achievements"
               :key="i"
             >
               <div class="card" id="cardPerson">
@@ -37,8 +37,7 @@
                   <div class="media">
                     <div class="media-left">
                       <figure class="image">
-                        <img id="imageCard" v-if="achievement.isActive == false" :src="achievement.imageDefault" alt="Placeholder image" />
-                        <img id="imageCard" v-if="achievement.isActive == true" :src="achievement.imageType.image" alt="Placeholder image" />
+                        <img id="imageCard" :src="achievement.imageDefault" alt="Placeholder image" />
                       </figure>
                     </div>
                     <div class="media-content">
@@ -76,7 +75,7 @@ export default {
       userSensors: [],
       loggedUser: "",
       tempAchievements:[],
-      isActive: false,
+     // isActive: false,
     };
   },
   async created() {
@@ -125,17 +124,6 @@ export default {
     }
     
     
-  },
-  mounted() {
-  },
-  computed: {
-  },
-  methods: {
-    isActive(n) {
-      return n == this.view
-        ? { "background-color": "#F2F2F2" }
-        : { "background-color": "#FFBF2F" };
-    }
   }
 };
 </script>
