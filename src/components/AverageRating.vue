@@ -8,7 +8,7 @@
 import { getAverageScore } from "../API/apiReview";
 
 export default {
-  name: "StarRating",
+  name: "AverageRating",
   data() {
     return {
       rating: "",
@@ -18,7 +18,7 @@ export default {
   created() {
     getAverageScore(this.$route.params._id).then(res => {
       this.score = JSON.stringify(res.data.data[0]);
-      this.rating = this.score.replace('{"AVG(score)":', "");
+      this.rating = this.score.replace('{"AVG(score)" : ', "");
       this.rating = this.rating.replace("}", "");
       /* eslint-disable */
       console.log("Average score:" + this.rating);

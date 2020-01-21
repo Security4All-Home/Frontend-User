@@ -2,7 +2,7 @@
   <section>
     <div id="secPack" class="section is-centered">
       <div class="container has-text-centered">
-        <h1 class="title has-text-white">Become Safe</h1>
+        <h1 class="title has-text-black">Be safe always</h1>
         <div class="column is-12 is-offset-2">
           <div class="tile is-ancestor is-centered">
             <div class="tile is-vertical is-8">

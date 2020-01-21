@@ -1,6 +1,12 @@
 <template>
   <section class="section">
-    <div class="columns is-centered" style="margin-top: 50px">
+    <div class="container empty-state" v-if="!hasSensor()">
+      <figure class="image is-centered is-vcentered">
+        <img src="../assets/Images/shopping-cart-empty.svg" alt />
+      </figure>
+    </div>
+
+    <div class="columns is-centered" style="margin-top: 50px" v-if="hasSensor()">
       <div class="column is-8-desktop" style="background-color: white; border-radius: 10px;">
         <div class="product-labels">
           <label class="product-image">Image</label>
@@ -46,10 +52,10 @@
           </div>
         </div>
 
-        <button class="button is-success is-small checkout">Checkout</button>
+        <button class="button is-success is-small checkout" @click="checkout">Checkout</button>
       </div>
     </div>
-    <div class="columns is-centered" style="margin-top: 20px">
+    <div class="columns is-centered" style="margin-top: 20px" v-if="hasSensor()">
       <div class="column is-4-desktop">
         <nav class="level">
           <div class="level-left">
@@ -69,7 +75,7 @@
 </template>
 
 <script>
-// import { removeOrder } from "../API/apiOrder";
+import { addOrder } from "../API/apiOrder";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
@@ -78,7 +84,8 @@ export default {
 
   data() {
     return {
-      sensor: {}
+      sensor: {},
+      finalOrder: []
     };
   },
   computed: {
@@ -86,8 +93,10 @@ export default {
   },
 
   methods: {
+    hasSensor() {
+      return this.getSensorsInCart.length > 0;
+    },
     ...mapActions(["removeSensor"]),
-
     deleteSensor(name, index) {
       this.$buefy.dialog.confirm({
         title: "Remove Sensor",
@@ -111,6 +120,27 @@ export default {
                 type: "is-danger"
               });
             });
+        }
+      });
+    },
+
+    checkout() {
+      // finalOrder = this.getSensorsInCart;
+      /* eslint-disable */
+      // console.log("ENCOMENDA: " + finalOrder);
+
+      addOrder(this.getSensorsInCart).then(response => {
+        /*eslint-disable*/
+        if (!response.data.success) {
+          this.$buefy.toast.open({
+            message: "Something went wrong!",
+            type: "is-danger"
+          });
+        } else {
+          this.$buefy.toast.open({
+            message: "Order completed!",
+            type: "is-success"
+          });
         }
       });
     }
@@ -374,5 +404,21 @@ label {
       }
     }
   }
+}
+
+.empty-state {
+  display: table;
+}
+
+.image {
+  text-align: center;
+  vertical-align: middle;
+  display: table-cell;
+  padding-top: 80px;
+}
+
+.image img {
+  max-width: 400px;
+  max-height: 400px;
 }
 </style>
