@@ -77,8 +77,9 @@
 </template>
 
 <script>
-import { getAllHouseSensors } from "../API/apiSensor";
-import { getUserHouseByID } from "../API/apiHouse"
+//import { getAllHouseSensors } from "../API/apiSensor";
+import { getAllHouses } from "../API/apiHouse"
+import { getAllUsersSensors } from "../API/apiUser"
 import { addAlert } from "../API/apiAlert";
 import { ToastProgrammatic as toast } from "buefy";
 
@@ -94,30 +95,33 @@ export default {
       selected: data[0],
       searchBar: "",
       sensors: [],
-      houseById: [],
+      houseById: 0,
       userSpaces: [],
-      userHouse: []
+      houses: []
     };
   },
   async created() {
     //buscar id do user pelo token, mas como nao temos token, vou dar um id de exmplo
-   // let loggedUser2 = localStorage.getItem("user")
-    let idUser = 2;
+    let loggedUser2 = JSON.parse(localStorage.getItem("user"))
+    let idUser = loggedUser2.idUser;
 
-    
-      /* eslint-disable */
 
-    await getUserHouseByID(idUser).then(response => {
-        this.houseById = response.data.data
+
+    await getAllHouses().then(response => {
+        this.houses = response.data.data
+
     });
-    console.log("houseId: " + this.houseById)
+    console.log("house")
+    console.log(this.houses)
 
-    await getAllHouseSensors(this.houseById).then(response => {
+    await getAllUsersSensors(idUser).then(response => {
         this.sensors = response.data.data
 
     });
+    console.log("sensor")
+    console.log(this.sensors)
 
-
+    
 
     for (let i = 0; i < this.sensors.length; i++) {
       this.data.push(this.sensors[i]);
@@ -260,6 +264,5 @@ export default {
 #buttonSOS {
   margin-left: 93%;
   margin-top: 20%;
-  border-radius: 50%;
 }
 </style>
