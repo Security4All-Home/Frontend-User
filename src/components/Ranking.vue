@@ -6,7 +6,7 @@
     <h1 id="titleRanking" class="title is-1">Ranking</h1>
     <div class="container" id="tableRanking">
       <div class="columns">
-        <div id="columnTable" class="column is-offset-4 is-5-desktop is-15-mobile is-12-tablet">
+        <div id="columnTable" class="column is-offset-4 is-5-desktop is-2-mobile is-12-tablet">
           <section>
             <b-table
               id="dataTable"

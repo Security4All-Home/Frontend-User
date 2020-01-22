@@ -15,11 +15,11 @@
 
             <b-progress
               id="progressBar"
-              :value="loggedUser.points"
+              :value="1"
               :max="achievements.length"
               size="is-large"
               show-value
-            >{{loggedUser.points}} / {{achievements.length}}</b-progress>
+            >1 / {{achievements.length}}</b-progress>
           </div>
         </div>
 
@@ -29,7 +29,7 @@
             <div
               id="cardHover"
               class="column is-11-mobile is-8-tablet is-4-desktop is-centered"
-              v-for="(achievement,i) in achievements"
+              v-for="(achievement,i) in tempAchievements"
               :key="i"
             >
               <div class="card" id="cardPerson">
@@ -37,13 +37,15 @@
                   <div class="media">
                     <div class="media-left">
                       <figure class="image">
-                        <img id="imageCard" :src="achievement.imageDefault" alt="Placeholder image" />
+                        <img id="imageCard" v-if="achievement.isActive == false" :src="achievement.imageDefault" alt="Placeholder image" />
+                        <img id="imageCard" v-if="achievement.isActive == true" :src="achievement.imageType.image" alt="Placeholder image" />
                       </figure>
                     </div>
                     <div class="media-content">
                       <!--<p  class="title is-15">{{person.id}}</p>-->
                       <p id="cardName" class="subtitle is-12">{{achievement.description}}</p>
-                      <p id="cardProgress" class="subtitle is-20">0/{{achievement.goal}}</p>
+                      <p id="cardProgress" v-if="achievement.isActive == false" class="subtitle is-20">0/{{achievement.goal}}</p>
+                      <p id="cardProgress" v-if="achievement.isActive == true" class="subtitle is-20">{{achievement.goal}}/{{achievement.goal}}</p>
                     </div>
                   </div>
                 </div>
@@ -61,6 +63,7 @@
 <script>
 import { getAllAchievements } from "../API/apiAchievement";
 import { getAllUsers, getAllUsersSensors } from "../API/apiUser";
+import { getAllSensors } from "../API/apiSensor";
 
 export default {
   name: "Achievements",
@@ -75,6 +78,7 @@ export default {
       userSensors: [],
       loggedUser: "",
       tempAchievements:[],
+      sensors: []
      // isActive: false,
     };
   },
@@ -86,6 +90,12 @@ export default {
       this.achievements = response.data.data;
       /* eslint-disable */
       console.log(this.achievements);
+    });
+
+    await getAllSensors().then(response => {
+      this.sensors = response.data.data;
+      /* eslint-disable */
+      console.log(this.sensors);
     });
 
     await getAllUsers().then(response => {
@@ -111,6 +121,8 @@ export default {
         imageDefault: this.achievements[i].imageDefault,
         isActive: false
       })
+    }
+    
 
       console.log(this.tempAchievements)
       
@@ -121,7 +133,9 @@ export default {
       if(this.userSensors.length >= 5){
         this.tempAchievements[18].isActive = true
       }
-    }
+      if(this.userSensors.length >= 20){
+        this.tempAchievements[18].isActive = true
+      }
     
     
   }

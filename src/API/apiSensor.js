@@ -9,6 +9,10 @@ export function getAllSensors() {
     return get("/sensors")
 }
 
+/*export function getAllSensorsReviews() {
+    return get("/sensors")
+}*/
+
 export function getAllHouseSensors(id) {
     return get(`/sensors/house/${id}`)
 }
