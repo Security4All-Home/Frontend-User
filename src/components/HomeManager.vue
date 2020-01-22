@@ -125,7 +125,7 @@ export default {
   methods: {
     createAnAlert() {
       //Ou mandas o nome pela função la em cima e aqui colocas o nome dentro dos ()
-      let nameUser = "Edgar"; //Ou colocas o nome aqui
+      let nameUser = loggedUser2.name; //Ou colocas o nome aqui
       let temp = {
         alertText: "User" + nameUser + "pressed the emergency button!",
         alertType: "Danger"
