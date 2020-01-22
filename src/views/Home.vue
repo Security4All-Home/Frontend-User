@@ -4,7 +4,7 @@
   <Hero></Hero>
   <Packages></Packages>
   <div class="is-hidden-mobile">
-    <Team></Team>
+    <Team style="background-color: #f2f2f2 !important"></Team>
   </div>
 </body>
 </template>

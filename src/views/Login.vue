@@ -512,8 +512,8 @@ export default {
       activeSteps: true,
       chosenPack: 0,
       loginInfo: {
-        email: "",
-        password: ""
+        email: "rodrigo@gmail.com",
+        password: "123456"
       },
       confirmPass: "",
       signInInfo: {

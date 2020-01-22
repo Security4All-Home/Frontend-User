@@ -4,7 +4,7 @@
     <div class="container">
       <div class="navbar-brand">
         <a class="navbar-item logo">
-          <img src="../assets/img/1.png" width="161" height="28" />
+          <img src="../assets/img/1.png" width="161" height="28" @click="goTo('/')" />
         </a>
         <!-- BURGER -->
         <a
@@ -81,7 +81,7 @@
                 </span>
                 <span>Home Manager</span>
               </a>
-              <a class="button is-warning is-outlined is-hidden-tablet" @click="showModal">
+              <a class="button is-warning is-outlined is-hidden-tablet" @click="showModal" >
                 <span class="icon">
                   <i class="fas fa-cart-plus"></i>
                 </span>
@@ -159,6 +159,9 @@ export default {
       axios.defaults.headers.common["x-access-token"] = "";
       this.userLogged = "";
       this.userId = 0;
+    },
+    goTo(path) {
+      this.$router.push(path);
     }
   }
 };

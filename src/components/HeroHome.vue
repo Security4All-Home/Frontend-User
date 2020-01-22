@@ -10,7 +10,7 @@
           <h1 class="title has-text-white glitch" data-text="Are you secure?">Are you secure?</h1>
           
         </div>
-        <div class="column is-2 is-offset-5" style="margin-top:10px"> <button class="button is-outlined findMore is-fullwidth" style="color:#0A1F3C"><router-link :to="{name: 'security'}"><b>Find out more</b></router-link></button></div>
+        <div class="column is-2 is-offset-5" style="margin-top:10px"> <button class="button is-outlined findMore is-fullwidth" style="color:#FFBF2F !important"><router-link :to="{name: 'security'}"><b style="isPrimaryColor">Find out more</b></router-link></button></div>
       </div>
     </div>
     

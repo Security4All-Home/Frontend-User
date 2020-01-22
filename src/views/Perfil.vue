@@ -290,7 +290,7 @@
       <div class="modal-background"></div>
       <div class="modal-content qrCode">
         <p class="image is-square">
-          <img src="https://bulma.io/images/placeholders/1280x960.png" alt />
+          <img src="https://cdn.discordapp.com/attachments/421779363374301211/669464554765549568/Y4AAAAAElFTkSuQmCC.png" alt />
         </p>
       </div>
       <button class="modal-close is-large" v-on:click="toggleModalQr()" aria-label="close"></button>
