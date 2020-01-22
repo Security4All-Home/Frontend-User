@@ -95,11 +95,6 @@ export default {
   data() {
 
     const data = [];
-    let loggedUser = {
-      id: 54,
-      username: "James Sully",
-      points: 0,
-    }
     
     return {
       data,
@@ -107,11 +102,13 @@ export default {
       searchBar: "",
       filteredUsers: [],
       view: 1,
-      loggedUser,
+      loggedUser: "",
       users:[]
     };
   },
   async created() {
+    this.loggedUser = JSON.parse(localStorage.getItem("user"))
+    //let idUser = this.loggedUser.idUser;
 
       await getAllUsers().then(response => {
       this.users = response.data.data;
@@ -142,12 +139,6 @@ export default {
     
 
 
-
-    let loggedUser = {
-      id: 54,
-      username: "James Sully",
-      points: 0
-    };
     this.tempRanking = JSON.parse(localStorage.getItem("ranking"));
     // console.log(this.persons)
     this.data.push({
@@ -157,8 +148,8 @@ export default {
     });
 
     this.data.push({
-      idUser: loggedUser.id,
-      name: loggedUser.username,
+      idUser: loggedUser.idUser,
+      name: loggedUser.name,
       points: loggedUser.points
     });
   },
