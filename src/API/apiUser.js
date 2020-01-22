@@ -21,3 +21,7 @@ export function editUser(body) {
 export function getUserSpaces(id) {
     return get(`/user/spaces/${id}`)
 }
+
+export function getUserHouseByID() {
+    return get(`/user_house`)
+}

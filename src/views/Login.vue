@@ -71,33 +71,33 @@
             <h3 class="Subtitles">Personal Info</h3>
             <!--First Name -->
             <label class="label signLabel">Name</label>
-            <input class="input inputSign" type="text" placeholder="Insert your name" />
+            <input class="input inputSign" type="text" placeholder="Insert your name" v-model="signInInfo.name" />
             <br />
             <br />
             <!--Last Name -->
             <label class="label signLabel">Email</label>
-            <input class="input inputSign" type="email" placeholder="Insert your email" />
+            <input class="input inputSign" type="email" placeholder="Insert your email" v-model="signInInfo.email" />
             <br />
             <br />
             <!--email-->
             <label class="label signLabel">Phone Number</label>
-            <input class="input inputSign" type="number" placeholder="Insert your phone number" />
+            <input class="input inputSign" type="number" placeholder="Insert your phone number" v-model="signInInfo.contacto" />
           </div>
           <div v-if="step == 2">
             <h3 class="Subtitles">Password</h3>
             <!--Last Name -->
             <label class="label signLabel">Password</label>
-            <input class="input inputSign" type="password" placeholder="Insert your password" />
+            <input class="input inputSign" type="password" placeholder="Insert your password" v-model="signInInfo.password"/>
             <br />
             <br />
             <!--email-->
             <label class="label signLabel">Confirm Password</label>
-            <input class="input inputSign" type="password" placeholder="Confirm your password" />
+            <input class="input inputSign" type="password" placeholder="Confirm your password" v-model="confirmPass"/>
             <br />
             <br />
             <!--First Name -->
             <label class="label signLabel">User Name</label>
-            <input class="input inputSign" type="text" placeholder="Insert your Username" />
+            <input class="input inputSign" type="text" placeholder="Insert your Username" v-model="signInInfo.username" />
             <br />
           </div>
           <div v-if="step == 3">
@@ -105,11 +105,11 @@
             <div class="columns is-gapless is-vcentered is-desktop">
               <div class="column is-8-desktop">
                 <label class="label signLabel">Adress</label>
-                <input class="input inputSign" type="text" placeholder="Insert your Adress" />
+                <input class="input inputSign" type="text" placeholder="Insert your Adress" v-model="signInInfo.adress"/>
               </div>
               <div class="column is-3-desktop">
                 <label class="label signLabel">Postal-code</label>
-                <input class="input inputSign" type="text" placeholder />
+                <input class="input inputSign" type="text" placeholder="insert the postal-code" v-model="signInInfo.zipCode" />
               </div>
             </div>
             <label class="checkbox">
@@ -119,17 +119,17 @@
             <div class="columns is-gapless is-desktop" v-if="!checked">
               <div class="column is-8-desktop">
                 <label class="label signLabel">Billing Adress</label>
-                <input class="input inputSign" type="text" placeholder="Insert your Billing Adress" />
+                <input class="input inputSign" type="text" placeholder="Insert your Billing Adress" v-model="signInInfo.taxAdress" />
               </div>
               <div class="column is-3-desktop">
                 <label class="label signLabel">Postal-code</label>
-                <input class="input inputSign" type="text" placeholder />
+                <input class="input inputSign" type="text" placeholder="insert postal-code" v-model="signInInfo.taxZipCode"/>
               </div>
             </div>
             <div class="columns is-gapless is-vcentered is-desktop">
               <div class="column is-6-desktop">
                 <label class="label signLabel">NIF</label>
-                <input class="input inputSign" id="nif" type="text" placeholder="Insert your NIF" />
+                <input class="input inputSign" id="nif" type="text" placeholder="Insert your NIF" v-model="signInInfo.nif" />
               </div>
             </div>
           </div>
@@ -499,6 +499,7 @@
 //import bulmaSteps from "../../node_modules/bulma-extensions/bulma-steps/src/js/index";
 import { doLogin } from "../API/apiAuth";
 import { doRegister} from "../API/apiAuth";
+import { addAlert } from "../API/apiAlert";
 export default {
   data() {
     return {
@@ -586,10 +587,10 @@ export default {
         if (this.isActiveBasic) {
           this.isActiveBasic = false;
           this.signInInfo.idPackage = 0
-          this.signInInfo.credit = 40
+          this.signInInfo.credit = 0
         } else {
           this.isActiveBasic = true;
-          this.signInInfo.idPackage = 6
+          this.signInInfo.idPackage = 7
           this.signInInfo.credit = 40
         }
       }
@@ -599,9 +600,10 @@ export default {
         if (this.isActivePremium) {
           this.isActivePremium = false;
           this.signInInfo.idPackage = 0
-          this.signInInfo.credit = 100
+          this.signInInfo.credit = 0
         } else {
           this.isActivePremium = true;
+          this.signInInfo.idPackage = 8
           this.signInInfo.idPackage = 100
         }
       }
@@ -618,16 +620,25 @@ export default {
         }
         else{
           /*eslint-disable*/
-          console.log(response.data)
-          console.log(response.data.data)
-          this.$buefy.toast.open({
-            message: "Welcome!",
-            type: "is-success"
-          });
-          this.$router.push({name: "home"})
-          this.$store.dispatch("set_user_id",response.data.data)
-          localStorage.setItem("token", response.data.token)
-          localStorage.setItem("user",JSON.stringify(response.data.data)) 
+          if(response.data.data.disabled == 0){
+            console.log(response.data)
+            console.log(response.data.data.disabled)
+            this.$buefy.toast.open({
+              message: "Welcome!",
+              type: "is-success"
+            });
+            this.$router.push({name: "home"})
+            //this.$store.dispatch("set_user_id",response.data.data)
+            localStorage.setItem("token", response.data.token)
+            localStorage.setItem("user",JSON.stringify(response.data.data))
+          }
+          else {
+            this.$buefy.toast.open({
+              message: "You are Blocked!!",
+              type: "is-danger"
+            });
+          }
+           
         }
       });
     },
@@ -635,7 +646,7 @@ export default {
       doRegister(this.signInInfo).then(response => {
         /*eslint-disable*/
         console.log(response.data)
-        /*if(!response.data.success){
+        if(!response.data.success){
           this.$buefy.toast.open({
             message: "Invalid User!",
             type: "is-danger"
@@ -646,8 +657,13 @@ export default {
             message: "Welcome!",
             type: "is-success"
           });
-          this.login = false
-        }*/
+          this.login = true
+          addAlert({"alertText": "New user " + this.signInInfo.name,"alertType": "Success"}).then(response => {
+              /*eslint-disable*/
+              console.log(response.data)
+          })
+        }
+
       });
     }
   },

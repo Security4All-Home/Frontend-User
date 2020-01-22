@@ -67,8 +67,7 @@
       type="button"
       id="buttonSOS"
       title="SOS"
-      data-toggle="modal"
-      data-target="#SOSModal"
+      @click="createAnAlert()"
       class="button is-danger is-large"
     >SOS</button>
     <br />
@@ -79,7 +78,10 @@
 
 <script>
 //import { getAllHouseSensors } from "../API/apiSensor";
-import { getUserById, getUserSpaces } from "../API/apiUser";
+import { getAllHouses } from "../API/apiHouse"
+import { getAllUsersSensors } from "../API/apiUser"
+import { addAlert } from "../API/apiAlert";
+import { ToastProgrammatic as toast } from "buefy";
 
 export default {
   name: "Rankings",
@@ -93,48 +95,56 @@ export default {
       selected: data[0],
       searchBar: "",
       sensors: [],
-      userSensors: [],
-      userSpaces:[]
+      houseById: 0,
+      userSpaces: [],
+      houses: []
     };
   },
   async created() {
     //buscar id do user pelo token, mas como nao temos token, vou dar um id de exmplo
-    let idUser = 1;
-    await getUserById(idUser).then(response => {
-      this.user = response.data.data;
+    let loggedUser2 = JSON.parse(localStorage.getItem("user"))
+    let idUser = loggedUser2.idUser;
+
+
+
+    await getAllHouses().then(response => {
+        this.houses = response.data.data
+
     });
-    /* eslint-disable */
-    console.log("USER: " + JSON.stringify(this.user));
+    console.log("house")
+    console.log(this.houses)
 
-    //buscar todas as informações de um espaço
-    await getUserSpaces(idUser).then(response => {
-      this.userSpaces = response.data.data;
+    await getAllUsersSensors(idUser).then(response => {
+        this.sensors = response.data.data
+
     });
-    /* eslint-disable */
-    console.log("spaces: " + JSON.stringify(this.userSpaces[0]))
+    console.log("sensor")
+    console.log(this.sensors)
 
-    //buscar idCasa pelo idSpace
-    await getHouseBySpace(this.userSpaces[0].idSpace).then(res => {
-
-    })
-
-    //guardar id da casa
     
-    //buscar sensores pelo id da casa
-/*
-    await getAllHouseSensors(idCasa).then(response => {
-      this.userSensors = response.data.data;
-    });*/
 
-   // this.usersSensors --> Todos os sensores desta casa
-
-    for (let i = 0; i < this.userSensors.length; i++) {
-      this.data.push(this.userSensors[i]);
+    for (let i = 0; i < this.sensors.length; i++) {
+      this.data.push(this.sensors[i]);
     }
   },
   mounted() {},
   computed: {},
-  methods: {}
+  methods: {
+    createAnAlert() {
+      //Ou mandas o nome pela função la em cima e aqui colocas o nome dentro dos ()
+      let nameUser = "Edgar"; //Ou colocas o nome aqui
+      let temp = {
+        alertText: "User" + nameUser + "pressed the emergency button!",
+        alertType: "Danger"
+      };
+      addAlert(temp).then(() => {
+        toast.open({
+          message: "Alert sent",
+          type: "is-warning"
+        });
+      });
+    }
+  }
 };
 </script>
 
@@ -254,6 +264,5 @@ export default {
 #buttonSOS {
   margin-left: 93%;
   margin-top: 20%;
-  border-radius: 50%;
 }
 </style>

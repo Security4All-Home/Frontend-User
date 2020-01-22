@@ -10,7 +10,7 @@
           <h1 class="title has-text-white glitch" data-text="Are you secure?">Are you secure?</h1>
           
         </div>
-        <div class="column is-2 is-offset-5" style="margin-top:50px"> <button class="button isPrimaryBGColor is-fullwidth" style="color:#0A1F3C"><router-link :to="{name: 'security'}"><b>Find out more</b></router-link></button></div>
+        <div class="column is-2 is-offset-5" style="margin-top:10px"> <button class="button is-outlined findMore is-fullwidth" style="color:#0A1F3C"><router-link :to="{name: 'security'}"><b>Find out more</b></router-link></button></div>
       </div>
     </div>
     
@@ -27,3 +27,11 @@ export default {
   }
 };
 </script>
+<style lang="scss" scoped>
+ @import "../assets/login.scss";
+  .findMore{
+      background-color: transparent;
+      border-color: $primary;
+      color: $primary !important;
+  }
+</style>
