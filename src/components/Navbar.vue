@@ -3,7 +3,7 @@
     <ShopCart v-show="isModalVisible" @close="closeModal"></ShopCart>
     <div class="container">
       <div class="navbar-brand">
-        <a class="navbar-item logo" href="#">
+        <a class="navbar-item logo">
           <img src="../assets/img/1.png" width="161" height="28" />
         </a>
         <!-- BURGER -->
