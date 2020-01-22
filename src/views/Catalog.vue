@@ -14,21 +14,20 @@
             <div class="columns col-filter is-multiline is-12-mobile is-6-tablet is-2-desktop">
               <b-menu class="menu is-vcentered">
                 <b-menu-list label="FILTERS">
-                  <b-field label="Price Range">
+                  <b-field class="menu-price" label="Price Range">
                     <b-slider type="is-warning" v-model="range" :min="0" :max="200"></b-slider>
                   </b-field>
                   <b-menu-item label="Most Bought" @click="orderBySales"></b-menu-item>
                   <b-menu-item label="Top Rated" @click="orderByRank"></b-menu-item>
-                  <b-menu-item label="Most Bought" @click="orderBySales"></b-menu-item>
                 </b-menu-list>
 
                 <b-dropdown class="dropdown-filter" hoverable aria-role="list" v-model="ctg">
                   <button class="button" slot="trigger" expanded>
                     <span>
                       Sensors
-                      <!-- <i class="fa fa-sort-down"></i> -->
+                      <i class="fas fa-sort-down"></i>
                     </span>
-                    <b-icon icon="sort-down"></b-icon>
+                    <!-- <b-icon icon="sort-down"></b-icon> -->
                   </button>
 
                   <b-dropdown-item

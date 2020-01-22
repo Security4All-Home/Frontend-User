@@ -11,6 +11,10 @@ export function getAverageScore(id) {
     return get(`/sensors/score/average/${id}`)
 }
 
-export function postReview() {
-    return post('/user/insert/review')
+export function postReviewText(body) {
+    return post('/user/insert/review', body)
+}
+
+export function postReviewScore(body) {
+    return post('​/sensors​/score', body)
 }
