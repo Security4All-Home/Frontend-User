@@ -76,9 +76,9 @@ h5 {
     margin-right: auto;
 }
 
-.title {
-    text-align: center;
-    font-size: 40px;
+.section-title {
+    text-align: center !important;
+    font-size: 40px !important;
     color: $secondary;
     padding-top: 30px;
 }
@@ -122,6 +122,19 @@ h5 {
     padding: 20px 20px;
 }
 
+.menu-label {
+    text-align: center;
+    font-weight: bold;
+}
+
+.menu-price {
+    font-weight: normal;
+}
+
+// label.label {
+//     text-align: center;
+// }
+
 .dropdown-filter {
     padding-top: 20px;
 }
@@ -132,8 +145,8 @@ h5 {
 }
 
 .title {
-    text-align: left !important;
-    font-size: 14px !important;
+    text-align: left;
+    font-size: 14px;
     font-weight: bold;
     color: $ourGrey;
     text-transform: uppercase;

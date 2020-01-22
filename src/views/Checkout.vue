@@ -7,7 +7,10 @@
     </div>
 
     <div class="columns is-centered" style="margin-top: 50px" v-if="hasSensor()">
-      <div class="column is-8-desktop" style="background-color: white; border-radius: 10px;">
+      <div
+        class="column is-8-desktop is-hidden-mobile"
+        style="background-color: white; border-radius: 10px;"
+      >
         <div class="product-labels">
           <label class="product-image">Image</label>
           <label class="product-details">Product</label>
@@ -27,7 +30,7 @@
           </div>
           <div class="product-price">{{sensor.price}}</div>
           <div class="product-quantity">
-            <input type="number" value="1" min="1" />
+            <input v-model="quantity" type="number" value="1" min="1" />
           </div>
           <div class="product-removal">
             <button class="remove-product" @click="deleteSensor(sensor.name, index)">
@@ -38,17 +41,53 @@
         </div>
 
         <div class="totals">
-          <div class="totals-item">
-            <label>Subtotal</label>
-            <div class="totals-value" id="cart-subtotal">????</div>
-          </div>
-          <div class="totals-item">
-            <label>Shipping</label>
-            <div class="totals-value" id="cart-shipping">15.00</div>
-          </div>
           <div class="totals-item totals-item-total">
             <label>Grand Total</label>
-            <div class="totals-value" id="cart-total"></div>
+            <div class="totals-value" id="cart-total">{{ totalPrice() }}</div>
+          </div>
+        </div>
+
+        <button class="button is-success is-small checkout" @click="checkout">Checkout</button>
+      </div>
+
+      <!-- MOBILE VERSION -->
+      <div
+        class="column is-12-mobile checkout-mobile is-hidden-tablet"
+        style="background-color: white; border-radius: 10px;"
+      >
+        <div class="product-labels">
+          <label class="product-image">Image</label>
+          <label class="product-details">Product</label>
+          <label class="product-price">Price</label>
+          <label class="product-quantity">Quantity</label>
+          <label class="product-removal">Remove</label>
+          <label class="product-line-price">Total</label>
+        </div>
+
+        <div class="product" v-for="(sensor,index) in getSensorsInCart" :key="index">
+          <div class="product-image">
+            <img :src="sensor.image" />
+          </div>
+          <div class="product-details">
+            <div class="product-title">{{sensor.name}}</div>
+            <p class="product-description">{{sensor.description}}</p>
+          </div>
+          <div class="product-price">{{sensor.price}}</div>
+          <div class="product-quantity">
+            <input v-model="quantity" type="number" value="1" min="1" />
+          </div>
+          <div class="product-removal">
+            <button class="remove-product" @click="deleteSensor(sensor.name, index)">
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+          <div class="product-line-price">{{sensor.price}}</div>
+        </div>
+
+        <div class="totals">
+          <div class="totals-item totals-item-total">
+            <label>Grand Total</label>
+            <div class="totals-value" id="cart-total">{{ totalPrice() }}</div>
           </div>
         </div>
 
@@ -85,7 +124,9 @@ export default {
   data() {
     return {
       sensor: {},
-      finalOrder: []
+      userId: JSON.parse(localStorage.getItem("user")).idUser,
+      finalOrder: [],
+      quantity: 0
     };
   },
   computed: {
@@ -95,6 +136,12 @@ export default {
   methods: {
     hasSensor() {
       return this.getSensorsInCart.length > 0;
+    },
+    totalPrice() {
+      return this.getSensorsInCart.reduce(
+        (current, next) => current + next.price,
+        0
+      );
     },
     ...mapActions(["removeSensor"]),
     deleteSensor(name, index) {
@@ -125,12 +172,27 @@ export default {
     },
 
     checkout() {
-      // finalOrder = this.getSensorsInCart;
+      let order = [];
+      for (let i = 0; i < this.getSensorsInCart.length; i++) {
+        let data = {
+          idSensor: this.getSensorsInCart[i].idSensor,
+          quantity: this.quantity
+        };
+        order.push(data);
+      }
       /* eslint-disable */
-      // console.log("ENCOMENDA: " + finalOrder);
+      // console.log(order);
+      this.finalOrder = {
+        sensors: order,
+        idUser: this.userId,
+        instalation: 0,
+        payed: 0,
+        active: 0
+      };
 
-      addOrder(this.getSensorsInCart).then(response => {
+      addOrder(this.finalOrder).then(response => {
         /*eslint-disable*/
+        console.log(response.data);
         if (!response.data.success) {
           this.$buefy.toast.open({
             message: "Something went wrong!",
@@ -142,6 +204,9 @@ export default {
             type: "is-success"
           });
         }
+
+        this.$router.push({ name: "catalog" });
+        this.$store.dispatch("clear_cart");
       });
     }
   }
@@ -177,6 +242,10 @@ $color-label: #aaa;
   float: left;
   width: 12%;
   text-align: right;
+}
+
+.checkout-mobile {
+  height: 370px;
 }
 
 /* This is used as the traditional .clearfix class */

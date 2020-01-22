@@ -1,8 +1,9 @@
 <template>
   <nav class="navbar adjustNav is-fixed-top">
+    <ShopCart v-show="isModalVisible" @close="closeModal"></ShopCart>
     <div class="container">
       <div class="navbar-brand">
-        <a class="navbar-item logo" href="#">
+        <a class="navbar-item logo">
           <img src="../assets/img/1.png" width="161" height="28" />
         </a>
         <!-- BURGER -->
@@ -31,18 +32,19 @@
               <i class="fas fa-cart-plus" style="margin-right:5px"></i>
             </a>
           </div>
-          <ShopCart v-show="isModalVisible" @close="closeModal"></ShopCart>
+
           <!--  -->
 
           <!-- Dropdown desktop/tablet-->
           <div class="navbar-item has-dropdown is-hoverable is-hidden-mobile" v-if="userId != 0">
             <!-- v-if="user" -->
             <a class="navbar-link has-text-white">
-              <i class="fas fa-user-circle is-white" style="margin-right:5px"></i>{{userName}}
+              <i class="fas fa-user-circle is-white" style="margin-right:5px"></i>
+              {{userName}}
             </a>
 
             <div class="navbar-dropdown isSecondaryBGColor">
-              <a class="navbar-item " v-if="userId != 0">
+              <a class="navbar-item" v-if="userId != 0">
                 <router-link tag="span" :to="{ name: 'profile', params: { _id: userId } }">Profile</router-link>
               </a>
 
@@ -79,10 +81,7 @@
                 </span>
                 <span>Home Manager</span>
               </a>
-              <a
-                class="button is-warning is-outlined is-hidden-tablet"
-                @click="showModal"
-              >
+              <a class="button is-warning is-outlined is-hidden-tablet" @click="showModal">
                 <span class="icon">
                   <i class="fas fa-cart-plus"></i>
                 </span>
@@ -116,7 +115,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 import ShopCart from "../components/Shopcart";
 import { GetUserById } from "../API/apiProfile";
 export default {
@@ -134,8 +133,8 @@ export default {
     };
   },
   async mounted() {
-    this.userId = JSON.parse(localStorage.getItem("user")).idUser
-    this.userName = JSON.parse(localStorage.getItem("user")).name
+    this.userId = JSON.parse(localStorage.getItem("user")).idUser;
+    this.userName = JSON.parse(localStorage.getItem("user")).name;
     /*eslint-disable*/
     console.log(this.userId);
     var self = this;
@@ -157,10 +156,9 @@ export default {
       this.$router.push({ name: "login" });
       localStorage.removeItem("token");
       localStorage.removeItem("user");
-      axios.defaults.headers.common['x-access-token'] = ""
-      this.userLogged = ""
-      this.userId = 0
-      
+      axios.defaults.headers.common["x-access-token"] = "";
+      this.userLogged = "";
+      this.userId = 0;
     }
   }
 };

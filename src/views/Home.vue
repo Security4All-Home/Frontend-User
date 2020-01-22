@@ -3,18 +3,23 @@
 <body>
   <Hero></Hero>
   <Packages></Packages>
+  <div class="is-hidden-mobile">
+    <Team></Team>
+  </div>
 </body>
 </template>
 
 <script>
 import Packages from "../components/Package";
 import Hero from "../components/HeroHome";
+import Team from "../components/Team";
 
 export default {
   name: "home",
   components: {
     Packages,
-    Hero
+    Hero,
+    Team
   }
 };
 </script>
