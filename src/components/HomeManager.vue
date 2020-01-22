@@ -128,7 +128,7 @@ export default {
       //Ou mandas o nome pela função la em cima e aqui colocas o nome dentro dos ()
       let nameUser = this.loggedUser.name; //Ou colocas o nome aqui
       let temp = {
-        alertText: "User  " + nameUser + " pressed the emergency button!",
+        alertText: "User  " + nameUser + ": Emergency Button activated in Living Room",
         alertType: "Danger"
       };
       addAlert(temp).then(() => {
