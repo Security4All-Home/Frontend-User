@@ -19,14 +19,10 @@
           </div>
           <div class="column is-12-mobile is-6-tablet is-10-desktop">
             <p class="title has-text-left is-size-4">{{sensor.name}}</p>
-            <p class="text has-text-justified">
-              Pyroelectric infrared motion sensor can detect infrared signals from a moving person or moving animal, and output switching signals. It can be applied to a variety of occasions to detect the movement of human body.
-              Conventional pyroelectric infrared sensors require body pyroelectric infrared detector, professional chip, complex peripheral circuit, so the size is bigger, with complex circuit, and lower reliability.
-              This new pyroelectric infrared motion sensor, specially designed for Arduino. It uses an integrated digital body pyroelectric infrared sensor, has smaller size, higher reliability, lower power consumption and simpler peripheral circuit.
-            </p>
+            <p class="text has-text-justified">{{sensor.description}}</p>
             <br />
             <br />
-            <nav class="level">
+            <nav class="level level-info">
               <div class="level-left">
                 <p class="title is-size-4">
                   <strong>Price: {{sensor.price}}€</strong>
@@ -56,6 +52,7 @@
           <li>Working Current: 15uA</li>
           <li>Working Temperature: -20 ~ 85 ℃</li>
         </ul>
+        <!-- {{sensor.specifications}} -->
       </div>
     </section>
     <!-- FIM SECÇÃO MAIS DO SENSOR -->
@@ -100,25 +97,24 @@
       <p class="title has-text-left is-size-4">Clients Reviews</p>
       <article
         class="media own-comment is-12-mobile"
-        v-for="review in reviews"
+        v-for="review in newReviews"
         :key="review.idUser"
       >
         <figure class="media-left">
           <p class="image is-64x64">
-            <img class="is-rounded" src="../assets/img/user.jpg" />
+            <img class="is-rounded" :src="review.image" />
           </p>
         </figure>
         <div class="media-content">
           <div class="content">
             <p class="text">
-              <strong>{{review.idUser}}</strong>
-              <small>@johnsmith</small>
+              <strong>{{review.name}}</strong>
               <br />
               {{review.text}}
             </p>
 
             <p class="level-right">
-              <StarRating></StarRating>
+              <AverageRating :value="scores.score"></AverageRating>
             </p>
           </div>
         </div>
@@ -135,7 +131,9 @@ import Navbar from "../components/Navbar";
 import { getSensorById } from "../API/apiSensor";
 import { getAllReviews } from "../API/apiReview";
 import { getAllUsers } from "../API/apiUser";
-// import {  postReview } from '../API/apiReview';
+import { getSensorsScore } from "../API/apiSensor";
+import { postReviewText } from "../API/apiReview";
+import { postReviewScore } from "../API/apiReview";
 import { mapActions } from "vuex";
 
 export default {
@@ -146,40 +144,72 @@ export default {
     Navbar
   },
   async created() {
-    getSensorById(this.$route.params._id).then(res => {
+    await getSensorById(this.$route.params._id).then(res => {
       /* eslint-disable */
       this.sensor = res.data.data[0];
       // console.log(this.sensor);
     });
 
-    getAllReviews(this.$route.params._id).then(res => {
+    await getAllReviews(this.$route.params._id).then(res => {
       /* eslint-disable */
       this.reviews = res.data.data;
       console.log("REVIEWS: " + JSON.stringify(this.reviews));
     });
 
-    getAllUsers().then(res => {
+    await getAllUsers().then(res => {
       /* eslint-disable */
-      this.users = res.data;
-      let str = JSON.stringify(users);
-      console.log("Users: " + str);
+      this.users = res.data.data;
+      let str = JSON.stringify(this.users);
+      // console.log("Users: " + str);
     });
 
-    //FAzes um ciclo que percorre todas as Reviews, e depois com o iddo User, fazes getUserById(idUser).photo
-    for (let i = 0; i < this.reviews.lenght; i++) {
-      this.reviews[i].userPhoto = await getUserById(this.reviews[i].idUser)
-        .photo;
+    await getSensorsScore(this.$route.params._id).then(res => {
+      this.scores = res.data.data;
+      /* eslint-disable */
+      console.log("SCORES!!!! " + JSON.stringify(this.scores));
+    });
+
+    //For cycle to get all the info necessary for the reviews
+    for (let i = 0; i < this.reviews.length; i++) {
+      for (let j = 0; j < this.users.length; j++) {
+        for (let h = 0; h < this.scores.length; h++) {
+          if (this.reviews[i].idUser === this.users[j].idUser) {
+            this.data = {
+              name: this.users[j].name,
+              text: this.reviews[i].text,
+              image: this.users[j].image,
+              rating: this.scores[h].score
+            };
+          }
+        }
+      }
+      this.newReviews.push(this.data);
+      console.log("REVIEWS!!!!! " + JSON.stringify(this.newReviews));
     }
   },
   data() {
     return {
       sensor: {},
       reviews: [],
+      newReviews: [],
+      data: "",
       userReview: {
         text: "",
         rate: ""
       },
-      users: []
+      users: [],
+      scores: [],
+      userId: JSON.parse(localStorage.getItem("user")).idUser,
+      sendReviewRate: {
+        idSensor: "",
+        idUser: "",
+        score: ""
+      },
+      sendReviewData: {
+        text: "",
+        idUser: "",
+        idSensor: ""
+      }
     };
   },
   methods: {
@@ -199,10 +229,28 @@ export default {
     updateRate(rate) {
       this.userReview.rate = rate;
     },
-    doReview(review) {
+    async doReview() {
       /* eslint-disable */
-      review = this.userReview;
-      console.log("Text: " + review.text + " and rating: " + review.rate);
+      this.sendReviewRate.idSensor = this.$route.params._id;
+      this.sendReviewRate.idUser = this.userId;
+      this.sendReviewRate.score = this.userReview.rate;
+
+      this.sendReviewData.text = this.userReview.text;
+      this.sendReviewData.idUser = this.userId;
+      this.sendReviewData.idSensor = this.$route.params._id;
+
+      await postReviewText(this.sendReviewData).then(res => {
+        console.log("TEXT: " + JSON.stringify(res.data));
+      });
+
+      await postReviewScore(this.sendReviewRate).then(res => {
+        console.log("SCORE: " + JSON.stringify(res.data));
+      });
+
+      this.$buefy.toast.open({
+        message: "Thanks for your rating!",
+        type: "is-success"
+      });
     }
   },
   props: {}

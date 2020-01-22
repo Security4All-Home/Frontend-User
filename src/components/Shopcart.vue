@@ -1,66 +1,53 @@
 <template>
-  <div class="box is-hidden-mobile">
-    <button class="delete" aria-label="close" @click="$emit('close')"></button>
-    <span v-if="!hasSensor()">No sensors in your cart :/</span>
-    <span v-if="hasSensor()">
-      <i class="fas fa-shopping-cart"></i>
-      Your Shopping Cart
-    </span>
-    <div v-for="(sensor, index) in getSensorsInCart" :key="index" class="box-item">
-      <img :src="sensor.image" alt class="item-thumb" />
-      <h3 class="item-name">{{ sensor.name }}</h3>
-      <span class="item-amount">Choose quantity in checkout</span>
-      <span class="item-price">€{{ sensor.price }}, 00</span>
-      <button class="button item-remove" @click="deleteSensor(sensor.name, index)">
-        <i class="fas fa-trash"></i>
-      </button>
-    </div>
-    <div class="cart-info" v-if="hasSensor()">
-      <span>
-        Total:
-        <bold>€{{ totalPrice() }},00</bold>
+  <div>
+    <div class="box box-desktop is-hidden-mobile">
+      <button class="delete" aria-label="close" @click="$emit('close')"></button>
+      <span v-if="!hasSensor()">No sensors in your cart :/</span>
+      <span v-if="hasSensor()">
+        <i class="fas fa-shopping-cart"></i>
+        Your Shopping Cart
       </span>
-      <router-link to="/checkout">
-        <router-link to="/checkout" class="button is-info is-small">Checkout</router-link>
-      </router-link>
+      <div v-for="(sensor, index) in getSensorsInCart" :key="index" class="box-item">
+        <img :src="sensor.image" alt class="item-thumb" />
+        <h3 class="item-name">{{ sensor.name }}</h3>
+        <span class="item-amount">Choose quantity in checkout</span>
+        <span class="item-price">€{{ sensor.price }}, 00</span>
+      </div>
+      <div class="cart-info" v-if="hasSensor()">
+        <span>
+          Total:
+          <bold>€{{ totalPrice() }},00</bold>
+        </span>
+        <router-link to="/checkout">
+          <router-link to="/checkout" class="button is-info is-small">Checkout</router-link>
+        </router-link>
+      </div>
+    </div>
+
+    <div class="box box-mobile is-hidden-tablet">
+      <button class="delete" aria-label="close" @click="$emit('close')"></button>
+      <span v-if="!hasSensor()">No sensors in your cart :/</span>
+      <span v-if="hasSensor()">
+        <i class="fas fa-shopping-cart"></i>
+        Your Shopping Cart
+      </span>
+      <div v-for="(sensor, index) in getSensorsInCart" :key="index" class="box-item">
+        <img :src="sensor.image" alt class="item-thumb" />
+        <h3 class="item-name">{{ sensor.name }}</h3>
+        <span class="item-amount">Choose quantity in checkout</span>
+        <span class="item-price">€{{ sensor.price }}, 00</span>
+      </div>
+      <div class="cart-info" v-if="hasSensor()">
+        <span>
+          Total:
+          <bold>€{{ totalPrice() }},00</bold>
+        </span>
+        <router-link to="/checkout">
+          <router-link to="/checkout" class="button is-info is-small">Checkout</router-link>
+        </router-link>
+      </div>
     </div>
   </div>
-
-  <!-- <div class="container">
-    <div class="shopping-cart is-dark">
-      <div class="shopping-cart-header">
-        <i class="fa fa-shopping-cart cart-icon"></i>
-        <span class="badge">3</span>
-        <div class="shopping-cart-total">
-          <span class="lighter-text">Total:</span>
-          <span class="cart-total main-color-text">{{totalPrice()}}</span>
-          <button class="delete" aria-label="close" @click="$emit('close')"></button>
-        </div>
-      </div>
-      <ul class="shopping-cart-items">
-        <span class="cart-products" v-if="!hasSensor()">No products :/</span>
-        <li class="clearfix" v-for="(sensor, index) in getSensorsInCart" :key="index">
-          <div class="columns is-vcentered">
-            <div class="column">
-              <div class="level">
-                <div class="level-item">
-                  <figure class="image is-128x128">
-                    <img src="./img/sensor.png" alt="item1" />
-                  </figure>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <span class="item-name">{{sensor.name}}</span>
-              <span class="item-price">{{sensor.price}}</span>
-              <span class="item-quantity">Quantity: 01</span>
-            </div>
-          </div>
-        </li>
-      </ul>
-      <a href="#" class="button">Checkout</a>
-    </div>
-  </div>-->
 </template>
 
 <script>
@@ -105,7 +92,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.box {
+.box-desktop {
   width: 400px;
   height: auto;
   background-color: #e7e7e7;
@@ -115,20 +102,35 @@ export default {
   position: absolute !important;
   z-index: 1;
   // padding: ;
-  top: 100px;
-  right: 250px;
+  top: 80px;
+  right: 150px;
 }
 
-.box:after {
-  content: "";
-  width: 30px;
-  height: 30px;
-  transform: rotate(45deg);
-  background: inherit;
-  position: absolute;
-  top: -15px;
-  right: 15px;
+.box-mobile {
+  width: 400px;
+  height: auto;
+  background-color: #e7e7e7;
+  box-shadow: 0px 0px 10px rgba(73, 74, 78, 0.1);
+  border-radius: 5px;
+  box-sizing: border-box;
+  position: absolute !important;
+  z-index: 5;
+  // padding: ;
+  top: 200px;
+  left: 20px;
+  max-width: 80%;
 }
+
+// .box:after {
+//   content: "";
+//   width: 30px;
+//   height: 30px;
+//   transform: rotate(45deg);
+//   background: inherit;
+//   position: absolute;
+//   top: -15px;
+//   right: 15px;
+// }
 
 .box-item {
   width: 100%;

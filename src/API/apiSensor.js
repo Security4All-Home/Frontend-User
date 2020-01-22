@@ -17,6 +17,10 @@ export function getAllHouseSensors(id) {
     return get(`/`)
 }*/
 
+export function getSensorsScore(id) {
+    return get(`/sensors/score/${id}`)
+}
+
 
 export function getSensorById(id) {
     return get(`/sensors/${id}`)

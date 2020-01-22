@@ -16,7 +16,7 @@ export default {
     };
   },
   mounted() {
-    console.log("ASD");
+    // console.log("ASD");
     getAverageScore(this.$route.params._id).then(res => {
       this.score = JSON.stringify(res.data.data[0]);
       // console.log(this.score);

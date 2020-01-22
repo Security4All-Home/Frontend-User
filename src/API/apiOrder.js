@@ -14,7 +14,7 @@ export function editOrder(body) {
 }
 
 export function addOrder(body) {
-    return post("/sensor/order", body)
+    return post("/order/sensors", body)
 }
 
 export function removeOrder(body) {
