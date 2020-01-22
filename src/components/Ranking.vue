@@ -148,9 +148,9 @@ export default {
     });
 
     this.data.push({
-      idUser: loggedUser.idUser,
-      name: loggedUser.name,
-      points: loggedUser.points
+      idUser: this.loggedUser.idUser,
+      name: this.loggedUser.name,
+      points: this.loggedUser.points
     });
   },
   mounted() {
