@@ -96,15 +96,16 @@ export default {
       sensors: [],
       houseById: 0,
       userSpaces: [],
-      houses: []
+      houses: [],
+      loggedUser: ""
     };
   },
   async created() {
     //buscar id do user pelo token, mas como nao temos token, vou dar um id de exmplo
      /* eslint-disable */
-    let loggedUser2 = JSON.parse(localStorage.getItem("user"))
-    let idUser = loggedUser2.idUser;
-    console.log(loggedUser2)
+    this.loggedUser = JSON.parse(localStorage.getItem("user"))
+    let idUser = this.loggedUser.idUser;
+    console.log(this.loggedUser)
 
 
     await getAllUsersSensors(idUser).then(response => {
@@ -125,7 +126,7 @@ export default {
   methods: {
     createAnAlert() {
       //Ou mandas o nome pela função la em cima e aqui colocas o nome dentro dos ()
-      let nameUser = loggedUser2.name; //Ou colocas o nome aqui
+      let nameUser = this.loggedUser.name; //Ou colocas o nome aqui
       let temp = {
         alertText: "User" + nameUser + "pressed the emergency button!",
         alertType: "Danger"
