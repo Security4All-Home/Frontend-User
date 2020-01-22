@@ -78,7 +78,6 @@
 
 <script>
 //import { getAllHouseSensors } from "../API/apiSensor";
-import { getAllHouses } from "../API/apiHouse"
 import { getAllUsersSensors } from "../API/apiUser"
 import { addAlert } from "../API/apiAlert";
 import { ToastProgrammatic as toast } from "buefy";
@@ -102,17 +101,11 @@ export default {
   },
   async created() {
     //buscar id do user pelo token, mas como nao temos token, vou dar um id de exmplo
+     /* eslint-disable */
     let loggedUser2 = JSON.parse(localStorage.getItem("user"))
     let idUser = loggedUser2.idUser;
+    console.log(loggedUser2)
 
-
-
-    await getAllHouses().then(response => {
-        this.houses = response.data.data
-
-    });
-    console.log("house")
-    console.log(this.houses)
 
     await getAllUsersSensors(idUser).then(response => {
         this.sensors = response.data.data
@@ -126,9 +119,9 @@ export default {
     for (let i = 0; i < this.sensors.length; i++) {
       this.data.push(this.sensors[i]);
     }
+    console.log("data")
+    console.log(this.data)
   },
-  mounted() {},
-  computed: {},
   methods: {
     createAnAlert() {
       //Ou mandas o nome pela função la em cima e aqui colocas o nome dentro dos ()
