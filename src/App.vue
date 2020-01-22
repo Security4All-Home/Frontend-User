@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <NavBar v-if="this.currentRoute!='login'"></NavBar>
+    <NavBar></NavBar>
 
     <router-view />
 
-    <Footer v-if="this.currentRoute!='login'"></Footer>
+    <Footer></Footer>
   </div>
 </template>
 

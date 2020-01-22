@@ -3,7 +3,9 @@
 <body>
   <Hero></Hero>
   <Packages></Packages>
-  <Team></Team>
+  <div class="is-hidden-mobile">
+    <Team></Team>
+  </div>
 </body>
 </template>
 
